@@ -1,0 +1,281 @@
+﻿
+@{
+     ViewBag.Title = "CapBacHoiVien";
+     Layout = "~/Views/Shared/_LayoutCaNhan.cshtml";
+     string capbachientai = (string)ViewBag.CapBacHienTai;
+     var list = (List<Web_Girls.Models.ModelsView.LichSuCapBacView>)ViewBag.list;
+     var hv = (Web_Girls.Models.Context.HocVien)ViewBag.hv;
+     var listcb = (List<Web_Girls.Models.Context.CapBac>)ViewBag.listcb;
+}
+<script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+<style>
+    /* Màu nền cho tiêu đề cột */
+    table thead th {
+        background-color: #457b9d; /* Xanh nhạt */
+        color: white; /* Màu chữ trắng */
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* Màu nền cho các ô dữ liệu */
+    table tbody td {
+        background-color: #f8f9fa; /* Màu nền nhạt */
+    }
+
+    /* Dòng được chọn (hover) */
+    table tbody tr:hover {
+        background-color: #d1ecf1; /* Xanh nhạt khi hover */
+    }
+
+    /* Đường viền */
+    table {
+        border-collapse: collapse;
+    }
+
+        table th, table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+        }
+</style>
+<div id="page-wrapper">
+     <div class="mb-4" style="color: black; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0; ">
+          <div class="row">
+               <div class="col-sm-9">
+                    <h2 style="font-weight: bold">Câp bậc học viên : @hv.TenHV</h2>
+               </div>
+          </div>
+     </div>
+     <div class="row">
+         <div class="col-lg-12">
+             <h2 style="color:black"><span style="text-transform:uppercase">Cấp bậc hiện tại: </span>@capbachientai</h2>
+         </div>
+         <div style="display: flex;">
+             <div><h2>Lịch sử cấp bậc</h2></div>
+             <div style="margin-left: 100px;"> <a id="openModalBtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Thêm lịch sử cấp bậc</a></div>             
+         </div>
+         <div class="col-lg-12 d-flex">
+                 <div class="table-responsive">
+                     <table class="table table-bordered text-center" id="Table" width="100%" cellspacing="0">
+                         <thead>
+                             <tr>
+                                 <th style="display:none">Mã</th>
+                                 <th>Câp bậc</th>
+                                 <th>Ngày quyết định</th>
+                                 <th>Trạng thái</th>
+                                 <th>Thao Tác</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             @foreach (var it in list)
+                             {
+                                 <tr>
+                                     <td style="display:none">@it.Ma</td>
+                                     <td>@it.TenCapBac</td>
+                                     @if (it.NgayQD == null)
+                                     {
+                                         <td>Chưa có thông tin</td>
+                                     }
+                                     else
+                                     {
+                                         <td>@it.NgayQD.Value.ToString("dd-MM-yyyy")</td>
+                                     }
+                                     @if (it.XacNhan == false)
+                                     {
+                                         <td style="color:red">Đang chờ xác nhận</td>
+                                     }
+                                     else
+                                     {
+                                         <td style="color:green">Đã xác nhận</td>
+                                     }
+                                     <td class="center" style="list-style-type: none;">
+                                         <li class="dropdown">
+                                             <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary btn-sm" data-toggle="dropdown" type="button"><i class="fa fa-bars"></i></button>
+                                             <ul class="dropdown-menu dropdown-menu-right">
+                                                 <li>
+                                                     <a class="dropdown-item" id="loadModal" data-toggle="modal" data-target="#showmodal1" href="">
+                                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                         Cập nhật
+                                                     </a>
+                                                 </li>
+                                                 <li>
+                                                     <a class="dropdown-item text-danger" href="#" onclick="Xoa(@it.Ma)">
+                                                         <i class="fas fa-trash-alt mr-3"></i>
+                                                         Xóa
+                                                     </a>
+                                                 </li>
+
+                                             </ul>
+                                         </li>
+
+                                     </td>
+                                 </tr>
+                             }
+                         </tbody>
+                     </table>
+                 @*</div>*@
+             </div>
+             @*<div class="col-lg-3">
+                 <a id="openModalBtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Thêm lịch sử cấp bậc</a>
+             </div>*@
+
+         </div>
+         <div id="showmodal1" class="modal fade" role="dialog">
+             <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+             </div>
+         </div>
+         <div id="myModal" class="modal fade" role="dialog">
+
+             <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+                 <div class="modal-content">
+
+                     <div class="modal-header">
+                         <h4 class="modal-title">Thêm lịch sử cấp bậc</h4>
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     </div>
+
+                     <div class="modal-body">
+                         <input type="text" value="@hv.MaHV" name="MaHV" id="MaHV" style="display:none" />
+                         <div class="form-group">
+                             <label for="usr">Tên cấp bậc:</label>
+                             <select class="form-control" name="MaCB" id="MaCB">
+                                 @foreach (var it in listcb)
+                                 {
+                                     <option value="@it.MaCB">@it.TenCB</option>
+                                 }
+
+                             </select>
+                         </div>
+
+                         <div class="form-group">
+                             <label for="usr">Ngày quyết định:</label>
+                             <input type="date" class="form-control" id="NgayQD" name="NgayQD" required>
+                         </div>
+                     </div>
+                     <div class="modal-footer">
+                         <button type="submit" data-dismiss="modal" onclick="Them()" class="btn btn-primary">Lưu</button>
+                         <a class="btn btn-default" data-dismiss="modal">Hủy bỏ</a>
+                     </div>
+
+
+                 </div>
+
+             </div>
+
+         </div>
+         <script>
+
+             function Xoa(ma) {
+                 const MaHV = document.getElementById("MaHV").value;
+                 Swal.fire({
+                     title: 'Bạn có chắc chắn muốn xóa?',
+                     showCancelButton: true,
+                     confirmButtonText: 'Xóa',
+                     denyButtonText: `Hủy`,
+                 }).then((result) => {
+                     /* Read more about isConfirmed, isDenied below */
+                     if (result.isConfirmed) {
+                         $.ajax({
+                             url: '/HoiVien/XoaLichSuCapBac',
+                             data: {
+                                 ma: ma
+                             },
+                             type: 'POST',
+                             dataType: 'json',
+                             success: function (res) {
+                                 if (res.status == true) {
+                                     window.location.href = "/HoiVien/CapBacHoiVien?id=" + MaHV;
+                                 }
+                             }
+
+                         });
+
+                     }
+                 })
+             }
+         </script>
+
+         <script>
+
+          $("#Table").on("click", "#loadModal", function () {
+                     var id = $(this).closest("tr").find("td").eq(0).html();
+                     console.log(id);
+                     $.ajax({
+                           url: '@Url.Action("SuaLichSuCapBac", "HoiVien")',
+                           data: { Ma: id },
+                           type: 'GET', // Change to 'POST' if needed
+                           success: function (data) {
+                                 $('#showmodal1 .modal-dialog').html(data);
+                           }
+                     });
+          });
+                                               /*  });*/
+         </script>
+         <script>
+             const Them = () => {
+                 const MaHV = document.getElementById("MaHV").value;
+                 const MaCB = document.getElementById("MaCB").value;
+                 const NgayQD = document.getElementById("NgayQD").value;
+                 if (MaCB == "" || NgayQD == "") {
+                     alert("Vui lòng nhập đầy đủ thông tin.");
+                 }
+                 $.ajax({
+                     type: "POST",
+                     url: "/HoiVien/ThemLichSuCapBac", // Replace with the appropriate URL for your controller action
+
+                     data: {
+                         MaHV: MaHV,
+                         MaCB: MaCB,
+                         NgayQD: NgayQD,
+
+                     },
+                     dataType: 'json',
+                     success: function (response) {
+                         // Handle the response from the server
+                         if (response.status == true) {
+                             if (response.data == "0") {
+                                 /* alert("Thay đổi của bạn đã được gửi đi và đang chờ xác nhận.");*/
+                                 window.location.href = "/HoiVien/CapBacHoiVien?id=" + MaHV;
+                                 Swal.fire({
+                                     position: 'center',
+                                     icon: 'info',
+                                     title: 'Thay đổi của bạn đã được gửi đi và đang chờ xác nhận.',
+                                     showConfirmButton: false,
+                                     timer: 1500
+                                 })
+                             } else if (response.data == "1") {
+                                 window.location.href = "/HoiVien/CapBacHoiVien?id=" + MaHV;
+                             }
+                         } else if (response.status == false) {
+                             if (response.data == "0") {
+                                 Swal.fire({
+                                     position: 'center',
+                                     icon: 'info',
+                                     title: 'Bạn có 1 yêu cầu thay đổi cấp bậc đang chờ xác nhận.Hãy thử lại sau.',
+                                     showConfirmButton: false,
+                                     timer: 1500
+                                 })
+                                 /* alert("Bạn có 1 yêu cầu thay đổi cấp bậc đang chờ xác nhận.Hãy thử lại sau.");*/
+                             } else if (response.data == "1") {
+                                 Swal.fire({
+                                     position: 'center',
+                                     icon: 'info',
+                                     title: 'Cấp bậc bạn chọn đã tồn tại.',
+                                     showConfirmButton: false,
+                                     timer: 1500
+                                 })
+                                 /*alert("Cấp bậc bạn chọn đã tồn tại.");*/
+
+                             }
+
+                         }
+                     }
+                 });
+
+
+             }
+         </script>
+     </div>
+
+</div>

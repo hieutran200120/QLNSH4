@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "TrinhDoChuaXacNhan";
+    Layout = "~/Views/Shared/_LayoutQuanTriCapHoi.cshtml";
+    var list = (List<Web_Girls.Models.ModelsView.XacNhanTrinhDoView>)ViewBag.list;
+}
+<div id="page-wrapper">
+     <div style="color: #fff; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0; background: #1d3557;">
+          <div class="row">
+               <div class="col-sm-12">
+                    <h2 style="font-weight: bold">Danh sách trình độ chưa được xác nhận</h2>
+               </div>
+
+          </div>
+     </div>
+     <div class="table-responsive">
+          <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+               <thead>
+                    <tr>
+                         <th style="display:none">Mã</th>
+                         <th>Họ tên</th>
+                         <th>Trình độ cũ</th>
+                         <th>Chuyên ngành</th>
+                         <th>Trình độ mới</th>
+                         <th>Chuyên ngành</th>
+                         <th>Ngày quyết dịnh</th>
+                         <th>Thao Tác</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    @foreach (var it in list)
+                    {
+                         <tr>
+                              <td style="display:none">@it.Ma</td>
+                              <td>@it.TenHV</td>
+                              <td>@it.TrinhDoCu</td>
+                              <td>@it.ChuyenNganhCu</td>
+                              <td>@it.TrinhDoMoi</td>
+                              <td>@it.ChuyenNganhMoi</td>
+                              <td>@it.NgayQD.Value.ToString("dd/MM/yyyy")</td>
+                              <td class="center" style="list-style-type: none;">
+                                   <a class="btn btn-primary" onclick="PheDuyet(@it.Ma)">Xác nhận</a>
+                                   <a class="btn btn-danger" onclick="KhongPheDuyet(@it.Ma)">Không xác nhận</a>
+                              </td>
+                         </tr>
+                    }
+               </tbody>
+          </table>
+          <script>
+          function PheDuyet(ma) {
+                            Swal.fire({
+                                   title: 'Xác nhận?',
+                                   showCancelButton: true,
+                                   confirmButtonText: 'OK',
+                                   denyButtonText: `Hủy`,
+                            }).then((result) => {
+                                                  /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                      $.ajax({
+                                             url:'/HoiVien/XacNhanTrinhDo',
+                                             data: {
+                                                  ma: ma
+                                             },
+                                             type: 'POST',
+                                             dataType: 'json',
+                                           success: function (res) {
+                                                if (res.status == true) {
+                                                     alert("Đã xác nhận.");
+                                                     window.location = '@Url.Action("TrinhDoChuaXacNhan","HoiVien",new { ma = Session["MaHoi"]})'
+                                                }
+                                           }
+                                      });
+
+                                }
+                            })
+          }
+          function KhongPheDuyet(ma) {
+                            Swal.fire({
+                                 title: 'Không xác nhận?',
+                                   showCancelButton: true,
+                                   confirmButtonText: 'Ok',
+                                   denyButtonText: `Hủy`,
+                            }).then((result) => {
+                                                  /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                      $.ajax({
+                                           url:'/HoiVien/XoaLichSuTrinhDo',
+                                             data: {
+                                                  ma: ma
+                                             },
+                                             type: 'POST',
+                                             dataType: 'json',
+                                           success: function (res) {
+                                                if (res.status == true) {
+                                                      window.location = '@Url.Action("TrinhDoChuaXacNhan","HoiVien",new { ma = Session["MaHoi"]})'
+                                                }
+                                           }
+
+                                      });
+
+                                }
+                            })
+                     }
+          </script>
+          @*<script>
+                    $("#dataTable").on("click", "#loadModal", function () {
+                          var id = $(this).closest("tr").find("td").eq(0).html();
+                          console.log(id);
+                          $.ajax({
+                                url: '@Url.Action("ThamGia", "LDST")',
+                                data: { ma: id },
+                                type: 'GET', // Change to 'POST' if needed
+                                success: function (data) {
+                                      $('#showmodal1 .modal-dialog').html(data);
+                                }
+                          });
+                   });
+               </script>*@
+     </div>
+
+
+</div>
+
+
+
+

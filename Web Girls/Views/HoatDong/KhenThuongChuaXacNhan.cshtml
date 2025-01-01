@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "KhenThuongChuaXacNhan";
+    Layout = "~/Views/Shared/_LayoutQuanTriCapHV.cshtml";
+    var list = (List<Web_Girls.Models.ModelsView.BieuDuongView>)ViewBag.list;
+    var pt = (Web_Girls.Models.Context.PhongTraoThiDua)ViewBag.pt;
+}
+
+<div id="page-wrapper">
+     <div class="mb-4" style="color: #fff; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0; background: #1d3557;">
+          <div class="row">
+               <div class="col-sm-9">
+                    <h2 style="font-weight: bold">Phê duyệt khen thưởng</h2>
+                    <input type="text" value="@pt.Ma" id="MaPTTD" style="display:none" />
+               </div>
+          </div>
+     </div>
+     <div class="table-responsive">
+          <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+               <thead>
+                    <tr>
+                         <th style="display:none">Mã</th>
+                         <th>Họ Và Tên</th>
+                         <th>Đơn Vị</th>
+                         @*<th>Thuộc chi hội</th>*@
+                         <th>Thao Tác</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    @foreach (var it in list)
+                    {
+                         <tr>
+                              <td style="display:none">@it.Ma</td>
+                              <td>@it.TenHV</td>
+                              <td>@it.DonVi</td>
+                              @*<td>@it.ChiHoiPN</td>*@
+                              <td class="center" style="list-style-type: none;">
+                                   <a class="btn btn-primary" onclick="PheDuyet(@it.Ma)">Xác nhận</a>
+                                   <a class="btn btn-danger" onclick="KhongPheDuyet(@it.Ma)">Không xác nhận</a>
+                         </tr>
+                    }
+               </tbody>
+          </table>
+          <script>
+               function PheDuyet(ma) {
+                    const MaPTTD = document.getElementById("MaPTTD").value;
+                    Swal.fire({
+                         title: 'Xác nhận?',
+                         showCancelButton: true,
+                         confirmButtonText: 'OK',
+                         denyButtonText: `Hủy`,
+                    }).then((result) => {
+                         /* Read more about isConfirmed, isDenied below */
+                         if (result.isConfirmed) {
+                              $.ajax({
+                                   url: '/HoatDong/XacNhanDeNghi',
+                                   data: {
+                                        ma: ma
+                                   },
+                                   type: 'POST',
+                                   dataType: 'json',
+                                   success: function (res) {
+                                        if (res.status == true) {
+                                             alert("Đã xác nhận.");
+                                             window.location.href = "/HoatDong/KhenThuongChuaXacNhan?ma=" + MaPTTD;
+                                        }
+                                   }
+                              });
+
+                         }
+                    })
+               }
+               function KhongPheDuyet(ma) {
+                    const MaPTTD = document.getElementById("MaPTTD").value;
+                    Swal.fire({
+                         title: 'Không xác nhận?',
+                         showCancelButton: true,
+                         confirmButtonText: 'Ok',
+                         denyButtonText: `Hủy`,
+                    }).then((result) => {
+                         /* Read more about isConfirmed, isDenied below */
+                         if (result.isConfirmed) {
+                              $.ajax({
+                                   url: '/HoatDong/XoaDeNghiKT',
+                                   data: {
+                                        ma: ma
+                                   },
+                                   type: 'POST',
+                                   dataType: 'json',
+                                   success: function (res) {
+                                        if (res.status == true) {
+                                             alert("Đã xóa.");
+                                             window.location.href = "/HoatDong/KhenThuongChuaXacNhan?ma=" + MaPTTD;
+                                        }
+                                   }
+
+                              });
+
+                         }
+                    })
+               }
+          </script>
+
+     </div>
+     <div class="col-lg-12">
+          <div style="margin: 0 auto;">
+               <a style=" width: 157px;" class="btn btn-danger text-uppercase text-end" href="@Url.Action("DanhSachPTTD","HoatDong")"> Quay lại</a>
+          </div>
+     </div>
+</div>

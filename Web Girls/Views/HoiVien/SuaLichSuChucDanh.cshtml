@@ -1,0 +1,44 @@
+﻿
+@{
+    var ls = (Web_Girls.Models.Context.LichSuChucDanh)ViewBag.ls;
+    var dv = (List<Web_Girls.Models.Context.DonVi>)ViewBag.dv;
+
+}
+
+<!-- Modal content-->
+<div class="modal-content">
+     <div class="modal-header">
+          <h4 class="modal-title">Sửa thông tin chi hội</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+     </div>
+     <form id="frmSuaHang" method="post" action="/HoiVien/SuaLichSuChucDanh">
+          <div class="modal-body">
+               <input type="text" / name="MaLSCD" style="display:none" value="@ls.MaLSCD">
+               <div class="form-group">
+                    <label for="usr">Đơn vị:</label>
+                    <select class="form-control" name="MaDV">
+                         @*<option value="@hv.MaHV">@hv.TenHV</option>*@
+                         @foreach (var it in dv)
+                         {
+                              <option value="@it.MaDV" @(ls.MaDV == it.MaDV ? "selected" : "")>@it.TenDV</option>
+                              @*<option value="@it.MaHV">@it.TenHV</option>*@
+                         }
+
+                    </select>
+               </div>
+               <div class="form-group">
+                    <label for="usr">Ngày quyết định:</label>
+                    <input type="date" class="form-control" value="@ls.NgayQD.Value.ToString("yyyy-MM-dd")" name="NgayQD">
+               </div>
+
+          </div>
+          <div class="modal-footer">
+               <button type="submit" class="btn btn-primary" href="#">Lưu</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+
+          </div>
+     </form>
+
+</div>
+
+

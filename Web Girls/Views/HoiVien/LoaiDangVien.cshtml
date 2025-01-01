@@ -1,0 +1,68 @@
+﻿
+@{
+    var hv = (Web_Girls.Models.Context.HoiVien)ViewBag.hv;
+    var listdv = (List<Web_Girls.Models.Context.LoaiDangVien>)ViewBag.ldv;
+}
+
+<div class="modal-content">
+     <div class="modal-header">
+          <h4 class="modal-title">Sửa loại đảng viên</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+     </div>
+     @*<form id="frmSuaHang" method="post" action="/HoiVien/SuaLoaiDangVien">*@
+          <div class="modal-body">
+               <div class="form-group">
+                    <label for="usr">Tên hội viên:</label>
+                    <input type="text"  value="@hv.TenHV" disabled>
+               </div>
+               <input type="text" id="MaHV" style="display:none" value="@hv.MaHV">
+               <div class="form-group">
+                    <label for="usr">Loại đảng viên:</label>
+                    <select class="form-control" id="MaLDV">
+                         @foreach (var it in listdv)
+                         {
+                              <option value="@it.MaLDV" @(hv.MaLDV == it.MaLDV ? "selected" : "")>@it.TenLDV</option>
+                              @*<option value="@it.MaHV">@it.TenHV</option>*@
+                         }
+                    </select>
+               </div>
+          </div>
+          <div class="modal-footer">
+               <button class="btn btn-primary" onclick="ThayDoi()">Lưu</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+
+          </div>
+     
+     <script>
+           function ThayDoi() {
+                            Swal.fire({
+                                   title: 'Xác nhận thay đổi?',
+                                   showCancelButton: true,
+                                   confirmButtonText: 'OK',
+                                   denyButtonText: `Hủy`,
+                            }).then((result) => {
+                                 if (result.isConfirmed) {
+                                      const mahv = document.getElementById("MaHV").value;
+                                      const maldv = document.getElementById("MaLDV").value;
+                                      $.ajax({
+                                             url:'/HoiVien/SuaLoaiDangVien',
+                                             data: {
+                                                  MaHV: mahv,
+                                                  MaLDV: maldv
+                                             },
+                                             type: 'POST',
+                                             dataType: 'json',
+                                              success: function (res) {
+                                                if (res.status == true) {
+                                                     alert("Thay dổi thành công.");
+                                                     window.location = '@Url.Action("HoiVienDang","HoiVien")'
+                                                }
+                                           }
+                                      });
+
+                                }
+                            })
+          }
+     </script>
+
+</div>

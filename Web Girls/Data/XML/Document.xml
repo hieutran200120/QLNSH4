@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Documents>
+
+  <Document id="1">
+    <name>Văn bản có tên loại chung</name>
+    <link>01.Văn bản có tên loại chung.docx</link>
+  </Document>
+  
+  <Document id="2">
+    <name>Tờ trình</name>
+    <link>06.Tờ trình.docx</link>
+  </Document>
+  
+  <Document id="3">
+    <name>Kế hoạch</name>
+    <link>05.Kế hoạch.docx</link>
+  </Document>
+  
+ <Document id="4">
+    <name>Quyết định(quy định trực tiếp)</name>
+    <link>02.Quyết định(quy định trực tiếp).docx</link>
+  </Document>
+
+ <Document id="5">
+    <name>Quyết định(quy định gián tiếp)</name>
+    <link>03.Quyết định(quy định gián tiếp).docx</link>
+  </Document>
+
+ <Document id="6">
+    <name>Văn bản ban hành kèm theo quyết định ( gián tiếp)</name>
+    <link>04.Văn bản ban hành kèm theo quyết định ( gián tiếp).docx</link>
+  </Document>
+ <Document id="7">
+    <name>Mẫu công văn hành chính chung</name>
+    <link>07.Mẫu công văn hành chính chung.docx</link>
+  </Document>
+  <Document id="8">
+    <name>Nghị quyết của Hội đồng quản trị</name>
+    <link>08.Nghị quyết của Hội đồng quản trị.docx</link>
+  </Document>
+  <Document id="9">
+    <name>Biên bản</name>
+    <link>09a.Biên bản.docx</link>
+  </Document>
+  <Document id="10">
+    <name>Biên bản bàn giao nhiệm vụ</name>
+    <link>09b.Biên bản bàn giao nhiệm vụ.docx</link>
+  </Document>
+  <Document id="11">
+    <name>Công điện</name>
+    <link>10.Công điện.docx</link>
+  </Document>
+  <Document id="12">
+    <name>Giấy mời</name>
+    <link>11.Giấy mời.docx</link>
+  </Document>
+  <Document id="13">
+    <name>Giấy giới thiệu</name>
+    <link>12.Giấy giới thiệu.docx</link>
+  </Document>
+  <Document id="14">
+    <name>Phiếu trình</name>
+    <link>13.Phiếu trình.docx</link>
+  </Document>
+  <Document id="15">
+    <name>Phiếu chuyển</name>
+    <link>14.Phiếu chuyển.docx</link>
+  </Document>
+  <Document id="16">
+    <name>Giấy biên nhận hồ sơ</name>
+    <link>15.Phiếu biên nhận hồ sơ.docx</link>
+  </Document>
+  <Document id="17">
+    <name>Giấy chứng nhận</name>
+    <link>16.Giấy chứng nhận.docx</link>
+  </Document>
+  <Document id="18">
+    <name>Giấy nghỉ phép</name>
+    <link>18.Giấy nghỉ phép.docx</link>
+  </Document>
+  <Document id="19">
+    <name>Thư công</name>
+    <link>20.Thư công.docx</link>
+  </Document>
+</Documents>

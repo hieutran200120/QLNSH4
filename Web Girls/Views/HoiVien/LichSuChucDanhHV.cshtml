@@ -1,0 +1,40 @@
+﻿@{
+     var list = (List<Web_Girls.Models.ModelsView.LichSuChucDanhView>)ViewBag.list;
+
+
+}
+<div class="modal-content">
+     <div class="modal-header">
+          <h4 class="modal-title">Lịch sử chức danh</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+     </div>
+     <div class="modal-body">
+          @if (list != null)
+          {
+               <table class="table table-hover table-bordered text-center">
+                    <thead>
+                         <tr>
+                              <td style="font-weight:500">Tên chức danh</td>
+                              <td>Ngày quyết định</td>
+                         </tr>
+                    </thead>
+                    <tbody>
+                         @foreach (var item in list)
+                         {
+                              <tr>
+                                   <td>@item.TenChucDanh</td>
+                                   <td>@item.NgayQD.Value.ToShortDateString()</td>
+                              </tr>
+                         }
+                    </tbody>
+               </table>
+          }
+          else if (list == null)
+          {
+               <h3>Chưa có thông tin</h3>
+          }
+     </div>
+</div>
+
+
+

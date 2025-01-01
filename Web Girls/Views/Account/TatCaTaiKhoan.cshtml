@@ -1,0 +1,311 @@
+﻿
+@{
+    ViewBag.Title = "TatCaTaiKhoan";
+    Layout = "~/Views/Shared/_LayoutQuanTriCapHV.cshtml";
+    @model List<Web_Girls.Models.ModelsView.TaiKhoanView>
+}
+@if (!string.IsNullOrEmpty(ViewBag.OK))
+{
+    <script>
+          Swal.fire({
+               position: 'center',
+               icon: 'success',
+               title: '@Html.Raw(ViewBag.OK)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+        // Hiển thị hộp thoại alert nếu có thông báo
+        @*alert('@Html.Raw(ViewBag.Khoa)');*@
+    </script>
+}
+<script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+<div style="color: black; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0;">
+    <div class="row" style="display:flex">
+            <h2 style="font-weight: bold">Danh sách tài khoản</h2>
+        <!--<div class="col-sm-7">-->
+        <a href="#" class="btn btn-primary" style="margin-left:100px;"><i class="material-icons" style="color: white;">&#xE147;</i> <span style="color: white;" data-toggle="modal" data-target="#them">Thêm mới</span></a>
+        @*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@
+        <!--</div>-->
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Khóa</th>
+                <th>Tên học viên</th>
+                <th>Tên đăng nhập</th>
+                <th>Mật khẩu</th>
+                <th>Quyền</th>
+                <th>Lần đăng nhập cuối</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var it in Model)
+
+            {
+                <tr>
+                    @if (it.Khoa == true)
+                    {
+                        <td><input type="checkbox" data-id="@Html.Raw(it.MaHV)" class="checkbox-item" @*class="form-check-input" id="check1" name="option1" value="something"*@ checked></td>
+                    }
+                    else
+                    {
+                        <td><input type="checkbox" data-id="@Html.Raw(it.MaHV)" class="checkbox-item" @*class="form-check-input" id="check1" name="option1" value="something"*@></td>
+                    }
+                    <td>@it.TenHV</td>
+                    <td>@it.TenDN</td>
+                    <td>@it.MatKhau</td>
+                    @if (it.Quyen == 1)
+                    {
+                        <td>Quản trị cấp Học viện</td>
+                    }
+                    else if (it.Quyen == 2)
+                    {
+                        <td>Hội trưởng</td>
+                    }
+                    else if (it.Quyen == 3)
+                    {
+                        <td>Hội viên</td>
+                    }
+
+                    <td>@it.EditTime</td>
+                    <td class="center" style="list-style-type: none;">
+                        <li class="dropdown">
+                            <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary btn-sm" data-toggle="dropdown" type="button"><i class="fa fa-bars"></i></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                @*<li>
+                                    <a class="dropdown-item" id="loadModal" data-toggle="modal" data-target="#showmodal">
+                                        <i class="fas fa-edit mr-3"></i>
+                                        Cập nhật
+                                    </a>
+                                </li>*@
+                                <li class="divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0);" onclick="Xoa('@it.MaHV')">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Xóa
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </td>
+
+
+                </tr>
+            }
+
+            <div id="showmodal1" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+                </div>
+            </div>
+
+            <div class="modal fade" id="them" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Thêm thông tin</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body">
+                            <!-- Tên đăng nhập -->
+                            <div class="form-group">
+                                <label for="TenDN">Tên đăng nhập:</label>
+                                <input type="text" class="form-control" id="TenDN" name="TenDN" placeholder="Tên đăng nhập" autocomplete="off">
+                            </div>
+
+                            <!-- Mật khẩu -->
+                            <div class="form-group">
+                                <label for="MatKhau">Mật khẩu:</label>
+                                <input type="password" class="form-control" id="MatKhau" name="MatKhau" placeholder="Mật khẩu" required>
+                            </div>
+
+                            <!-- Quyền -->
+                            <div class="form-group">
+                                <label for="Quyen">Quyền:</label>
+                                <select class="form-control" id="Quyen" name="Quyen">
+                                    <option value="1">Quản trị cấp hoc viên</option>
+                                    <option value="2">Hệ trưởng</option>
+                                    <option value="3">Học viên</option>
+                                </select>
+                            </div>
+
+                            <!-- Mã hội viên -->
+                            <div class="form-group">
+                                <label for="MaHV">Tên hội viên:</label>
+                                <select class="form-control" id="MaHV" name="MaHV">
+                                    <option value="">Chọn hội viên</option>
+                                    @foreach (var hv in (List<SelectListItem>)ViewBag.HoiViens)
+                                    {
+                                        <option value="@hv.Value">@hv.Text</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <!-- Khóa -->
+                            <div class="form-group">
+                                <label for="Khoa">Khóa:</label>
+                                <select class="form-control" id="Khoa" name="Khoa">
+                                    <option value="true">Có</option>
+                                    <option value="false">Không</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="submitDangKy()">Thêm</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+
+                             const checkboxList = document.querySelectorAll('.checkbox-item')
+                                checkboxList.forEach(checkbox => {
+                                   checkbox.addEventListener('click', (event) => {
+                                        event.preventDefault();
+                                        const mahv = checkbox.getAttribute('data-id');
+                                        if (event.target.checked) {
+                                             Swal.fire({
+                                                  title: 'Bạn có chắc chắn muốn khóa tài khoản này?',
+                                                  icon: 'question',
+                                                  showCancelButton: true,
+                                                  confirmButtonText: 'Khóa',
+                                                  denyButtonText: `Hủy`,
+                                             }).then((result) => {
+                                                  if (result.isConfirmed) {
+                                                       const lockUrl = '@Url.Action("LockAccount", "Account")' + '?ma=' + mahv;
+                                                      window.location.href = lockUrl;
+                                                  }
+                                             })
+                                        } else {
+                                             Swal.fire({
+                                                  title: 'Bạn có chắc chắn muốn mở khóa tài khoản này?',
+                                                  icon: 'question',
+                                                  showCancelButton: true,
+                                                  confirmButtonText: 'Mở khóa',
+                                                  denyButtonText: `Hủy`,
+                                             }).then((result) => {
+
+                                                  if (result.isConfirmed) {
+                                                       const lockUrl = '@Url.Action("UnLockAccount", "Account")' + '?ma=' + mahv;
+                                                      window.location.href = lockUrl;
+                                                  }
+                                             })
+                                        }
+                                   });
+                              });
+            </script>
+        </tbody>
+    </table>
+    <div id="showmodal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+        </div>
+    </div>
+    <script>
+                    $("#dataTable").on("click", "#loadModal", function () {
+                          var id = $(this).closest("tr").find("td").eq(2).html();
+                          console.log(id);
+                          $.ajax({
+                                url: '@Url.Action("CapNhatQuyen","Account")',
+                                data: { ma: id },
+                                type: 'GET', // Change to 'POST' if needed
+                                success: function (data) {
+                                      $('#showmodal .modal-dialog').html(data);
+                                }
+                          });
+                   });
+    </script>
+    <script>
+        function submitDangKy() {
+            const TenDN = document.getElementById('TenDN').value;
+            const MatKhau = document.getElementById('MatKhau').value;
+            const Quyen = document.getElementById('Quyen').value;
+            const MaHV = document.getElementById('MaHV').value;
+            const Khoa = document.getElementById('Khoa').value === 'true';
+
+            fetch('/Account/DangKy', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tendn: TenDN,
+                    password: MatKhau,
+                    quyen: Quyen,
+                    mahv: MaHV,
+                    khoa: Khoa
+                })
+            }).then(response => {
+                if (response.ok) {
+                    alert('Đăng ký thành công!');
+                    location.href = '/HoatDong/Index';
+                } else {
+                    alert('Đăng ký thất bại. Vui lòng thử lại!');
+                }
+            }).catch(error => {
+                console.error('Đã xảy ra lỗi:', error);
+            });
+        }
+    </script>
+    <script>
+    function Xoa(ma) {
+        Swal.fire({
+            title: 'Bạn có chắc chắn muốn xóa?',
+            showCancelButton: true,
+            confirmButtonText: 'Xóa',
+            cancelButtonText: 'Hủy',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '/Account/XoaTaiKhoan', // URL phải khớp với Controller/Action
+                    data: { ma: ma },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (res) {
+                        if (res.status === true) {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Đã xóa thành công!',
+                                showConfirmButton: false,
+                                timer: 2000
+                            }).then(() => {
+                                // Tải lại trang sau khi xóa
+                                window.location.href = '@Url.Action("TatCaTaiKhoan", "Account")';
+                            });
+                        } else {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                title: res.message || 'Xóa thất bại!',
+                                showConfirmButton: true
+                            });
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Đã xảy ra lỗi trong quá trình xử lý!',
+                            text: error,
+                            showConfirmButton: true
+                        });
+                    }
+                });
+            }
+        });
+    }
+    </script>
+</div>
+
+
+

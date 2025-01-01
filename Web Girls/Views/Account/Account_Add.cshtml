@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Account_Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+    <h3 class="page-header col-lg-12" style="">Thêm Mới Tài Khoản</h3>
+    <form role="form">
+        <div class="row">
+
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-4 text-uppercase text-left" style="padding: 5px 5px;">
+                        <label>Họ Và Tên</label>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <input class="form-control" placeholder="Họ Và Tên">
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-4 text-uppercase text-left" style="padding: 5px 5px;">
+                        <label>Mật Khẩu</label>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <input class="form-control" placeholder="Mật Khẩu" type="password">
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-4 text-uppercase text-left" style="padding: 5px 5px;">
+                        <label>Xác Nhận Mật Khẩu</label>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <input class="form-control" placeholder="Xác Nhận Mật Khẩu" type="password">
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-4 text-uppercase text-left" style="padding: 5px 5px;">
+                        <label>Nhóm Quyền</label>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <select class="form-control">
+                            <option value="AL">Quản Lý Cấp </option>
+                            <option value="WY">Admin</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row col-lg-12">
+            <div class="d-flex justify-content-end col-lg-4 col-lg-offset-4">
+                <a class="btn btn-danger text-uppercase text-end px-3" style="margin-right: 20px;" href="~/Account/Index" type="submit"> Quay lại</a>
+                <a class="btn btn-primary text-uppercase text-end" href="~/Account/Index" type="submit"> Xác nhận</a>
+            </div>
+        </div>
+    </form>
+</div>

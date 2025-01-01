@@ -1,0 +1,157 @@
+﻿
+@{
+     ViewBag.Title = "XacNhanKhenThuong";
+     Layout = "~/Views/Shared/_LayoutQuanTriCapHoi.cshtml";
+     var list = (List<Web_Girls.Models.ModelsView.KhenThuongView>)ViewBag.kt;
+}
+<style>
+    /* Màu nền cho tiêu đề cột */
+    table thead th {
+        background-color: #457b9d; /* Xanh nhạt */
+        color: white; /* Màu chữ trắng */
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* Màu nền cho các ô dữ liệu */
+    table tbody td {
+        background-color: #f8f9fa; /* Màu nền nhạt */
+    }
+
+    /* Dòng được chọn (hover) */
+    table tbody tr:hover {
+        background-color: #d1ecf1; /* Xanh nhạt khi hover */
+    }
+
+    /* Đường viền */
+    table {
+        border-collapse: collapse;
+    }
+
+        table th, table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+        }
+</style>
+<div id="page-wrapper">
+     <div style="color: black; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0; ">
+          <div class="row">
+               <div class="col-sm-12">
+                    <h2 style="font-weight: bold">Danh sách khen thưởng chưa được xác nhận</h2>
+               </div>
+
+          </div>
+     </div>
+     <div class="table-responsive">
+          <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+               <thead>
+                    <tr>
+                         <th style="display:none">Mã</th>
+                         <th>Tên học viên</th>
+                         <th>Tên khen thưởng</th>
+                         <th >Lý do</th>
+                         <th>Năm</th>
+                         <th>Ghi chú</th>
+                         <th style="width:306px">Thao Tác</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    @foreach (var it in list)
+                    {
+                         <tr>
+                             <td style="display:none">@it.Ma</td>
+                             <td>@it.TenHV</td>
+                             <td>@it.TenKhenThuong</td>
+                             <td>@it.LyDo</td>
+                             <td>@it.Nam</td>
+                             @if (it.GhiChu != null)
+                             {
+                                 <td>@it.GhiChu</td>
+                             }
+                             else if (it.GhiChu == null)
+                             {
+                                 <td>-</td>
+                             }
+                             <td class="center" style="list-style-type: none;">
+                                 <a class="btn btn-primary" onclick="PheDuyet(@it.Ma)">Xác nhận</a>
+                                 <a class="btn btn-danger" onclick="KhongPheDuyet(@it.Ma)">Không xác nhận</a>
+                             </td>
+                         </tr>
+                    }
+               </tbody>
+          </table>
+          <script>
+          function PheDuyet(ma) {
+                            Swal.fire({
+                                   title: 'Xác nhận khen thưởng này?',
+                                   showCancelButton: true,
+                                   confirmButtonText: 'OK',
+                                   denyButtonText: `Hủy`,
+                            }).then((result) => {
+                                                  /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                      $.ajax({
+                                             url:'/KTKL/XacNhan',
+                                             data: {
+                                                  ma: ma
+                                             },
+                                             type: 'POST',
+                                             dataType: 'json',
+                                           success: function (res) {
+                                                if (res.status == true) {
+                                                     alert("Đã xác nhận.");
+                                                     window.location = '@Url.Action("XacNhanKhenThuong","KTKL",new { ma = Session["MaHoi"]})'
+                                                }
+                                           }
+                                      });
+
+                                }
+                            })
+          }
+          function KhongPheDuyet(ma) {
+                            Swal.fire({
+                                 title: 'Không Xác nhận khen thưởng này?',
+                                   showCancelButton: true,
+                                   confirmButtonText: 'Ok',
+                                   denyButtonText: `Hủy`,
+                            }).then((result) => {
+                                                  /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                      $.ajax({
+                                           url:'/KTKL/XoaKT',
+                                             data: {
+                                                  id: ma
+                                             },
+                                             type: 'POST',
+                                             dataType: 'json',
+                                           success: function (res) {
+                                                if (res.status == true) {
+                                                     window.location = '@Url.Action("XacNhanKhenThuong","KTKL",new { ma = Session["MaHoi"]})'
+                                                }
+                                           }
+
+                                      });
+
+                                }
+                            })
+                     }
+          </script>
+          @*<script>
+               $("#dataTable").on("click", "#loadModal", function () {
+                     var id = $(this).closest("tr").find("td").eq(0).html();
+                     console.log(id);
+                     $.ajax({
+                           url: '@Url.Action("ThamGia", "LDST")',
+                           data: { ma: id },
+                           type: 'GET', // Change to 'POST' if needed
+                           success: function (data) {
+                                 $('#showmodal1 .modal-dialog').html(data);
+                           }
+                     });
+              });
+          </script>*@
+     </div>
+
+
+</div>
+

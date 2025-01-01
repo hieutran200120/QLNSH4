@@ -1,0 +1,152 @@
+﻿
+@{
+     ViewBag.Title = "KhenThuongCaNhan";
+     Layout = "~/Views/Shared/_LayoutCaNhan.cshtml";
+     var list = (List<Web_Girls.Models.ModelsView.KhenThuongView>)ViewBag.khenthuong;
+}
+<style>
+    /* Màu nền cho tiêu đề cột */
+    table thead th {
+        background-color: #457b9d; /* Xanh nhạt */
+        color: white; /* Màu chữ trắng */
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* Màu nền cho các ô dữ liệu */
+    table tbody td {
+        background-color: #f8f9fa; /* Màu nền nhạt */
+    }
+
+    /* Dòng được chọn (hover) */
+    table tbody tr:hover {
+        background-color: #d1ecf1; /* Xanh nhạt khi hover */
+    }
+
+    /* Đường viền */
+    table {
+        border-collapse: collapse;
+    }
+
+        table th, table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+        }
+</style>
+<div id="page-wrapper">
+     <div style="color: black; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0;">
+          <div class="row">
+               <div class="col-sm-10">
+                    <h2 style="font-weight: bold">Danh sách khen thưởng</h2>
+               </div>
+               <div class="col-sm-2">
+                    <a href="" class="btn btn-primary"  data-toggle="modal" data-target="#myModal"><i class="fas fa-plus"></i> <span style="color: white">Thêm mới</span></a>
+                    @*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@
+                    <!--</div>-->
+               </div>
+          </div>
+     </div>
+     <div class="table-responsive">
+          <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+               <thead>
+                    <tr>
+                         <th style="display:none">Mã</th>
+                         <th>Tên học viên</th>
+                         <th>Đơn vị</th>
+                         @*<th>Thuộc chi hội</th>*@
+                         <th>Tên khen thưởng</th>
+                         <th style="width:446px">Lý do</th>
+                         <th>Năm</th>
+                         <th>Ghi chú</th>
+                         <th>Trạng thái</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    @foreach (var it in list)
+                    {
+                         <tr>
+                              <td style="display:none">@it.Ma</td>
+                              <td>@it.TenHV</td>
+                              <td>@it.DonVi</td>
+                              @*<td>@it.HPN</td>*@
+                              <td>@it.TenKhenThuong</td>
+                              <td>@it.LyDo</td>
+                              <td>@it.Nam</td>
+                              @if (it.GhiChu != null)
+                              {
+                                   <td>@it.GhiChu</td>
+                              }
+                              else if (it.GhiChu == null)
+                              {
+                                   <td>-</td>
+                              }
+                              @if (it.XacNhan == true)
+                              {
+
+
+                                   <td style="color:green">Đã xác nhận</td>
+                              }
+                              else
+                              {
+                                   <td>Đang chờ xác nhận</td>
+                              }
+                         </tr>
+                    }
+               </tbody>
+          </table>
+          <div id="myModal" class="modal fade" role="dialog">
+               <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+                    <div class="modal-content">
+                         <form role="form" method="post" action="/KTKL/ThemKT" class="was-validated">
+                              <div class="modal-header">
+                                   <h4 class="modal-title">Thêm khen thưởng</h4>
+                                   <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+                              <div class="modal-body">
+                                   <div class="form-group" style="display:none">
+                                        <label for="usr">Mã:</label>
+                                        <input class="form-control" type="text" name="MaHV" value="@Session["Ma"]">
+                                   </div>                                   
+                                   <div class="form-group">
+                                        <label for="usr">Họ tên:</label>
+                                        <input class="form-control" type="text" value="@Session["Ten"]" disabled>
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="usr">Tên khen thưởng:</label>
+                                        <input type="text" class="form-control" name="TenKhenThuong" placeholder="Tên khen thưởng" required>
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="usr">Lý do:</label>
+                                        <input type="text" class="form-control" name="LyDo" placeholder="Lý do"required>
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="usr">Ghi chú:</label>
+                                        <input type="text" class="form-control" name="GhiChu" placeholder="Ghi chú">
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="usr">Năm:</label>
+                                        <select class="form-control" name="Nam"required>
+                                             <option></option>
+                                             @for (int i = DateTime.Now.Year - 5; i <= DateTime.Now.Year; i++)
+                                             {
+                                                  <option value="@i">@i</option>
+                                             }
+                                        </select>
+                                   </div>
+                              </div>
+                              <div class="modal-footer">
+                                   <button  type="submit" class="btn btn-primary">Lưu</button>
+                                   <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+
+                              </div>
+                         </form>
+                    </div>
+
+               </div>
+          </div>
+     </div>
+
+
+</div>
+

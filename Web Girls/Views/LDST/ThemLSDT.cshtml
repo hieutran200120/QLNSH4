@@ -1,0 +1,313 @@
+﻿
+@{
+     ViewBag.Title = "ThemLSDT";
+     Layout = "~/Views/Shared/_LayoutCaNhan.cshtml";
+     var listhv = (List<Web_Girls.Models.Context.HoiVien>)ViewBag.hoivien;
+     var listdv = (List<Web_Girls.Models.Context.DonVi>)ViewBag.dv;
+     var loaildst = (List<Web_Girls.Models.Context.LoaiLDST>)ViewBag.loaildst;
+
+}
+<script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+<div id="page-wrapper">
+     <div style="color: #fff; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0; background: #1d3557; ">
+          <div class="row">
+               <div class="col-sm-12">
+                    <h2 style="font-weight: bold">Thêm mới lao đông sáng tạo</h2>
+               </div>
+          </div>
+     </div>
+     <form class="was-validated">
+          <div class="row mt-4">
+
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-2 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Tên đề tài</label>
+                    </div>
+                    <div class="form-group col-lg-5">
+                         <textarea class="form-control" placeholder="Tiêu đề" name="TieuDe" id="TenDeTai" required></textarea>
+                    </div>
+               </div>
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-2 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Loại đề tài</label>
+                    </div>
+                    <div class="form-group col-lg-5">
+                         <select class="form-control" id="LoaiLDST" required>
+                              <option></option>
+                              @foreach (var it in loaildst)
+                              {
+                                   <option value="@it.MaLoaiLDST">@it.TenLoaiLDST</option>
+                              }
+
+                         </select>
+                    </div>
+               </div>
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-2 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Chủ trì</label>
+                    </div>
+                    <div class="form-group col-lg-5">
+                         <input class="form-control" type="text" value="@Session["Ten"]" disabled>
+                    </div>
+               </div>
+               <input class="form-control" style="display:none" type="text" id="MaHV" value="@Session["Ma"]">
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-2 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Kết quả</label>
+                    </div>
+                    <div class="form-group col-lg-5">
+                         <select class="form-control" id="KetQua" required>
+                              <option></option>
+                              <option value="Giấy khen">Giấy khen</option>
+                              <option value="Bằng khen">Bằng khen</option>
+                              <option value="Giải nhất">Giải nhất</option>
+                              <option value="Giải nhì">Giải nhì</option>
+                              <option value="Giải ba">Giải ba</option>
+                              <option value="Giải khuyến khích">Giải khuyến khích</option>
+                              <option value="Được nghiệm thu">Được nghiệm thu</option>
+                         </select>
+                    </div>
+               </div>
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-2 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Năm</label>
+                    </div>
+                    <div class="form-group col-lg-5">
+                         <select class="form-control" id="Nam">
+                              @for (int i = DateTime.Now.Year - 5; i <= DateTime.Now.Year; i++)
+                              {
+                                   <option value="@i">@i</option>
+                              }
+                         </select>
+                    </div>
+               </div>
+
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-2 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Thành viên tham gia</label>
+                    </div>
+                    <div class="form-group col-lg-5">
+                         <table id="memberTable" style="width: 100%;text-align: center;" class="table table-bordered">
+                              <thead class="thead-light">
+                                   <tr>
+                                        <th>Tên thành viên</th>
+                                        <th>Đơn vị</th>
+                                        <th></th>
+                                   </tr>
+                              </thead>
+                              <tbody>
+                                   <!-- Rows will be added dynamically -->
+                              </tbody>
+                         </table>
+                    </div>
+                    <div class="col-lg-3">
+                         <a id="openModalBtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Thêm thành viên</a>
+                    </div>
+               </div>
+               <div style="margin: 0 auto;">
+                    <a style=" width: 157px;" class="btn btn-danger text-uppercase text-end" href="@Url.Action("LDSTHoiVien","HoiVien",new { id = Session["Ma"]})"> Quay về</a>
+                    <button style=" width: 157px;" class="btn btn-primary text-uppercase text-end" type="submit" onclick="Them()">Lưu</button>
+               </div>
+
+
+               <!-- Table to display members -->
+               <!-- Modal template -->
+               <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+                         <div class="modal-content">
+                              <div class="modal-header">
+                                   <h4 class="modal-title">Thêm thành viên tham gia đề tài</h4>
+                                   <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+
+                              <div class="modal-body">
+                                   @*<div class="form-group d-flex">
+                                        <input style="width: 25px;" class="form-control" type="checkbox" id="check">
+                                        <label style="margin-left: 17px; padding-top: 7px;" for="usr">Tích nếu thành viên là hội viên của hội phụ nữ học viện</label>
+                                   </div>*@
+
+                                   <div class="form-group">
+                                        <label for="usr">Họ tên:</label>
+                                        <input class="form-control" type="text" id="memberName" placeholder="Tên thành viên" autocomplete="off">
+                                   </div>
+
+                                   <div class="form-group">
+                                        <label for="usr">Đơn vị:</label>
+                                        <input type="text" class="form-control" id="memberUnit" placeholder="Đơn vị" autocomplete="off">
+                                   </div>
+
+
+                              </div>
+                              <div class="modal-footer">
+                                   <button id="addMemberBtn" data-dismiss="modal" class="btn btn-primary">Lưu</button>
+                                   <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+
+                              </div>
+                         </div>
+
+                    </div>
+               </div>
+          </div>
+     </form>
+     @*<script>
+               const element1 = document.getElementById('KhongCheck');
+               const element2 = document.getElementById('Check');
+               const checkBox = document.getElementById('check');
+               checkBox.addEventListener('change', () => {
+                    if (checkBox.checked) {
+                         element2.style.display = 'block';
+                         element1.style.display = 'none'; // Show the element
+                         // Or: elementToToggle.style.visibility = 'visible';
+                    } else {
+                         element1.style.display = 'block';
+                         element2.style.display = 'none'; // Hide the element
+                         // Or: elementToToggle.style.visibility = 'hidden';
+                    }
+               });
+          </script>*@
+     @*<script>
+               var mySelect = document.getElementById("MaHV");
+               mySelect.addEventListener("change", function () {
+                    var selectedIndex = mySelect.selectedIndex;
+
+                    // Lấy văn bản của tùy chọn đã chọn bằng cách truy cập vào thuộc tính options
+                    const TenHV = mySelect.options[selectedIndex].textContent;
+                    var selectedMaHV = mySelect.value;
+                    $.ajax({
+                         type: "POST",
+                         url: "/LDST/GetDV", // Replace with the appropriate URL for your controller action
+                         data: {
+                              ma: selectedMaHV
+                         },
+                         dataType: 'json',
+                         success: function (response) {
+                              // Handle the response from the server
+                              if (response.status == true) {
+                                   document.getElementById("DV").innerHTML = response.data;
+                              }
+                         }
+                    });
+               });
+          </script>*@
+     <script>
+          // Get references to elements
+          const openModalBtn = document.getElementById("openModalBtn");
+          const modal = document.getElementById("myModal");
+          const addMemberBtn = document.getElementById("addMemberBtn");
+          const memberTable = document.getElementById("memberTable").getElementsByTagName('tbody')[0];
+          // Event listener for button to open modal
+          //openModalBtn.addEventListener("click", function () {
+          //     modal.style.display = "block";
+          //});
+
+          // Event listener for button to close modal
+          document.getElementsByClassName("close")[0].addEventListener("click", function () {
+               modal.style.display = "none";
+          });
+
+          // Event listener for button to add member to table
+          addMemberBtn.addEventListener("click", function () {
+               const memberName = document.getElementById("memberName").value;
+               const memberUnit = document.getElementById("memberUnit").value;           
+               const deleteButton = document.createElement("button");
+               deleteButton.innerText = "Xóa";
+               deleteButton.addEventListener("click", function () {
+                    // Find the closest row to the clicked delete button
+                    const row = this.closest("tr");
+                    // Remove the row from the table
+                    memberTable.removeChild(row);
+               });
+               //if (checkBox.checked) {
+               //     if (TenHV != "") {
+               //          alert("Vui lòng nhập đầy đủ thông tin.");
+               //     }
+               //     else
+               //     {
+               //          const newRow = memberTable.insertRow();
+               //          const cell1 = newRow.insertCell(0);
+               //          const cell2 = newRow.insertCell(1);
+               //          const cell3 = newRow.insertCell(2);
+               //          cell1.innerHTML = MaHV;
+               //          cell2.innerHTML = DV;
+               //          cell3.appendChild(deleteButton);
+               //          // Clear input fields
+               //          document.getElementById("MaHV").value = "";
+               //          document.getElementById("DV").value = "";
+
+               //     }
+               //} else {
+               if (memberName != "" && memberUnit != "") {
+                    const newRow = memberTable.insertRow();
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    const cell3 = newRow.insertCell(2);
+                    cell1.innerHTML = memberName;
+                    cell2.innerHTML = memberUnit;
+                    cell3.appendChild(deleteButton);
+                    // Clear input fields
+                    document.getElementById("memberName").value = "";
+                    document.getElementById("memberUnit").value = "";
+               } else if (memberName == "" || memberUnit == "") {
+                    alert("Vui lòng nhập đầy đủ thông tin.");
+               }
+               //}
+               // Add a new row to the table
+
+               // Close the modal
+               /* modal.style.display = "none";*/
+          });
+
+          const Them = () => {
+               const thanhviens = [];
+               const donvis = [];
+               const rows = memberTable.getElementsByTagName("tr");
+               for (let i = 0; i < rows.length; i++) {
+                    const cells = rows[i].getElementsByTagName("td");
+                    if (cells.length >= 2) {
+                         thanhviens.push(cells[0].innerText);
+                         donvis.push(cells[1].innerText);
+                    }
+               }
+               //console.log(thanhviens);
+               //console.log(donvis);
+               const TenDetai = document.getElementById("TenDeTai").value;
+               const LoaiLSDT = document.getElementById("LoaiLDST").value;
+               const MaHV = document.getElementById("MaHV").value;
+               const KetQua = document.getElementById("KetQua").value;
+               const Nam = document.getElementById("Nam").value;
+               $.ajax({
+                    type: "POST",
+                    url: "/LDST/Them", // Replace with the appropriate URL for your controller action
+
+                    data: {
+                         TenDeTai: TenDetai,
+                         LoaiLDST: LoaiLSDT,
+                         KetQua: KetQua,
+                         MaHV: MaHV,
+                         Nam: Nam,
+                         ThanhVien: thanhviens,
+                         DonVi: donvis
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                         // Handle the response from the server
+                         if (response.status == true) {
+                              alert("Yêu cầu của bạn đã được gửi đi và đang chờ xác nhận.");
+                         } else if (response.status == false) {
+                              alert("Đã có lỗi xảy ra.");
+                         }
+                    }
+               });
+
+
+
+          }
+
+
+
+     </script>
+</div>
+
+
+

@@ -1,0 +1,278 @@
+﻿
+
+@{
+     ViewBag.Title = "SuaHoatDongUngHo";
+     Layout = "~/Views/Shared/_LayoutQuanTriCapHoi.cshtml";
+     var list = (List<Web_Girls.Models.ModelsView.BieuDuongView>)ViewBag.list;
+     var hv = (List<Web_Girls.Models.Context.HoiVien>)ViewBag.hv;
+     var pt = (Web_Girls.Models.Context.PhongTraoThiDua)ViewBag.pt;
+}
+@if (!string.IsNullOrEmpty(ViewBag.Khoa))
+{
+     <script>
+          Swal.fire({
+               position: 'center',
+               icon: 'info',
+               title: '@Html.Raw(ViewBag.Khoa)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+        // Hiển thị hộp thoại alert nếu có thông báo
+        @*alert('@Html.Raw(ViewBag.Khoa)');*@
+     </script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.DaKhoa))
+{
+     <script>
+           Swal.fire({
+               position: 'center',
+               icon: 'error',
+               title: '@Html.Raw(ViewBag.DaKhoa)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+        // Hiển thị hộp thoại alert nếu có thông báo
+        @*alert('@Html.Raw(ViewBag.DaKhoa)');*@
+     </script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.Thua))
+{
+     <script>
+           Swal.fire({
+               position: 'center',
+               icon: 'info',
+               title: '@Html.Raw(ViewBag.Thua)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+        // Hiển thị hộp thoại alert nếu có thông báo
+        @*alert('@Html.Raw(ViewBag.Thua)');*@
+     </script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.OK))
+{
+     <script>
+           Swal.fire({
+               position: 'center',
+               icon: 'success',
+               title: '@Html.Raw(ViewBag.OK)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+        // Hiển thị hộp thoại alert nếu có thông báo
+        @*alert('@Html.Raw(ViewBag.OK)');*@
+     </script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.DaXoa))
+{
+     <script>
+           Swal.fire({
+               position: 'center',
+               icon: 'info',
+               title: '@Html.Raw(ViewBag.DaXoa)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+        // Hiển thị hộp thoại alert nếu có thông báo
+      /*  alert('');*/
+     </script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.Trung))
+{
+     <script>
+           Swal.fire({
+               position: 'center',
+               icon: 'info',
+               title: '@Html.Raw(ViewBag.Trung)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+        // Hiển thị hộp thoại alert nếu có thông báo
+      /*  alert('');*/
+     </script>
+}
+
+<script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+<div id="page-wrapper">
+     <div class="mb-4" style="color: #fff; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0; background: #299be4;">
+          <div class="row">
+               <div class="col-sm-9">
+                    <h2 style="font-weight: bold">Đề nghị biểu dương</h2>
+               </div>
+          </div>
+     </div>
+     <div class="row">
+          <div class="col-lg-12">
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Tên hoạt động</label>
+                    </div>
+                    <div class="form-group col-lg-9">
+                         <input class="form-control" type="text" value="@pt.TenPhongTraoThiDua" disabled>
+                    </div>
+                    <div class="form-group col-lg-9">
+                         <input class="form-control" type="text" value="@pt.Ma" style="display:none">
+                    </div>
+               </div>
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Danh sách hội viên đề nghị biểu dương</label>
+                    </div>
+                    <div class="form-group col-lg-7">
+                         <div class="table-responsive">
+                              <table class="table table-bordered text-center" id="Table" width="100%" cellspacing="0">
+                                   <thead>
+                                        <tr>
+                                             <th style="display:none">Mã</th>
+                                             <th>Họ tên</th>
+
+                                             <th>Trạng thái</th>
+                                             <th></th>
+                                        </tr>
+                                   </thead>
+                                   <tbody>
+                                        @if (list != null)
+                                        {
+                                             foreach (var item in list)
+                                             {
+                                                  <tr>
+                                                       <td style="display:none">@item.Ma</td>
+                                                       <td>@item.TenHV</td>
+
+                                                       @if (item.XacNhan == true)
+                                                       {
+                                                            <td style="color:green">Đã xác nhận</td>
+                                                       }
+                                                       else
+                                                       {
+                                                            <td style="color:red">Đang chờ xác nhận</td>
+                                                       }
+                                                       @if (item.XacNhan == false)
+                                                       {
+                                                            <td>
+                                                                 <a class="btn btn-danger" href="#" onclick="Xoa(@item.Ma)">
+                                                                      <i class="fas fa-trash-alt mr-3"></i>
+                                                                      Xóa
+                                                                 </a>
+                                                            </td>
+                                                       }
+                                                       else
+                                                       {
+                                                            <td>-</td>
+                                                                                                                       
+                                                       }
+
+                                                  </tr>
+                                             }
+                                        }
+                                        else
+                                        {
+                                             <tr>
+                                                  <td>Chưa có thông tin</td>
+                                             </tr>
+                                        }
+
+                                   </tbody>
+                              </table>
+                              <div id="showmodal1" class="modal fade" role="dialog">
+                                   <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-lg-2">
+                         <a id="openModalBtn" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Thêm đề nghị</a>
+                    </div>
+
+               </div>
+               <div class="col-lg-12">
+                    <div style="margin: 0 auto;">
+                         <a style=" width: 157px;" class="btn btn-danger text-uppercase text-end" href="@Url.Action("DanhSachPTTD","HoatDong")"> Quay lại</a>
+                    </div>
+               </div>
+
+
+               <div id="myModal" class="modal fade" role="dialog">
+
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+                         <div class="modal-content">
+                              <form id="frmSuaHang" method="post" action="/HoatDong/ThemDeNghi">
+                                   <div class="modal-header">
+                                        <h4 class="modal-title">Thêm đề nghị</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                   </div>
+                                   <div class="modal-body">
+                                        <input type="text" value="@pt.Ma" id="MaPTTD" name="MaPTTD" style="display:none" />
+                                        <div class="form-group">
+                                             <label for="usr">Tên hội viên:</label>
+                                             <select class="form-control" name="MaHV" id="MaCB">
+                                                  @foreach (var it in hv)
+                                                  {
+                                                       <option value="@it.MaHV">@it.TenHV</option>
+                                                  }
+
+                                             </select>
+                                        </div>
+                                        @*<div class="form-group">
+                                                  <label for="usr">Số tiền ủng hộ:</label>
+                                                  <input type="number" class="form-control" id="NgayQD" name="SoTien" required>
+                                             </div>*@
+                                   </div>
+                                   <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Lưu</button>
+                                        <a class="btn btn-default" data-dismiss="modal">Hủy bỏ</a>
+                                   </div>
+                              </form>
+
+
+                         </div>
+
+                    </div>
+
+               </div>
+               <script>
+                    function Xoa(ma) {
+                         const MaPTTD = document.getElementById("MaPTTD").value;
+                         Swal.fire({
+                              title: 'Bạn có chắc chắn muốn xóa?',
+                              showCancelButton: true,
+                              confirmButtonText: 'Xóa',
+                              denyButtonText: `Hủy`,
+                         }).then((result) => {
+                              /* Read more about isConfirmed, isDenied below */
+                              if (result.isConfirmed) {
+                                   $.ajax({
+                                        url: '/HoatDong/XoaDeNghi',
+                                        data: {
+                                             ma: ma
+                                        },
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        success: function (res) {
+                                             if (res.status == true) {
+                                                  alert("Đã xóa.");
+                                                  window.location.href = '@Url.Action("DanhSachDeNghiBieuDuongChiHoi", "HoatDong")' + '?ma=' + MaPTTD + '&MaHoi=' + '@Session["MaHoi"]';
+
+                                             }else if (res.status == false) {
+                                                  alert("Hiện tại quản trị viên đã khóa PTTD, bạn không thể xóa đề nghị.");
+                                                  window.location.href = '@Url.Action("DanhSachDeNghiBieuDuongChiHoi", "HoatDong")' + '?ma=' + MaPTTD + '&MaHoi=' + '@Session["MaHoi"]';
+
+                                             }
+                                        }
+
+                                   });
+
+                              }
+                         })
+                    }
+               </script>
+          </div>
+     </div>
+</div>
+
+
+
+
+
+

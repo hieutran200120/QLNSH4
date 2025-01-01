@@ -1,0 +1,64 @@
+﻿@{
+     var hv = (Web_Girls.Models.Context.HoiVien)ViewBag.HoiTruong;
+     var list = (List<Web_Girls.Models.Context.HoiVien>)ViewBag.listhv;
+     var hpn = (Web_Girls.Models.Context.HoiPhuNu)ViewBag.HPN;
+}
+
+<!-- Modal content-->
+<div class="modal-content">
+     <div class="modal-header">
+          <h4 class="modal-title">Sửa thông tin chi hội</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+     </div>
+     <form id="frmSuaHang" method="post" action="/ChiHoi/Edit">
+          <div class="modal-body">
+               <div class="form-group">
+                    <label for="usr">Tên hội phụ nữ:</label>
+                    <input type="text" class="form-control" value="@hpn.TenHPN" name="TenHPN">
+               </div>
+               <input style="display:none" type="number" class="form-control" value="@hpn.MaHPN" name="MaHPN">
+               @if (hv == null)
+               {
+                    <input style="display:none" type="text" class="form-control" value="0" name="mahoitruongcu">
+               }
+               else
+               {
+                    <input style="display:none" type="text" class="form-control" value="@hv.MaHV" name="mahoitruongcu">
+               }
+               <div class="form-group">
+                    <label for="usr">Hội trưởng:</label>
+
+                    @if (hv == null)
+                    {
+                         <select class="form-control" name="mahoitruongmoi">
+                              <option></option>
+                              @foreach (var it in list)
+                              {
+                                   <option value="@it.MaHV">@it.TenHV</option>
+                                   @*<option value="@it.MaHV">@it.TenHV</option>*@
+                              }
+                         </select>
+                    }
+                    else
+                    {
+                         <select class="form-control" name="mahoitruongmoi">
+                              @foreach (var it in list)
+                              {
+                                   <option value="@it.MaHV" @(hv.MaHV == it.MaHV ? "selected" : "")>@it.TenHV</option>
+                                   @*<option value="@it.MaHV">@it.TenHV</option>*@
+                              }
+                         </select>
+                    }
+
+               </div>
+          </div>
+          <div class="modal-footer">
+               <button type="submit" class="btn btn-primary" href="#">Lưu</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+
+          </div>
+     </form>
+
+</div>
+
+

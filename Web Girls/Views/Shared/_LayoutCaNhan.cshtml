@@ -1,0 +1,311 @@
+﻿
+@{
+     Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Trang quản trị cá nhân</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Assets/Sbadmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Assets/Sbadmin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="~/Assets/Sbadmin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="icon" href="~/Assets/Sbadmin/img/logomta.png" type="image/x-icon">
+    <style>
+        .sidebar .nav-item .nav-link {
+            height: 3rem !important;
+        }
+    </style>
+
+</head>
+
+<body id="page-top">
+
+     <!-- Page Wrapper -->
+     <div id="wrapper">
+
+          <!-- Sidebar -->
+         <ul style="height: 100vh; position: sticky; top: 0; left: 0; background-color: #1d3557; background-image: linear-gradient(180deg, #457b9d 10%, #1d3557 100%); background-size: cover; " class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion no-print" id="accordionSidebar">
+
+         
+             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("TrangQuanTriCaNhan", "Account")">
+                 <img class="no-print" style="width: 69px" src="~/Template/images/Logo_MTA.png" alt="">
+  
+                 <div class="sidebar-brand-text mx-3 no-print">@*SB Admin*@ QLHVH4-HVKTQS @*<sup>2</sup>*@</div>
+             </a>
+
+             <!-- Divider -->
+             <hr class="sidebar-divider my-0  no-print">
+
+             <!-- Nav Item - Dashboard -->
+             <li class="nav-item active no-print">
+                 <a class="nav-link" href="@Url.Action("ThongTinHoiVien","HoiVien",new { id = Session["Ma"]})">
+                     <i class="fas fa-fw fa-tachometer-alt"></i>
+                     <span>Thông tin cá nhân</span>
+                 </a>
+             </li>
+             <li class="nav-item active no-print">
+                 <a class="nav-link" href="@Url.Action("CapBacHoiVien","HoiVien",new { id = Session["Ma"]})">
+                     <i class="fas fa-fw fa-tachometer-alt"></i>
+                     <span>Lịch sử cấp bậc</span>
+                 </a>
+             </li>
+             <li class="nav-item active no-print">
+                 <a class="nav-link" href="@Url.Action("ChucDanhHoiVien","HoiVien",new { id = Session["Ma"]})">
+                     <i class="fas fa-fw fa-tachometer-alt"></i>
+                     <span>Lịch sử chức danh</span>
+                 </a>
+             </li>
+             <li class="nav-item active no-print">
+                 <a class="nav-link" href="@Url.Action("LDSTHoiVien","HoiVien",new { id = Session["Ma"]})">
+                     <i class="fas fa-fw fa-tachometer-alt"></i>
+                     <span>Lao động sáng tạo</span>
+                 </a>
+             </li>
+             <li class="nav-item active no-print">
+                 <a class="nav-link" href="@Url.Action("TrinhDoHoiVien","HoiVien",new { id = Session["Ma"]})">
+                     <i class="fas fa-fw fa-tachometer-alt"></i>
+                     <span>Lịch sử trình độ</span>
+                 </a>
+             </li>
+             @*<li class="nav-item active no-print">
+                 <a class="nav-link" href="@Url.Action("Index","SinhHoat",new { ma = 3, id = Session["Ma"] })">
+                     <i class="fas fa-fw fa-tachometer-alt"></i>
+                     <span>Lịch sử sinh hoạt</span>
+                 </a>
+             </li>*@
+             @*<li class="nav-item active no-print">
+             <a class="nav-link" href="@Url.Action("Index","ChiHoi")">
+                  <i class="fas fa-fw fa-tachometer-alt"></i>
+                  <span>Hoàn cảnh gia đình</span>
+             </a>
+        </li>*@
+             <li class="nav-item no-print">
+                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                     <i class="fas fa-fw fa-cog"></i>
+                     <span>Khen thưởng, kỷ luật</span>
+                 </a>
+                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                     <div class="bg-white py-2 collapse-inner rounded">
+                         @*<h6 class="collapse-header">Custom Components:</h6>*@
+                         <a class="collapse-item" href="@Url.Action("KhenThuongCaNhan","KTKL",new { ma = Session["Ma"]})">Khen thưởng</a>
+                         <a class="collapse-item" href="@Url.Action("KyLuatCaNhan","KTKL",new { ma = Session["Ma"]})">Kỷ luật</a>
+                     </div>
+                 </div>
+             </li>
+             <!--<li class="nav-item no-print">
+                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo1"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                     <i class="fas fa-fw fa-cog"></i>
+                     <span>Chức vụ đảng</span>
+                 </a>
+                 <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                     <div class="bg-white py-2 collapse-inner rounded">-->
+                         @*<h6 class="collapse-header">Custom Components:</h6>*@
+                         <!--<a class="collapse-item" href="@Url.Action("HoiVienChiBo","HoiVien",new { ma = Session["Ma"]})">Chi bộ</a>
+                         <a class="collapse-item" href="@Url.Action("HoiVienDangUy","HoiVien",new { ma = Session["Ma"]})">Đảng ủy</a>
+                     </div>
+                 </div>
+             </li>-->
+             @*<li class="nav-item active no-print">
+                 <a class="nav-link" href="@Url.Action("AddTinBaiHoiVien","TinBai")">
+                     <i class="fas fa-fw fa-tachometer-alt"></i>
+                     <span>Đăng tin bài</span>
+                 </a>
+             </li>*@
+             <li class="nav-item active no-print">
+                 <a class="nav-link" href="@Url.Action("ThayDoiMK","Account")">
+                     <i class="fas fa-fw fa-tachometer-alt"></i>
+                     <span>Thay đổi mật khẩu</span>
+                 </a>
+             </li>
+             <div class="text-center d-none d-md-inline no-print">
+                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
+             </div>
+
+         </ul>
+          <!-- End of Sidebar -->
+          <!-- Content Wrapper -->
+          <div id="content-wrapper" class="d-flex flex-column">
+
+               <!-- Main Content -->
+               <div id="content">
+
+                    <!-- Topbar -->
+                   <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                       <!-- Sidebar Toggle (Topbar) -->
+                       <!--<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3  no-print">
+                           <i class="fa fa-bars"></i>
+                       </button>
+                       <div class=""> Tìm kiếm thông tin tuyên truyền</div>-->
+                       <!-- Topbar Search -->
+                       <!--<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search  no-print">
+                           <script async src="https://cse.google.com/cse.js?cx=e36bbdcc9bdb343ad">
+                           </script>
+                           <div class="gcse-search"></div>
+                       </form>-->
+                       <!-- Topbar Navbar -->
+                       <ul class="navbar-nav ml-auto">
+
+                           <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                           <li class="nav-item dropdown no-arrow d-sm-none no-print">
+                               <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   <i class="fas fa-search fa-fw"></i>
+                               </a>
+                               <!-- Dropdown - Messages -->
+                               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                    aria-labelledby="searchDropdown">
+                                   <form class="form-inline mr-auto w-100 navbar-search">
+                                       <div class="input-group">
+                                           <input type="text" class="form-control bg-light border-0 small"
+                                                  placeholder="Search for..." aria-label="Search"
+                                                  aria-describedby="basic-addon2">
+                                           <div class="input-group-append">
+                                               <button class="btn btn-primary" type="button">
+                                                   <i class="fas fa-search fa-sm"></i>
+                                               </button>
+                                           </div>
+                                       </div>
+                                   </form>
+                               </div>
+                           </li>
+
+                     
+
+
+                           <div class="topbar-divider d-none d-sm-block"></div>
+
+                           <!-- Nav Item - User Information -->
+                           <li class="nav-item dropdown no-arrow no-print">
+                               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   <span class="mr-2 d-none d-lg-inline text-gray-600 small">@Session["Ten"]</span>
+                                   <img class="img-profile rounded-circle"
+                                        src="~/Assets/Sbadmin/img/undraw_profile.svg">
+                               </a>
+                               <!-- Dropdown - User Information -->
+                               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    aria-labelledby="userDropdown">
+                                   @*<a class="dropdown-item" href="@Url.Action("TrangChu","Account")">
+                                       <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                       Chuyển về trang chủ
+                                   </a>*@
+                                   @*<a class="dropdown-item" href="#">
+                         <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                         Settings
+                    </a>
+                    <a class="dropdown-item" href="#">
+                         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                         Activity Log
+                    </a>*@
+                                   <div class="dropdown-divider"></div>
+                                   <a href="#" class="dropdown-item" onclick="handleLogout()">
+                                       <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                       Đăng xuất
+                                   </a>
+                                   <script>
+                                        const handleLogout = () => {
+                                             Swal.fire({
+                                                  title: 'Bạn có chắc chắn muốn đăng xuất?',
+                                                  showCancelButton: true,
+                                                  icon: 'question',
+                                                  confirmButtonText: 'Đăng xuất',
+                                                  denyButtonText: `Hủy`,
+                                             }).then((result) => {
+                                                  /* Read more about isConfirmed, isDenied below */
+                                                  if (result.isConfirmed) {
+                                                       window.location.href = '@Url.Action("Logout","Account")'
+                                                  }
+                                             })
+                                        }
+                                   </script>
+                               </div>
+                           </li>
+
+                       </ul>
+
+                   </nav>
+                    <!-- End of Topbar -->
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid">
+                         <div class="card-body">
+                              @RenderBody()
+                         </div>
+
+                    </div>
+               </div>
+
+          </div>
+          <!-- End of Content Wrapper -->
+
+     </div>
+     <!-- End of Page Wrapper -->
+     <!-- Scroll to Top Button-->
+     <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fas fa-angle-up"></i>
+     </a>
+
+     <!-- Logout Modal-->
+     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                    <div class="modal-header">
+                         <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">×</span>
+                         </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                         <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+     <!-- Bootstrap core JavaScript-->
+     <script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+     <script src="~/Assets/Sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+     <!-- Core plugin JavaScript-->
+     <script src="~/Assets/Sbadmin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+     <!-- Custom scripts for all pages-->
+     <script src="~/Assets/Sbadmin/js/sb-admin-2.min.js"></script>
+
+     <!-- Page level plugins -->
+
+     <script src="~/Assets/Sbadmin/vendor/datatables/jquery.dataTables.min.js"></script>
+     <script src="~/Assets/Sbadmin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+     <script src="~/Assets/Sbadmin/vendor/datatables/jquery.dataTables.min.js"></script>
+     <script src="~/Assets/Sbadmin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+
+
+     <script src="~/Assets/Sbadmin/js/demo/datatables-demo.js"></script>
+
+
+</body>
+
+</html>
+

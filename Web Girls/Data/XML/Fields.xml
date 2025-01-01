@@ -1,0 +1,3734 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<fields>
+  <field id="1">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>2</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="2">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>2</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="4">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>2</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="5">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>2</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="6">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>2</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="7">
+
+    <name>Trích yếu nội dung văn bản</name>
+    <type>input</type>
+    <templatecode>TrichYeuNoiDung</templatecode>
+    <DocumentId>2</DocumentId>
+    <height>25</height>
+    <width>530</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="8">
+
+    <name>Cơ quan giải quyết</name>
+    <type>textarea</type>
+    <templatecode>CQ_GiaiQuyet</templatecode>
+    <DocumentId>2</DocumentId>
+    <height>63</height>
+    <width>280</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="9">
+
+    <name>Nội dung tờ trình</name>
+    <type>textarea</type>
+    <templatecode>NoiDungToTrinh</templatecode>
+    <DocumentId>2</DocumentId>
+    <height>300</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="10">
+
+    <name>Viết tắt cơ quan soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_CQSoanThao</templatecode>
+    <DocumentId>2</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="11">
+
+    <name>Viết tắt người soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_NguoiSoanThao</templatecode>
+    <DocumentId>2</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="12">
+
+    <name>Độ mật văn bản</name>
+    <type>domat</type>
+    <templatecode>DoMat</templatecode>
+    <DocumentId>2</DocumentId>
+    <height>25</height>
+    <width>90</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="13">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>2</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="14">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>2</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="15">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>2</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="21">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>3</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="17">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>3</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="19">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>3</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="20">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>3</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="21">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>3</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="22">
+
+    <name>Trích yếu nội dung văn bản</name>
+    <type>input</type>
+    <templatecode>TrichYeuNoiDung</templatecode>
+    <DocumentId>3</DocumentId>
+    <height>25</height>
+    <width>530</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="23">
+
+    <name>Nội dung kế hoạch</name>
+    <type>textarea</type>
+    <templatecode>NoiDungKeHoach</templatecode>
+    <DocumentId>3</DocumentId>
+    <height>300</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="24">
+
+    <name>Nơi nhận</name>
+    <type>textarea</type>
+    <templatecode>NoiNhan</templatecode>
+    <DocumentId>3</DocumentId>
+    <height>50</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="25">
+
+    <name>Viết tắt cơ quan soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_CQSoanThao</templatecode>
+    <DocumentId>3</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="26">
+
+    <name>Viết tắt người soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_NguoiSoanThao</templatecode>
+    <DocumentId>3</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="27">
+
+    <name>Độ mật văn bản</name>
+    <type>domat</type>
+    <templatecode>DoMat</templatecode>
+    <DocumentId>3</DocumentId>
+    <height>25</height>
+    <width>90</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="28">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>3</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="29">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>3</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="30">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>3</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="31">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="32">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="34">
+
+    <name>Viết tắt loại VB</name>
+    <type>input</type>
+    <templatecode>VT_LoaiVanBan</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>25</height>
+    <width>88</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="35">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="36">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="37">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="38">
+
+    <name>TÊN LOẠI VĂN BẢN</name>
+    <type>input</type>
+    <templatecode>TENLOAIVANBAN</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="39">
+
+    <name>Trích yếu nội dung văn bản</name>
+    <type>input</type>
+    <templatecode>TrichYeuNoiDung</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>25</height>
+    <width>530</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="40">
+
+    <name>Nội dung văn bản</name>
+    <type>textarea</type>
+    <templatecode>NoiDungVanBan</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>300</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="41">
+
+    <name>Nơi nhận</name>
+    <type>textarea</type>
+    <templatecode>NoiNhan</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>50</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="42">
+
+    <name>Viết tắt cơ quan soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_CQSoanThao</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="43">
+
+    <name>Viết tắt người soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_NguoiSoanThao</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="44">
+
+    <name>Độ mật văn bản</name>
+    <type>domat</type>
+    <templatecode>DoMat</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>25</height>
+    <width>90</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="45">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="46">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="47">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>1</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="48">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="49">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="51">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="52">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="53">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="54">
+
+    <name>Trích yếu nội dung văn bản</name>
+    <type>input</type>
+    <templatecode>TrichYeuNoiDung</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>25</height>
+    <width>530</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="55">
+
+    <name>THẨM QUYỀN BAN HÀNH QUYẾT ĐỊNH</name>
+    <type>input</type>
+    <templatecode>QUYETDINH_THAMQUYENBANHANH</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>42</height>
+    <width>450</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="56">
+
+    <name>Căn cứ ban hành quyết định</name>
+    <type>textarea</type>
+    <templatecode>QuyetDinh_CanCuBanHanh</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>42</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="57">
+
+    <name>Căn cứ giải quyết quyết định</name>
+    <type>textarea</type>
+    <templatecode>QuyetDinh_CanCuGiaiQuyet</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>42</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="58">
+
+    <name>Chỉ huy cơ quan đề nghị quyết định</name>
+    <type>input</type>
+    <templatecode>QuyetDinh_ChiHuyCoQuanDeNghi</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>25</height>
+    <width>318</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="59">
+
+    <name>Nội dung quyết định</name>
+    <type>textarea</type>
+    <templatecode>QuyetDinh _NoiDung</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>300</height>
+    <width>560</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="60">
+
+    <name>Nơi nhận</name>
+    <type>textarea</type>
+    <templatecode>NoiNhan</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>50</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="61">
+
+    <name>Viết tắt cơ quan soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_CQSoanThao</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="62">
+
+    <name>Viết tắt người soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_NguoiSoanThao</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="63">
+
+    <name>Độ mật văn bản</name>
+    <type>domat</type>
+    <templatecode>DoMat</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>25</height>
+    <width>90</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="64">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="65">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="66">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>4</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="67">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="68">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="70">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="71">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="72">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="73">
+
+    <name>Trích yếu nội dung</name>
+    <type>input</type>
+    <templatecode>TrichYeuNoiDung</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>25</height>
+    <width>530</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="74">
+
+    <name>THẨM QUYỀN BAN HÀNH QUYẾT ĐỊNH</name>
+    <type>input</type>
+    <templatecode>QUYETDINH_THAMQUYENBANHANH</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>42</height>
+    <width>450</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="75">
+
+    <name>Căn cứ ban hành quyết định</name>
+    <type>textarea</type>
+    <templatecode>QuyetDinh_CanCuBanHanh</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>42</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="76">
+
+    <name>Căn cứ giải quyết quyết định</name>
+    <type>textarea</type>
+    <templatecode>QuyetDinh_CanCuGiaiQuyet</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>42</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="77">
+
+    <name>Chỉ huy cơ quan đề nghị quyết định</name>
+    <type>input</type>
+    <templatecode>QuyetDinh_ChiHuyCoQuanDeNghi</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>25</height>
+    <width>374</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="78">
+
+    <name>Nội dung quyết định</name>
+    <type>textarea</type>
+    <templatecode>QuyetDinh _NoiDung</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>300</height>
+    <width>605</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="79">
+
+    <name>Nơi nhận</name>
+    <type>textarea</type>
+    <templatecode>NoiNhan</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>50</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="80">
+
+    <name>Viết tắt cơ quan soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_CQSoanThao</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="81">
+
+    <name>Viết tắt người soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_NguoiSoanThao</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="82">
+
+    <name>Độ mật văn bản</name>
+    <type>domat</type>
+    <templatecode>DoMat</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>25</height>
+    <width>90</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="83">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="84">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="90">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>5</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="86">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>6</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="87">
+    <area>87</area>
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>6</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="88">
+
+    <name>TÊN LOẠI VĂN BẢN</name>
+    <type>input</type>
+    <templatecode>TENLOAIVANBAN</templatecode>
+    <DocumentId>6</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="89">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBANHANH</templatecode>
+    <DocumentId>6</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="90">
+
+    <name>Thời gian ban hành QĐ</name>
+    <type>input</type>
+    <templatecode>QuyetDinh_ThoiGian</templatecode>
+    <DocumentId>6</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="91">
+
+    <name>Đơn vị ban hành QĐ</name>
+    <type>input</type>
+    <templatecode>QuyetDinh_DonVi</templatecode>
+    <DocumentId>6</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="92">
+
+    <name>Nội dung văn bản</name>
+    <type>textarea</type>
+    <templatecode>NoiDung</templatecode>
+    <DocumentId>6</DocumentId>
+    <height>300</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="93">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>6</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="94">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>6</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="95">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>6</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="96">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="97">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+ 
+  <field id="99">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="100">
+
+    <name>Viết tắt bộ phận soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_BoPhanSoanThao</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>25</height>
+    <width>142</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="101">
+
+    <name>Trích yếu nội dung văn bản</name>
+    <type>textarea</type>
+    <templatecode>TrichYeuNoiDung</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>42</height>
+    <width>200</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="102">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="103">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="104">
+
+    <name>Cơ quan nhận văn bản</name>
+    <type>textarea</type>
+    <templatecode>CQ_NhanVanBan</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>63</height>
+    <width>280</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="105">
+
+    <name>Nội dung văn bản</name>
+    <type>textarea</type>
+    <templatecode>NoiDungVanBan</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>300</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="106">
+
+    <name>Nơi nhận</name>
+    <type>textarea</type>
+    <templatecode>NoiNhan</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>50</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="107">
+
+    <name>Viết tắt cơ quan soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_CQSoanThao</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="108">
+
+    <name>Viết tắt người soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_NguoiSoanThao</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="109">
+
+    <name>Độ mật văn bản</name>
+    <type>domat</type>
+    <templatecode>DoMat</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>25</height>
+    <width>90</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="110">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="111">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="112">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>7</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="113">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="114">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  
+  <field id="116">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="117">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="118">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="119">
+
+    <name>Trích yếu nội dung nghị quyết</name>
+    <type>input</type>
+    <templatecode>TrichYeuNoiDung</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>25</height>
+    <width>530</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="120">
+
+    <name>TÊN HỘI ĐỒNG THÀNH VIÊN</name>
+    <type>input</type>
+    <templatecode>HOIDONG</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>25</height>
+    <width>280</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="121">
+
+    <name>Căn cứ nghị quyết</name>
+    <type>textarea</type>
+    <templatecode>CanCu</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>63</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="122">
+
+    <name>Nội dung nghị quyết</name>
+    <type>textarea</type>
+    <templatecode>NoiDungNghiQuyet</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>300</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="123">
+
+    <name>Nơi nhận</name>
+    <type>textarea</type>
+    <templatecode>NoiNhan</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>50</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="124">
+
+    <name>Viết tắt cơ quan soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_CQSoanThao</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="125">
+
+    <name>Viết tắt người soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_NguoiSoanThao</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="126">
+
+    <name>Độ mật văn bản</name>
+    <type>domat</type>
+    <templatecode>DoMat</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>25</height>
+    <width>90</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="127">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="128">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="129">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>8</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="130">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="131">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  
+  <field id="133">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="134">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="135">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="136">
+
+    <name>Trích yếu nội dung biên bản</name>
+    <type>input</type>
+    <templatecode>TrichYeuNoiDung</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>530</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="137">
+
+    <name>thời gian bắt đầu</name>
+    <type>input</type>
+    <templatecode>ThoiGianBatDau</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>300</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="138">
+
+    <name>địa điểm</name>
+    <type>input</type>
+    <templatecode>DiaDiem</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>300</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="139">
+
+    <name>Thành phần tham dự</name>
+    <type>textarea</type>
+    <templatecode>ThanhPhanThamDu</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>150</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="140">
+
+    <name>chủ tọa</name>
+    <type>input</type>
+    <templatecode>ChuToa</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>200</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="141">
+
+    <name>thư ký</name>
+    <type>input</type>
+    <templatecode>HoTenThuKy</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>200</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="142">
+
+    <name>Nội dung biên bản</name>
+    <type>textarea</type>
+    <templatecode>NoiDung</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>300</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="143">
+
+    <name>thời gian kết thúc</name>
+    <type>input</type>
+    <templatecode>ThoiGianKetThuc</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>200</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="144">
+
+    <name>số bản sao</name>
+    <type>input</type>
+    <templatecode>SoBanSao</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="145">
+
+    <name>Cơ quan,đơn vị, cá nhân nhận</name>
+    <type>input</type>
+    <templatecode>CoQuanNhan</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>204</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="146">
+
+    <name>Cấp bậc, họ tên thư ký</name>
+    <type>input</type>
+    <templatecode>ThuKy_CapBacHoTen</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>204</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="147">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="148">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="149">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>9</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="150">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="151">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+
+  <field id="153">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="154">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="155">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="156">
+
+    <name>Trích yếu nội dung biên bản</name>
+    <type>input</type>
+    <templatecode>TrichYeuNoiDung</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>25</height>
+    <width>400</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="157">
+
+    <name>Căn cứ</name>
+    <type>input</type>
+    <templatecode>CanCu</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>25</height>
+    <width>480</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="158">
+
+    <name>thời gian tiến hành</name>
+    <type>input</type>
+    <templatecode>ThoiGianBatDau</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>25</height>
+    <width>300</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="159">
+
+    <name>địa điểm</name>
+    <type>input</type>
+    <templatecode>DiaDiem</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>25</height>
+    <width>300</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="160">
+
+    <name>Thành phần tham dự</name>
+    <type>textarea</type>
+    <templatecode>ThanhPhan</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>200</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="161">
+
+    <name>Nội dung bàn giao</name>
+    <type>textarea</type>
+    <templatecode>ND_BanGiao</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>250</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="162">
+
+    <name>Ý kiến trong hội nghị bàn giao</name>
+    <type>textarea</type>
+    <templatecode>YKienBanGiao</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>200</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="163">
+
+    <name>thời gian kết thúc</name>
+    <type>input</type>
+    <templatecode>ThoiGianKetThuc</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>25</height>
+    <width>300</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="164">
+
+    <name>Cấp bậc, họ tên người nhận bàn giao</name>
+    <type>input</type>
+    <templatecode>Nguoinhan</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>25</height>
+    <width>210</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="165">
+
+    <name>Cấp bậc, họ tên người bàn giao</name>
+    <type>input</type>
+    <templatecode>Nguoibangiao</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>25</height>
+    <width>210</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="166">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI CHỦ TRÌ</name>
+    <type>textarea</type>
+    <templatecode>CHUTRIBANGIAO _CHUCVU</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>25</height>
+    <width>320</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="167">
+
+    <name>Cấp bậc, họ tên người chủ trì</name>
+    <type>input</type>
+    <templatecode>chutri</templatecode>
+    <DocumentId>10</DocumentId>
+    <height>25</height>
+    <width>210</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="168">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="169">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+ 
+  <field id="171">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="172">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="173">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="174">
+
+    <name>Trích yếu nội dung công điện</name>
+    <type>input</type>
+    <templatecode>TrichYeuNoiDung</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>25</height>
+    <width>530</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="175">
+
+    <name>Cơ quan ban hành công điện</name>
+    <type>input</type>
+    <templatecode>CQ_banhanhcd</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>25</height>
+    <width>390</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="176">
+
+    <name>Cơ quan nhận công điện</name>
+    <type>textarea</type>
+    <templatecode>CQ_Nhandien</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>63</height>
+    <width>390</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="177">
+
+    <name>Nội dung công điện</name>
+    <type>textarea</type>
+    <templatecode>NoiDungCongDien</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>300</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="178">
+
+    <name>Nơi nhận</name>
+    <type>textarea</type>
+    <templatecode>NoiNhan</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>50</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="178">
+
+    <name>Viết tắt cơ quan soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_CQSoanThao</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="179">
+
+    <name>Viết tắt người soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_NguoiSoanThao</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="179">
+
+    <name>Độ mật văn bản</name>
+    <type>domat</type>
+    <templatecode>DoMat</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>25</height>
+    <width>90</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="180">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="181">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="182">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>11</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="183">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="184">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+
+  <field id="186">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="187">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="188">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="189">
+
+    <name>Trích yếu nội dung giấy mời</name>
+    <type>input</type>
+    <templatecode>TrichYeuNoiDung</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>530</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="190">
+
+    <name>Cơ quan gửi giấy mời</name>
+    <type>input</type>
+    <templatecode>coquan</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>400</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="191">
+
+    <name>Người nhận</name>
+    <type>input</type>
+    <templatecode>Nguoinhan</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="192">
+
+    <name>Lý do mời</name>
+    <type>input</type>
+    <templatecode>LyDo</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="193">
+
+    <name>Thời gian</name>
+    <type>input</type>
+    <templatecode>ThoiGian</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="194">
+
+    <name>Địa điểm</name>
+    <type>input</type>
+    <templatecode>DiaDiem</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="195">
+
+    <name>Nơi nhận</name>
+    <type>textarea</type>
+    <templatecode>Noinhan</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>50</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="196">
+
+    <name>Viết tắt cơ quan soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_CQSoanThao</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="197">
+
+    <name>Viết tắt người soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_NguoiSoanThao</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="198">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="199">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="200">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>12</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="201">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="202">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+ 
+  <field id="204">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="205">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="206">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="207">
+
+    <name>Đơn vị nhận giấy giới thiệu</name>
+    <type>input</type>
+    <templatecode>DonViNhan</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>360</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="208">
+
+    <name>Tên người được giới thiệu</name>
+    <type>input</type>
+    <templatecode>DongChi</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="209">
+
+    <name>Cấp bậc</name>
+    <type>input</type>
+    <templatecode>CapBac</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="210">
+
+    <name>Chức vụ</name>
+    <type>input</type>
+    <templatecode>ChucVu</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="211">
+
+    <name>Đơn vị</name>
+    <type>input</type>
+    <templatecode>DonVi</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="212">
+
+    <name>Đơn vị được cử đến</name>
+    <type>input</type>
+    <templatecode>DviDen</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>440</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="213">
+
+    <name>Nhiệm vụ</name>
+    <type>input</type>
+    <templatecode>NhiemVu</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>440</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="214">
+
+    <name>Đơn vị nhận</name>
+    <type>input</type>
+    <templatecode>Dv</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>150</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="215">
+
+    <name>Tên người được giới thiệu</name>
+    <type>input</type>
+    <templatecode>dc</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>150</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="215">
+
+    <name>thời gian giá trị</name>
+    <type>input</type>
+    <templatecode>ThoiGian</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>350</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="216">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="217">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="218">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>13</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="219">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>14</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="220">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>14</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="221">
+
+    <name>Thủ trưởng phụ trách</name>
+    <type>input</type>
+    <templatecode>ThuTruongPhuTrach</templatecode>
+    <DocumentId>14</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="222">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>14</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="223">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>14</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="224">
+
+    <name>Trích yếu nội dung</name>
+    <type>input</type>
+    <templatecode>TrichYeuNoiDung</templatecode>
+    <DocumentId>14</DocumentId>
+    <height>25</height>
+    <width>350</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="225">
+
+    <name>Thủ trưởng duyệt</name>
+    <type>input</type>
+    <templatecode>ThuTruongDuyet</templatecode>
+    <DocumentId>14</DocumentId>
+    <height>25</height>
+    <width>150</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="226">
+
+    <name>Nội dung phiếu trình</name>
+    <type>textarea</type>
+    <templatecode>NoiDung</templatecode>
+    <DocumentId>14</DocumentId>
+    <height>300</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="227">
+
+    <name>Thủ trưởng</name>
+    <type>input</type>
+    <templatecode>NguoiYKien</templatecode>
+    <DocumentId>14</DocumentId>
+    <height>25</height>
+    <width>150</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  
+  <field id="228">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>14</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="229">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>14</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="230">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>14</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="231">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>15</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="232">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>15</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+ 
+  <field id="234">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>15</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="235">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>15</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="236">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>15</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="237">
+
+    <name>Đơn vị nhận phiếu chuyển</name>
+    <type>input</type>
+    <templatecode>DonViNhan</templatecode>
+    <DocumentId>15</DocumentId>
+    <height>25</height>
+    <width>350</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="238">
+
+    <name>Tên cơ quan ban hành phiếu chuyển</name>
+    <type>input</type>
+    <templatecode>CQ_PC</templatecode>
+    <DocumentId>15</DocumentId>
+    <height>25</height>
+    <width>200</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="239">
+
+    <name>Nội dung cần chuyển</name>
+    <type>input</type>
+    <templatecode>NoiDung</templatecode>
+    <DocumentId>15</DocumentId>
+    <height>25</height>
+    <width>250</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="240">
+
+    <name>Lý do chuyển</name>
+    <type>input</type>
+    <templatecode>LyDo</templatecode>
+    <DocumentId>15</DocumentId>
+    <height>25</height>
+    <width>500</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="241">
+
+    <name>Tên cơ quan, đơn vị nhận</name>
+    <type>input</type>
+    <templatecode>DonViDen</templatecode>
+    <DocumentId>15</DocumentId>
+    <height>25</height>
+    <width>300</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="242">
+
+    <name>Nơi nhận</name>
+    <type>textarea</type>
+    <templatecode>NoiNhan</templatecode>
+    <DocumentId>15</DocumentId>
+    <height>50</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="243">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>15</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="244">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>15</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="245">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>15</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="246">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>16</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="247">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>16</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+ 
+  <field id="249">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>16</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="250">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>16</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="251">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>16</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="252">
+
+    <name>Tên hồ sơ</name>
+    <type>input</type>
+    <templatecode>TenHoSo</templatecode>
+    <DocumentId>16</DocumentId>
+    <height>25</height>
+    <width>330</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="253">
+
+    <name>Tên người nhận</name>
+    <type>input</type>
+    <templatecode>NguoiNhan</templatecode>
+    <DocumentId>16</DocumentId>
+    <height>25</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="254">
+
+    <name>Chức vụ, đơn vị công tác</name>
+    <type>input</type>
+    <templatecode>NN_DonVi</templatecode>
+    <DocumentId>16</DocumentId>
+    <height>25</height>
+    <width>360</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="255">
+
+    <name>Người nộp hồ sơ</name>
+    <type>input</type>
+    <templatecode>NguoiNopHoSo</templatecode>
+    <DocumentId>16</DocumentId>
+    <height>25</height>
+    <width>154</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="256">
+
+    <name>Nội dung</name>
+    <type>textarea</type>
+    <templatecode>NoiDung</templatecode>
+    <DocumentId>16</DocumentId>
+    <height>100</height>
+    <width>560</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="257">
+
+    <name>Nơi nhận</name>
+    <type>textarea</type>
+    <templatecode>NoiNhan</templatecode>
+    <DocumentId>16</DocumentId>
+    <height>50</height>
+    <width>150</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="258">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>16</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="259">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>16</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="260">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>17</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="261">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>17</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  
+  <field id="263">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>17</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="264">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>17</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="265">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>17</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="266">
+
+    <name>Trích yếu nội dung giấy chứng nhận</name>
+    <type>input</type>
+    <templatecode>TenChungNhan</templatecode>
+    <DocumentId>17</DocumentId>
+    <height>25</height>
+    <width>400</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="267">
+
+    <name>Cơ quan đơn vị chứng nhận</name>
+    <type>input</type>
+    <templatecode>CQ_CN</templatecode>
+    <DocumentId>17</DocumentId>
+    <height>25</height>
+    <width>400</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="268">
+
+    <name>Nội dung chứng nhận</name>
+    <type>textarea</type>
+    <templatecode>NoiDung</templatecode>
+    <DocumentId>17</DocumentId>
+    <height>100</height>
+    <width>560</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="269">
+
+    <name>Nơi nhận</name>
+    <type>textarea</type>
+    <templatecode>NoiNhan</templatecode>
+    <DocumentId>17</DocumentId>
+    <height>50</height>
+    <width>150</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="270">
+
+    <name>Viết tắt cơ quan soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_CQSoanThao</templatecode>
+    <DocumentId>17</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="271">
+
+    <name>Viết tắt người soạn thảo</name>
+    <type>input</type>
+    <templatecode>VT_NguoiSoanThao</templatecode>
+    <DocumentId>17</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="272">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>17</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="273">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>17</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="274">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>17</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="275">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_CHUQUAN</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="276">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+ 
+  <field id="278">
+
+    <name>Viết tắt CQBH</name>
+    <type>input</type>
+    <templatecode>VT_CQBanHanh</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>25</height>
+    <width>82</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="279">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="280">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+ 
+  <field id="281">
+
+    <name>Tên người được nghỉ phép</name>
+    <type>input</type>
+    <templatecode>NguoiNghi</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>25</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="282">
+
+    <name>Cấp bậc</name>
+    <type>input</type>
+    <templatecode>CapBac</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>25</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="283">
+
+    <name>Chức vụ</name>
+    <type>input</type>
+    <templatecode>ChucVu</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>25</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="284">
+
+    <name>Đơn vị</name>
+    <type>input</type>
+    <templatecode>DonVi</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>25</height>
+    <width>450</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="285">
+
+    <name>Thời gian nghỉ</name>
+    <type>input</type>
+    <templatecode>ThoiGianNghi</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>25</height>
+    <width>400</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="286">
+
+    <name>Thời gian hết phép</name>
+    <type>input</type>
+    <templatecode>HetPhep</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>25</height>
+    <width>440</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="287">
+
+    <name>Địa điểm</name>
+    <type>input</type>
+    <templatecode>DiaDiem</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>25</height>
+    <width>440</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="288">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="289">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="290">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>18</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="291">
+
+    <name>CƠ QUAN CHỦ QUẢN</name>
+    <type>input</type>
+    <templatecode>CQ_ChuQuan</templatecode>
+    <DocumentId>19</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="192">
+
+    <name>CƠ QUAN BAN HÀNH</name>
+    <type>input</type>
+    <templatecode>CQ_BanHanh</templatecode>
+    <DocumentId>19</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="293">
+
+    <name>Địa danh ban hành văn bản</name>
+    <type>input</type>
+    <templatecode>DiaDanh</templatecode>
+    <DocumentId>19</DocumentId>
+    <height>25</height>
+    <width>105</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="294">
+
+    <name>Ngày ban hành văn bản</name>
+    <type>date</type>
+    <templatecode>NgayThangNam</templatecode>
+    <DocumentId>19</DocumentId>
+    <height>25</height>
+    <width>170</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>1</italic>
+    <center>0</center>
+  </field>
+  <field id="295">
+
+    <name>TÊN LOẠI THƯ CÔNG</name>
+    <type>input</type>
+    <templatecode>TENLOAITHUCONG</templatecode>
+    <DocumentId>19</DocumentId>
+    <height>25</height>
+    <width>296</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="296">
+
+    <name>Nội dung </name>
+    <type>textarea</type>
+    <templatecode>NoiDung</templatecode>
+    <DocumentId>19</DocumentId>
+    <height>300</height>
+    <width>565</width>
+    <upper>0</upper>
+    <bold>0</bold>
+    <italic>0</italic>
+    <center>0</center>
+  </field>
+  <field id="297">
+
+    <name>QUYỀN HẠN CHỨC VỤ NGƯỜI KÝ</name>
+    <type>textarea</type>
+    <templatecode>NguoiKy_QuyenHanChucVu</templatecode>
+    <DocumentId>19</DocumentId>
+    <height>32</height>
+    <width>238</width>
+    <upper>1</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="298">
+
+    <name>Cấp bậc người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_CapBac</templatecode>
+    <DocumentId>19</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+  <field id="299">
+
+    <name>Họ tên người ký</name>
+    <type>input</type>
+    <templatecode>NguoiKy_HoTen</templatecode>
+    <DocumentId>19</DocumentId>
+    <height>25</height>
+    <width>144</width>
+    <upper>0</upper>
+    <bold>1</bold>
+    <italic>0</italic>
+    <center>1</center>
+  </field>
+</fields>

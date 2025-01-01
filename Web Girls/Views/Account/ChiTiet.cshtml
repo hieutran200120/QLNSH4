@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Views/Shared/LayoutMain.cshtml";
+    var tinbai = (Web_Girls.Models.Context.TinBai)ViewBag.tinbai;
+    var loaitinbai = (Web_Girls.Models.Context.LoaiTinBai)ViewBag.loaitinbai; 
+    var tinbailienquan = (List<Web_Girls.Models.Context.TinBai>)ViewBag.tinbailienquan;
+
+}
+<style>
+     blockquote{
+          text-align:justify
+     }
+    
+
+</style>
+<div class="left_content">
+     <div class="single_page">
+          <ol class="breadcrumb">
+               <li><a href="@Url.Action("TrangChu","Account")">Trang chủ</a></li>
+               <li><a href="@Url.Action("TinBaiTheoLoai","TinBai",new {id = tinbai.MaLoaiTinBai,page = 1 })">@loaitinbai.TenLoaiTinBai</a></li>
+               <li class="active">@tinbai.TieuDe</li>
+          </ol>
+          <h1> @tinbai.TieuDe@*Morbi dapibus, enim quis luctus interdum*@</h1>
+          <div class="post_commentbox"> @*<a href="#"><i class="fa fa-user"></i>Wpfreeware</a>*@ <span><i class="fa fa-calendar"></i>Ngày đăng: @tinbai.NgayDang.Value.ToShortDateString()@*6:49 AM*@</span> <span href=""><i class="fa fa-eye"></i>Lượt xem: @tinbai.LuotXem</span> <a href="@Url.Action("TrangChu", "Account")"><i class="fa fa-arrow-left" aria-hidden="true"></i>Quay lại</a>  </div>
+          <div class="single_page_content">
+               @*<img class="img-center" src="~/Assets/Sbadmin/img/@tinbai.Img" alt="">*@
+               @*<div style="text-align: center; font-style: italic;">Ảnh: @tinbai.imgtitle</div>*@
+               @Html.Raw(@tinbai.NoiDung)
+               <div style="font-weight: bold; /* font-style: italic; */ float: right;">@tinbai.NguoiViet - @tinbai.DonVi</div>
+               @*<blockquote> Donec volutpat nibh sit amet libero ornare non laoreet arcu luctus. Donec id arcu quis mauris euismod placerat sit amet ut metus. Sed imperdiet fringilla sem eget euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque adipiscing, neque ut pulvinar tincidunt, est sem euismod odio, eu ullamcorper turpis nisl sit amet velit. Nullam vitae nibh odio, non scelerisque nibh. Vestibulum ut est augue, in varius purus. </blockquote>
+          <ul>
+               <li>Nullam vitae nibh odio, non scelerisque nibh</li>
+               <li>Nullam vitae nibh odio, non scelerisque nibh</li>
+               <li>Nullam vitae nibh odio, non scelerisque nibh</li>
+               <li>Nullam vitae nibh odio, non scelerisque nibh</li>
+               <li>Nullam vitae nibh odio, non scelerisque nibh</li>
+               <li>Nullam vitae nibh odio, non scelerisque nibh</li>
+          </ul>
+          <h2>This is h2 title</h2>
+          <h3>This is h3 title</h3>
+          <h4>This is h4 title</h4>
+          <h5>This is h5 title</h5>
+          <h6>This is h6 Title</h6>
+          <button class="btn default-btn">Default</button>
+          <button class="btn btn-red">Red Button</button>
+          <button class="btn btn-yellow">Yellow Button</button>
+          <button class="btn btn-green">Green Button</button>
+          <button class="btn btn-black">Black Button</button>
+          <button class="btn btn-orange">Orange Button</button>
+          <button class="btn btn-blue">Blue Button</button>
+          <button class="btn btn-lime">Lime Button</button>
+          <button class="btn btn-theme">Theme Button</button>*@
+          </div>
+          <div class="social_link">
+               <ul class="sociallink_nav">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+               </ul>
+          </div>
+          <div class="related_post">
+               <h2>Bài viết liên quan <i class="fa fa-thumbs-o-up"></i></h2>
+               <ul class="spost_nav wow fadeInDown animated">
+                    @foreach (var item in tinbailienquan)
+                    {
+                         <li>
+                              <div class="media">
+                                   <a class="media-left" href="@Url.Action("ChiTiet","Account",new {id = item.MaTinBai })"> <img src="~/Assets/Sbadmin/img/@item.Img" alt=""> </a>
+                                   <div class="media-body"> <a class="catg_title" href="@Url.Action("ChiTiet","Account",new {id = item.MaTinBai })">@item.TieuDe @*Aliquam malesuada diam eget turpis varius*@</a> </div>
+                              </div>
+                         </li>
+                    }
+
+                    @*<li>
+               <div class="media">
+                    <a class="media-left" href="single_page.html"> <img src="../images/post_img2.jpg" alt=""> </a>
+                    <div class="media-body"> <a class="catg_title" href="single_page.html"> Aliquam malesuada diam eget turpis varius</a> </div>
+               </div>
+          </li>
+          <li>
+               <div class="media">
+                    <a class="media-left" href="single_page.html"> <img src="../images/post_img1.jpg" alt=""> </a>
+                    <div class="media-body"> <a class="catg_title" href="single_page.html"> Aliquam malesuada diam eget turpis varius</a> </div>
+               </div>
+          </li>*@
+               </ul>
+          </div>
+     </div>
+</div>

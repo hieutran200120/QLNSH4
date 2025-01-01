@@ -1,0 +1,56 @@
+﻿@{
+     var hv = (Web_Girls.Models.Context.HoiVien)ViewBag.hv;
+     var tk = (Web_Girls.Models.Context.TaiKhoan)ViewBag.tk;
+
+}
+
+<!-- Modal content-->
+<div class="modal-content">
+     <div class="modal-header">
+          <h4 class="modal-title">Cập nhật quyền</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+     </div>
+     <form id="form" method="post" action="/Account/CapNhatQuyen">
+          <div class="modal-body">
+               <div class="form-group">
+                    <label for="usr">Học viên:</label>
+                    <input type="text" class="form-control" value="@hv.TenHV" disabled>
+               </div>
+
+               <input style="display:none" type="text" class="form-control" value="@tk.TenDN" name="TenDN">
+
+               <div class="form-group">
+                    <label for="usr">Quyền:</label>
+                    <select class="form-control" name="Quyen">
+                         <option value="1" @(tk.Quyen == 1 ? "selected" : "")>Quản trị cấp Học viện</option>
+                         <option value="2" @(tk.Quyen == 2 ? "selected" : "")>Hội trưởng</option>
+                         <option value="3" @(tk.Quyen == 3 ? "selected" : "")>Hội viên</option>
+                    </select>
+               </div>
+          </div>
+          <div class="modal-footer">
+               <button type="submit" class="btn btn-primary" href="#">Lưu</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+
+          </div>
+     </form>
+     <script>
+          document.getElementById("form").addEventListener("submit", function (event) {
+               event.preventDefault(); // Ngăn chặn gửi biểu mẫu mặc định
+               Swal.fire({
+                    title: 'Xác nhận thay đổi quyền của tài khoản?',
+                    showCancelButton: true,
+                    confirmButtonText: 'Xác nhận',
+                    denyButtonText: `Hủy`,
+               }).then((result) => {
+                    if (result.isConfirmed) {                       
+                         this.submit();
+                    }
+               })
+          });
+     </script>
+
+</div>
+
+
+

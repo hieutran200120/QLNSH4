@@ -1,0 +1,433 @@
+﻿
+@{
+    ViewBag.Title = "AddHoiVien";
+    Layout = "~/Views/Shared/_LayoutQuanTriCapHoi.cshtml";
+    //var listhpn = (List<Web_Girls.Models.Context.HoiPhuNu>)ViewBag.listhpn;
+    var listlhv = (List<Web_Girls.Models.Context.LoaiHocVien>)ViewBag.listlhv;
+    var listcb = (List<Web_Girls.Models.Context.CapBac>)ViewBag.listcb;
+    var listdv = (List<Web_Girls.Models.Context.DonVi>)ViewBag.listdv;
+    var listldv = (List<Web_Girls.Models.Context.LoaiDangVien>)ViewBag.listldv;
+    var listdh = (List<Web_Girls.Models.Context.DanhHieu>)ViewBag.listdh;
+    var listtd = (List<Web_Girls.Models.Context.TrinhDo>)ViewBag.listtd;
+    var listcd = (List<Web_Girls.Models.Context.ChucDanh>)ViewBag.listcd;
+}
+@if (!string.IsNullOrEmpty(ViewBag.trung))
+{
+     <script>
+     // Hiển thị hộp thoại alert nếu có thông báo
+      Swal.fire({
+               position: 'center',
+               icon: 'error',
+               title: '@Html.Raw(ViewBag.trung)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+     </script>
+}
+<script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+<div id="page-wrapper">
+     <div style="color: #fff; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0; background: #299be4;">
+          <div class="row">
+               <div class="col-sm-12">
+                    <h2 style="font-weight: bold">Thêm mới học viên</h2>
+               </div>
+          </div>
+
+     </div>
+     <form role="form" method="post" action="/HoiVien/AddHoiVien" class="was-validated" enctype="multipart/form-data">
+          <div class="row">
+               <div class="col-lg-3">
+                    <img class="img-profile rounded-circle img-fluid" style="height:350px;width:350px" id="preview1"
+                         src="~/Assets/Sbadmin/img/undraw_profile.svg">
+                    <input type="file" accept="image/*" class="form-control" name="image1" id="image1">
+                    <script>
+                         image1.onchange = evt1 => {
+
+                              const [file1] = image1.files
+
+                              if (file1) {
+                                   preview1.src = URL.createObjectURL(file1);
+                                   $("#preview1").show();
+                                   /*  clearButton1.style.display = "block";*/
+                              } else {
+                                   preview1.src = '/Assets/Sbadmin/img/undraw_profile.svg'; // Xóa hình ảnh
+                                   $("#preview1").show();
+                                   /* clearButton1.style.display = "none";*/
+                              }
+                         }
+
+                    </script>
+                    @*<img class="img-profile rounded-circle img-fluid" height="326" width="350" id="preview1"
+                              src="~/Assets/Sbadmin/img/undraw_profile.svg">
+                         <input type="file" class="form-control" name="image1" id="image1">
+                         <script>
+                              image1.onchange = evt1 => {
+
+                                   const [file1] = image1.files
+
+                                   if (file1) {
+                                        preview1.src = URL.createObjectURL(file1);
+                                        $("#preview1").show();
+                                   }
+                              }
+
+                         </script>*@
+               </div>
+
+               <div class="col-lg-5">
+                    <div class="col-lg-12 d-flex">
+                         <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                              <label>Số hiệu</label>
+                         </div>
+                         <div class="form-group col-lg-9">
+                              <input class="form-control" placeholder="Số hiệu sĩ quan, mã học viên, số hiệu QNCN" name="MaHV" required>
+                         </div>
+                    </div>
+                    <div class="col-lg-12 d-flex">
+                         <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                              <label>Họ Và Tên</label>
+                         </div>
+                         <div class="form-group col-lg-9">
+                              <input class="form-control" placeholder="Họ Và Tên" name="TenHV" required>
+                         </div>
+                    </div>
+                    @*<div class="col-lg-12 d-flex">
+                              <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                                   <label>Giới Tính</label>
+                              </div>
+                              <div class="form-group col-lg-9">
+                                   <select class="form-control">
+                                        <option value="AL">Nam </option>
+                                        <option value="WY">Nữ</option>
+                                        <option value="WY">Khác</option>
+                                   </select>
+                              </div>
+                         </div>*@
+                    <div class="col-lg-12 d-flex">
+                         <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                              <label>Ngày Sinh</label>
+                         </div>
+                         <div class="form-group col-lg-9">
+                              <input type="date" placeholder="01-01-1999" class="form-control" name="NgaySinh" required>
+                         </div>
+                    </div>
+                    <div class="col-lg-12 d-flex">
+                         <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                              <label>Dân Tộc</label>
+                         </div>
+                         <div class="form-group col-lg-9">
+
+                              <input class="form-control" placeholder="Dân Tộc" name="DanToc">
+
+                         </div>
+                    </div>
+                    <div class="col-lg-12 d-flex">
+                         <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                              <label>Email</label>
+                         </div>
+                         <div class="form-group col-lg-9">
+
+                              <input class="form-control" type="email" placeholder="Email" name="Email">
+
+                         </div>
+                    </div>
+                    <div class="col-lg-12 d-flex">
+                         <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                              <label>Số điện thoại</label>
+                         </div>
+                         <div class="form-group col-lg-9">
+
+                              <input class="form-control" placeholder="Số điện thoại" name="SDT">
+
+                         </div>
+                    </div>
+                    <div class="col-lg-12 d-flex">
+                         <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                              <label>Đơn Vị</label>
+                         </div>
+                         <div class="form-group col-lg-9">
+
+                              <select class="form-control" name="MaDV" required>
+                                   <option value=""></option>
+                                   @foreach (var it in listdv)
+                                   {
+                                        <option value="@it.MaDV">@it.TenDV</option>
+                                   }
+
+                              </select>
+
+                         </div>
+                    </div>
+                    <div class="col-lg-12 d-flex">
+                         <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                              <label>Quê quán</label>
+                         </div>
+                         <div class="form-group col-lg-9">
+
+                              <input class="form-control" placeholder="Quê quán" name="Quequan">
+
+                         </div>
+                    </div>
+                    <div class="col-lg-12 d-flex">
+                         <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                              <label>Nơi ở hiện nay</label>
+                         </div>
+                         <div class="form-group col-lg-9">
+                              <input class="form-control" placeholder="Nơi ở hiện nay" name="Noiohiennay">
+                         </div>
+                    </div>
+                    <div class="col-lg-12 d-flex">
+                         <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                              <label>Năm Nhập Ngũ</label>
+                         </div>
+                         <div class="form-group col-lg-9">
+                              <select class="form-control" name="NamNhapNgu" required>
+                                   <option value=""></option>
+                                   @for (int i = 1990; i < 2024; i++)
+                                   {
+                                        <option value="@i">@i</option>
+                                   }
+
+                              </select>
+                         </div>
+                    </div>
+               </div>
+               <div class="col-lg-4">
+                    <div class="col-lg-12 d-flex">
+                         <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                              <label>Bậc thợ</label>
+                         </div>
+                         <div class="form-group col-lg-9">
+                              <select class="form-control" name="BacTho">
+                                   <option value=""></option>
+                                   @for (int i = 2; i <= 8; i++)
+                                   {
+                                        <option value="@i">Bậc @i</option>
+                                   }
+                              </select>
+                         </div>
+                    </div>
+                    <div class="col-lg-12 d-flex">
+                         <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                              <label>Loại Học Viên</label>
+                         </div>
+                         <div class="form-group col-lg-9">
+                              <select class="form-control" id="lhv" name="MaLHV" required>
+                                   <option value=""></option>
+                                   @foreach (var it in listlhv)
+                                   {
+                                        <option value="@it.MaLHV">@it.TenLHV</option>
+                                   }
+
+                              </select>
+                         </div>
+                    </div>
+                    <div id="cb">
+                         <div class="col-lg-12 d-flex">
+                              <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                                   <label>Cấp bậc hiện nay</label>
+                              </div>
+                              <div class="form-group col-lg-9">
+                                   <select class="form-control" name="MaCB" required>
+                                        <option value=""></option>
+                                        @foreach (var it in listcb)
+                                        {
+                                             <option value="@it.MaCB">@it.TenCB</option>
+                                        }
+
+                                   </select>
+                              </div>
+                         </div>
+
+                         @*<div class="col-lg-12 d-flex">
+                                   <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                                        <label>Ngày quyết định</label>
+                                   </div>
+                                   <div class="form-group col-lg-9">
+                                        <input type="date" placeholder="01-01-1999" class="form-control" name="NgayQDCB">
+                                   </div>
+                              </div>*@
+                    </div>
+
+                    @*<div class="col-lg-12 d-flex">
+                         <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                              <label>Thuộc chi hội</label>
+                         </div>
+                         <div class="form-group col-lg-9">
+                              <select class="js-example-basic-multiple form-control" name="MaHPN" required disabled>
+                                   @foreach (var it in listhpn)
+                                   {
+                                        <option value="@it.MaHPN" @(it.MaHPN == Int32.Parse(Session["Ma"].ToString()) ? "selected" : "")>@it.TenHPN</option>
+                                   }
+                              </select>
+                         </div>
+
+                    </div>*@
+                    <div class="col-lg-12 d-flex">
+                         <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                              <label>Loại đảng Viên</label>
+                         </div>
+                         <div class="form-group col-lg-9">
+                              <select class="form-control" id="ldv" name="MaLDV" required>
+                                   <option></option>
+                                   @foreach (var it in listldv)
+                                   {
+                                        <option value="@it.MaLDV">@it.TenLDV</option>
+                                   }
+
+                              </select>
+                         </div>
+                    </div>
+                    <div id="ketnap" style="display:none">
+                         <div class="col-lg-12 d-flex">
+                              <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                                   <label>Ngày vào đảng</label>
+                              </div>
+                              <div class="form-group col-lg-9">
+                                   <input type="date" placeholder="01-01-1999" class="form-control" name="NgayVaoDang">
+                              </div>
+                         </div>
+                    </div>
+                    <div id="chinhthuc" style="display:none">
+                         <div class="col-lg-12 d-flex">
+                              <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                                   <label>Ngày chính thức:</label>
+                              </div>
+                              <div class="form-group col-lg-9">
+                                   <input type="date" placeholder="01-01-1999" class="form-control" name="NgayChinhThuc">
+                              </div>
+                         </div>
+                    </div>
+
+                    @*<div class="col-lg-12 d-flex">
+                              <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                                   <label>Ngày Tham Gia</label>
+                              </div>
+                              <div class="form-group col-lg-9">
+                                   <input type="date" placeholder="01-01-1999" class="form-control" name="NgayThamGia">
+                              </div>
+                         </div>*@
+                    @*<div class="col-lg-12 d-flex">
+                              <div class="form-group col-lg-3 text-uppercase text-left" style="padding: 5px 5px;">
+                                   <label>Vị Trí Trong Hội</label>
+                              </div>
+                              <div class="form-group col-lg-9">
+                                   <select class="form-control" name="ViTri">
+                                        <option value="3">Hội Viên </option>
+
+                                        <option value="1">Hội Trưởng</option>
+                                   </select>
+                              </div>
+                         </div>*@
+
+               </div>
+
+          </div>
+          <div class="row col-lg-12 justify-content-center">
+               <div class="d-flex">
+                    <a href="@Url.Action("ThongtinHoiVien","ChiHoi", new { id = Session["MaHoi"] })" class="btn btn-danger text-uppercase text-end px-3" style="margin-right: 20px"> Hủy</a>
+                    <button type="submit" href="" class="btn btn-primary text-uppercase text-end" id="next"> Lưu</button>
+               </div>
+          </div>
+     </form>
+</div>
+
+
+
+<script>
+     const selectElement1 = document.getElementById('lhv');
+     const elementToHide1 = document.getElementById('cb');
+
+     selectElement1.addEventListener('change', (event) => {
+          const selectedOption1 = event.target.value;
+
+
+          if (selectedOption1 == 3 || selectedOption1 == 4) {
+               elementToHide1.style.display = 'none'; // Hide the element
+          } else {
+               elementToHide1.style.display = 'block'; // Show the element
+          }
+     });
+
+</script>
+<script>
+     const selectElement = document.getElementById('ldv');
+     const elementToHide = document.getElementById('ketnap');
+     const elementToHide2 = document.getElementById('chinhthuc');
+
+     selectElement.addEventListener('change', (event) => {
+          const selectedOption = event.target.value;
+          if (selectedOption == 3 || selectedOption == 4) {
+               elementToHide.style.display = 'none';
+               elementToHide2.style.display = 'none'; // Hide the element
+          } else {
+               if (selectedOption == 1) {
+                    elementToHide.style.display = 'block';
+                    elementToHide2.style.display = 'block';
+               } else if (selectedOption == 2) {
+                    elementToHide.style.display = 'block';
+                    elementToHide2.style.display = 'none';
+               }
+               // Show the element
+          }
+     });
+
+</script>
+@*<script>
+          const elementToToggle = document.getElementById('danguy');
+          const checkBox = document.getElementById('checkdanguy');
+          checkBox.addEventListener('change', () => {
+               if (checkBox.checked) {
+                    elementToToggle.style.display = 'block'; // Show the element
+                    // Or: elementToToggle.style.visibility = 'visible';
+               } else {
+                    elementToToggle.style.display = 'none'; // Hide the element
+                    // Or: elementToToggle.style.visibility = 'hidden';
+               }
+          });
+     </script>
+
+     <script>
+          const next = document.getElementById('next');
+          const back = document.getElementById('back');
+          const tab2 = document.getElementById('tab2-tab');
+          const tab1 = document.getElementById('tab1-tab');
+
+          next.addEventListener('click', () => {
+
+               tab2.click(); // Simulate a click on the tab link to switch to Tab 2
+          });
+          back.addEventListener('click', () => {
+               tab1.click(); // Simulate a click on the tab link to switch to Tab 2
+          });
+     </script>
+     <script>
+          const selectElement2 = document.getElementById('cd');
+          const elementToHide2 = document.getElementById('qdcd');
+
+          selectElement2.addEventListener('change', (event) => {
+               elementToHide2.style.display = 'block';
+               //const selectedOption2 = event.target.value;
+               //if (selectedOption2 == 3 || selectedOption2 == 4) {
+               //     elementToHide2.style.display = 'none'; // Hide the element
+               //} else {
+               //     elementToHide2.style.display = 'block'; // Show the element
+               //}
+          });
+     </script>
+     <script>
+          const selectElement3 = document.getElementById('td');
+          const elementToHide3 = document.getElementById('qdtd');
+
+          selectElement3.addEventListener('change', (event) => {
+               elementToHide3.style.display = 'block';
+               //const selectedOption2 = event.target.value;
+               //if (selectedOption2 == 3 || selectedOption2 == 4) {
+               //     elementToHide2.style.display = 'none'; // Hide the element
+               //} else {
+               //     elementToHide2.style.display = 'block'; // Show the element
+               //}
+          });
+     </script>*@
+
+

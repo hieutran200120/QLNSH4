@@ -1,0 +1,199 @@
+﻿
+@{
+     Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Đăng nhập</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Assets/Sbadmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Assets/Sbadmin/css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+    <link rel="icon" href="~/Assets/Sbadmin/img/logomta.png" type="image/x-icon">
+
+</head>
+
+
+<body  style="background: url('/Assets/Newsfeed/images/photograph_img4.jpg'); background-size: cover; background-position: center; background-attachment: fixed; color: #ffffff;">
+    @if (!string.IsNullOrEmpty(ViewBag.Khoa))
+    {
+        <script>
+          Swal.fire({
+               position: 'center',
+               icon: 'error',
+               title: '@Html.Raw(ViewBag.Khoa)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+        // Hiển thị hộp thoại alert nếu có thông báo
+        @*alert('@Html.Raw(ViewBag.Khoa)');*@
+        </script>
+    }
+    @if (!string.IsNullOrEmpty(ViewBag.Sai))
+    {
+        <script>
+          Swal.fire({
+               position: 'center',
+               icon: 'error',
+               title: '@Html.Raw(ViewBag.Sai)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+        // Hiển thị hộp thoại alert nếu có thông báo
+        @*alert('@Html.Raw(ViewBag.Khoa)');*@
+        </script>
+    }
+    <div class="container" style="width: 700px">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">CHÀO MỪNG ĐẾN VỚI    HỆ THỐNG QUẢN LÝ NHÂN SỰ HỆ 4 HỌC VIỆN KỸ THUẬT QUÂN SỰ!  </h1>
+
+                                    </div>
+                                    <form class="form-logins" id="frmlogin" method="post" action="/Account/DangNhap">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                   id="exampleInputEmail" autocomplete="off"
+                                                   placeholder="Tên đăng nhập..." name="tendn" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                                   id="exampleInputPassword" placeholder="Mật khẩu..." name="password" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small" id="btnPassword">
+                                                <input type="checkbox" class="custom-control-input" id="showPassword">
+                                                <label class="custom-control-label" for="showPassword">
+                                                    Hiển thị mật khẩu
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <button type="submit" @*onclick="Login()"*@ class="btn btn-primary btn-user btn-block">Đăng nhập</button>
+                                        <script>
+                                            $(document).ready(function () {
+                                                $("#showPassword").on("change", function () {
+                                                    // Get the password input field
+                                                    var passwordField = $("#exampleInputPassword");
+
+                                                    // Check if the checkbox is checked
+                                                    if ($(this).is(":checked")) {
+                                                        // If checked, change the input type to "text" to show the password
+                                                        passwordField.attr("type", "text");
+                                                    } else {
+                                                        // If unchecked, change the input type back to "password" to hide the password
+                                                        passwordField.attr("type", "password");
+                                                    }
+                                                });
+                                            });
+                                        </script>
+                                    </form>
+                                    <hr>
+                                    @*<div class="text-center">
+                                             <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                        </div>
+                                        <div class="text-center">
+                                             <a class="small" href="register.html">Create an Account!</a>
+                                        </div>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    @*<script>
+             $(document).ready(function () {
+                  $("#frmlogin").submit(function (event) {
+                      /* event.prevToStringentDefault();*/
+                       const tk = document.getElementById("exampleInputEmail").value;
+                       const mk = document.getElementById("exampleInputPassword").value;
+                       // Send the login request using Ajax
+                       $.ajax({
+                            type: "POST",
+                            url: "/Account/DangNhap", // Replace with the appropriate URL for your controller action
+                            data: {
+                                 tendn: tk,
+                                 password: mk
+                            },
+                            dataType: 'json',
+                            success: function (response) {
+                                 // Handle the response from the server
+                                 if (response.status == true) {
+                                      if (response.data == "0") {
+                                          /* alert("Tài khoản của bạn đã bị khóa.");*/
+                                           Swal.fire({
+                                                position: 'center',
+                                                icon: 'error',
+                                                title: 'Tài khoản của bạn đã bị khóa',
+                                                showConfirmButton: false,
+                                                timer: 1500
+                                           });
+                                      } else if (response.data == "1") {
+                                            window.location = '@Url.Action("TrangChu","Account")'
+                                                /*window.location.href = "/Account/TrangChu";*/
+                                      }
+                                 } else if (response.status == false) {
+                                     /* alert("Tên đăng nhập hoặc mật khẩu chưa chính xác.");*/
+                                      Swal.fire({
+                                           position: 'center',
+                                           icon: 'error',
+                                           title: 'Tên đăng nhập hoặc mật khẩu chưa chính xác',
+                                           showConfirmButton: false,
+                                           timer: 1500
+                                      });
+                                      /*$("#loginStatus").text("Invalid username or password.");*/
+                                 }
+                            },
+                            //error: function () {
+                            //     $("#loginStatus").text("Error occurred during login.");
+                            //},
+                       });
+                  });
+             });
+
+        </script>*@
+    <!-- Bootstrap core JavaScript-->
+
+    <script src="~/Assets/Sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Assets/Sbadmin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Assets/Sbadmin/js/sb-admin-2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+﻿q
+@{
+    Layout = null;
+    ViewBag.Title = "Register";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Đăng ký tài khoản</title>
+    <!-- Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="~/Template/css_b/bootstrap.min.css">
+
+    <!-- Font Awesome Stylesheet -->
+    <link rel="stylesheet" href="~/Template/font-awesome-4.1.0/css/font-awesome.min.css">
+
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="~/Template/css_b/style.css">
+    <link rel="stylesheet" id="cpswitch" href="~/Template/css_b/orange.css">
+    <link rel="stylesheet" href="~/Template/css_b/responsive.css">
+
+    <link type="text/css" href="/Content/css/Login.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <form class="form-login" method="post">
+            <h1>Đăng ký</h1>
+            <div class="form-text">
+                <label>Tài Khoản</label>
+                <input type="text" id="Username" name="id[0]" required />
+                <span id="register"><i class="fa fa-user"></i></span>
+            </div>
+            <div class="form-text">
+                <label>Email</label>
+                <input type="text" id="Email" name="id[0]" required />
+                <span id="register"><i class="fa fa-envelope"></i></span>
+            </div>
+            <div class="form-text">
+                <label>Mật khẩu</label>
+                <input type="text" id="Password" name="id[0]" required />
+                <span id="register"><i class="fa fa-lock"></i></span>
+            </div>
+            <div class="form-text">
+                <label>Xác nhận mật khẩu</label>
+                <input type="text" id="Password" name="id[0]" required />
+                <span id="register"><i  class="fa fa-lock"></i></span>
+            </div>
+
+            <button>Đăng ký</button>
+            <div class="other-links">
+                <p class="link-line">Bạn đã có Tài khoản? <a href="~/Account/Login">Đăng nhập ở đây</a></p>
+            </div>
+        </form>
+
+
+        <!-- end other-links -->
+    </div>
+    <!-- end custom-form -->
+    <!-- end custom-form-img -->
+    <script>
+        const formLogin = document.querySelectorAll('.form-text input')
+        const formLabel = document.querySelectorAll('.form-text label')
+        const formSpan = document.querySelectorAll('i')
+        for (let i = 0; i < 4; i++) {
+            formLogin[i].addEventListener("mouseover", function () {
+                formLabel[i].classList.add("focus")
+                formSpan[i].classList.add("focus")
+            })
+
+            formLogin[i].addEventListener("mouseout", function () {
+                if (formLogin[i].value == "") {
+                    formLabel[i].classList.remove("focus")
+                    formSpan[i].classList.remove("focus")
+                }
+            })
+
+        }
+   
+        
+    </script>
+</body>
+</html>

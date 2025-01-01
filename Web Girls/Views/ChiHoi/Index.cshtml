@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutQuanTriCapHV.cshtml";
+    //var list = (List<Web_Girls.Models.ModelsView.HoiPNView>)ViewBag.list;
+}
+<script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+<div style="color: #fff; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0; background: #299be4;">
+     <div class="row">
+          <div class="col-sm-10">
+               <h2 style="font-weight: bold">Danh sách chi hội phụ nữ tại Học viện</h2>
+          </div>
+          <div class="col-sm-2">
+               <a class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="background-color: #ffb836;"><i class="fas fa-plus"></i> <span style="color: white">Thêm mới</span></a>
+               @*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@
+               <!--</div>-->
+          </div>
+          <!--<div class="col-sm-7">
+          <a href="#" class="btn btn-primary" style="background-color: #ffb836;"><i class="material-icons" style="color: white;">&#xE147;</i> <span style="color: white;" data-toggle="modal" data-target="#them">Thêm mới</span></a>-->
+          @*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@
+          <!--</div>-->
+     </div>
+</div>
+
+<!--<div class="table-responsive">
+     <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+               <tr>
+                    <th style="display:none"></th>
+                    <th>Tên chi hội</th>
+                    <th>Hội trưởng</th>
+                    <th></th>
+                    <th></th>
+               </tr>
+          </thead>
+          <tbody>
+             
+
+                        
+                         <td class="center" style="list-style-type: none;">
+                              <li class="dropdown">
+                                   <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary btn-sm" data-toggle="dropdown" type="button"><i class="fa fa-bars"></i></button>
+                                   <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                             <a class="dropdown-item" id="loadModal" data-toggle="modal" data-target="#showmodal1" href="">
+                                                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                  Cập nhật
+                                             </a>
+                                        </li>
+
+
+                                        <li class="divider"></li>
+                                        <li>
+                                             <a class="dropdown-item">
+                                                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                  Xóa
+                                             </a>
+                                        </li>-->
+                                        @*<li class="divider"></li>
+
+                                             <li>
+                                                  <a id="xoa" onclick="xoa()"><i class="fa fa-edit"></i>&nbsp;   Xóa</a>
+                                             </li>*@
+                                   <!--</ul>
+                              </li>
+
+                         </td>
+                    </tr>
+               }
+          </tbody>
+     </table>
+     <div id="showmodal1" class="modal fade" role="dialog">
+          <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+          </div>
+     </div>
+     <div id="myModal" class="modal fade" role="dialog">
+
+          <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+               <div class="modal-content">
+                    <form id="frmSuaHang" method="post" action="/ChiHoi/ThemChiHoi">
+                         <div class="modal-header">
+                              <h4 class="modal-title">Thêm hội phụ nữ</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         </div>
+
+                         <div class="modal-body">-->
+                              @*<input type="text" value="@hv.MaHV" name="MaHV" id="MaHV" style="display:none" />
+                                   <div class="form-group">
+                                        <label for="usr">Tên hội :</label>
+                                        <select class="form-control" id="MaDangUy">
+                                             @foreach (var it in cb)
+                                             {
+                                                  <option value="@it.MaDangUy">@it.TenDangUy</option>
+                                             }
+
+                                        </select>
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="usr">Chức vụ:</label>
+                                        <select class="form-control" id="ChucVu">
+                                             <option value="Đảng ủy viên">Đảng ủy viên</option>
+                                             <option value="Phó bí thư đảng ủy">Phó bí thư đảng ủy</option>
+                                             <option value="Bí thư đảng ủy">Bí thư đảng ủy</option>
+                                        </select>
+                                   </div>*@
+
+                              <!--<div class="form-group">
+                                   <label for="usr">Tên hội:</label>
+                                   <input type="text" class="form-control" id="NgayQD" name="TenHPN" required>
+                              </div>
+                         </div>
+                         <div class="modal-footer">
+                              <button type="submit" class="btn btn-primary">Lưu</button>
+                              <a class="btn btn-default" data-dismiss="modal">Hủy bỏ</a>
+                         </div>
+                    </form>
+
+
+               </div>
+
+          </div>
+
+     </div>
+     <script>
+
+          $("#dataTable").on("click", "#loadModal", function () {
+                     var id = $(this).closest("tr").find("td").eq(0).html();
+                     console.log(id);
+                     $.ajax({
+                           url: '@Url.Action("Edit", "ChiHoi")',
+                           data: { Ma: id },
+                           type: 'GET', // Change to 'POST' if needed
+                           success: function (data) {
+                                 $('#showmodal1 .modal-dialog').html(data);
+                           }
+                     });
+          });
+                                               /*  });*/
+     </script>
+</div>-->
+
