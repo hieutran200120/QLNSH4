@@ -1,0 +1,28 @@
+﻿
+@{
+     var hd = (Web_Girls.Models.Context.HoatDong_HoiVien)ViewBag.hd;
+
+}
+
+<div class="modal-content">
+     <div class="modal-header">
+          <h4 class="modal-title">Sửa số tiền ủng hộ</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+     </div>
+     <form id="frmSuaHang" method="post" action="/HoatDong/SuaSoTien">
+          <div class="modal-body">
+               <input type="text" / name="ma" style="display:none" value="@hd.MaHD_HV">
+               <div class="form-group">
+                    <label for="usr">Số tiền ủng hộ:</label>                
+                         <input type="number" class="form-control" value="@hd.SoTien" name="SoTien">                                 
+               </div>
+
+          </div>
+          <div class="modal-footer">
+               <button type="submit" class="btn btn-primary" href="#">Thay đổi</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+
+          </div>
+     </form>
+
+</div>

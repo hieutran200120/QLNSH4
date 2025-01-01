@@ -1,0 +1,111 @@
+﻿
+@{
+     ViewBag.Title = "ThongKeHCGD";
+     if (Session["Quyen"].ToString() == "1")
+     {
+          Layout = "~/Views/Shared/_LayoutQuanTriCapHV.cshtml";
+     }
+     else if (Session["Quyen"].ToString() == "2")
+     {
+          Layout = "~/Views/Shared/_LayoutQuanTriCapHoi.cshtml";
+     }
+}
+     <script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+     <script src="~/Assets/Sbadmin/vendor/chart.js/Chart.min.js"></script>
+
+     <div id="page-wrapper">
+          <div style="color: #fff; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0; background: #1d3557;">
+               <div class="row d-flex">
+                    <div class="col-sm-10">
+                         <h2 style="font-weight: bold">Thống kê hoàn cảnh gia đình</h2>
+                    </div>
+                    <!--<div class="col-sm-2">
+                         <!--if (Session["Quyen"].ToString() == "1")
+                         {
+                              <a href="Url.Action("Report","Report", new {Ma = 0})" class="btn btn-primary" style="background-color: #ffb836;"><i class="fas fa-file-export"></i> <span style="color: white;" data-toggle="modal" data-target="#them">Xuất báo cáo</span></a>-->
+                    <!--@*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@-->
+                    <!--}
+                         else
+                         {
+                              <a href="Url.Action("Report","Report", new {Ma = Session["MaHoi"]})" class="btn btn-primary" style="background-color: #ffb836;"><i class="fas fa-file-export"></i> <span style="color: white;" data-toggle="modal" data-target="#them">Xuất báo cáo</span></a>
+                         }
+
+                    </div>-->
+               </div>
+
+          </div>
+          <div class="col-lg-12 d-flex">           
+                    <canvas id="myBarChart1" style="width:100%" @*width="100" height="60"*@></canvas>                        
+               <script>
+                    $(document).ready(function () {
+                         if ('@Session["Quyen"]' == 1) {
+                              var idhoi = 0;
+                         } else {
+                              var idhoi = '@Session["MaHoi"]';
+                         }
+
+                         $.ajax({
+                              url: '/ThongKe/TKHoanCanhGD',
+                              type: 'POST',
+                              data: { id: idhoi },
+                              dataType: 'json',
+                              success: function (res) {
+                                   if (res.status == true) {
+                                        /* console.log(res.data);*/
+                                        tkbyyear1(res.data);
+                                   }
+                              }
+
+                         });
+
+                    });
+                    function tkbyyear1(lsdata1) {
+                         var lslabel = [];
+                         var lsdata = [];
+                         /* var lsdata2 = [];*/
+                         $.each(lsdata1, function (index, item) {
+                              lslabel.push(item.TenHCGD);
+                              lsdata.push(item.SoLuongHV);
+                              /*lsdata2.push(item.TrongKho);*/
+                         });
+                         console.log(lslabel);
+                         console.log(lsdata);
+                         var ctx1 = document.getElementById('myBarChart1');
+                         var myBarChart1 = new Chart(ctx1, {
+                              type: 'bar',
+                              data: {
+                                   labels: lslabel /*["Trợ giảng", "Giảng viên", "Giảng viên chính", "Phó GS", "GS"]*/,
+                                   datasets: [{
+                                        /*label: "Số lượng kỷ luật",*/
+                                        //lineTension: 0.3,
+                                       /* backgroundColor: "blue",*/
+                                        //borderColor: "rgba(78, 115, 223, 1)",
+                                        //pointRadius: 3,
+                                        //pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                                        //pointBorderColor: "rgba(78, 115, 223, 1)",
+                                        //pointHoverRadius: 3,
+                                        //pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                                        //pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                                        //pointHitRadius: 10,
+                                        //pointBorderWidth: 2,
+                                        data: lsdata,
+                                        //label: "Năm",
+
+                                        //data: lsdata/* [12.21, 15.58, 11.25, 8.32, 5.56, 9.56]*/,
+                                        backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745', "red", "#e5ce6d", "black", '#ffc107', '#28a745', "red", "#e5ce6d", "black"],
+                                   }],
+                              },
+                              options: {
+                                   title: {
+                                        display: true,
+                                        text: 'Thống kê hoàn cảnh gia đình học viên',
+                                        position: 'bottom'
+                                   }
+
+                              }
+                         });
+                    }
+               </script>
+          </div>
+     </div>
+

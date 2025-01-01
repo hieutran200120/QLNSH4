@@ -1,0 +1,39 @@
+﻿
+@{
+     var ls = (Web_Girls.Models.Context.LichSuCapBac)ViewBag.ls;
+    
+}
+
+<!-- Modal content-->
+<div class="modal-content">
+     <div class="modal-header">
+          <h4 class="modal-title">Sửa thông tin lịch sử cấp bậc</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+     </div>
+     <form id="frmSuaHang" method="post" action="/HoiVien/SuaLichSuCapBac">
+          <div class="modal-body">
+               <input  type="text"/ name="MaLSCD" style="display:none" value="@ls.MaLSCD">
+               <div class="form-group">
+                    <label for="usr">Ngày quyết định:</label>
+                    @if (ls.NgayQD == null)
+                    {
+                         <input type="date" class="form-control" name="NgayQD">
+                    }
+                    else
+                    {
+                         <input type="date" class="form-control" value="@ls.NgayQD.Value.ToString("yyyy-MM-dd")" name="NgayQD">
+                    }
+
+               </div>
+              
+          </div>
+          <div class="modal-footer">
+               <button type="submit" class="btn btn-primary" href="#">Lưu</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+
+          </div>
+     </form>
+
+</div>
+
+

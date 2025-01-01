@@ -1,0 +1,35 @@
+﻿@{
+    var loaish = (Web_Girls.Models.Context.LoaiSinhHoat)ViewBag.loaish;
+}
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">Cập nhật thông tin sinh hoạt</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <form id="frmSuaHang" method="post" action="/SinhHoat/SuaLoaiSinhHoat">
+        <div class="modal-body">
+            <input type="text" name="MaLoaiSinhHoat" style="display:none" value="@loaish.MaLoaiSinhHoat">
+
+            <div class="form-group">
+                <label for="TenSinhHoat">Tên loại sinh hoạt:</label>
+                <input type="text" class="form-control" value="@loaish.TenSinhHoat" name="TenSinhHoat">
+            </div>
+
+            @if (Session["Quyen"].ToString() == "1")
+            {
+                <input class="form-control" value="0" name="MaHoi" style="display:none">
+            }
+            else if (Session["Quyen"].ToString() == "2")
+            {
+                <input class="form-control" value="@Session["MaHoi"]" name="MaHoi" style="display:none">
+            }
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" href="#">Thay đổi</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+
+        </div>
+    </form>
+</div>

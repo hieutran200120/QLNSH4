@@ -1,0 +1,119 @@
+﻿
+@{
+    if (Session["Quyen"].ToString() == "1")
+    {
+        Layout = "~/Views/Shared/_LayoutQuanTriCapHV.cshtml";
+    }
+    else if (Session["Quyen"].ToString() == "2")
+    {
+        Layout = "~/Views/Shared/_LayoutQuanTriCapHoi.cshtml";
+    }
+    var list = (List<Web_Girls.Models.ModelsView.DangVienView>)ViewBag.list;
+    var ldv = (List<Web_Girls.Models.Context.LoaiDangVien>)ViewBag.ldv;
+}
+<script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+<style>
+    /* Màu nền cho tiêu đề cột */
+    table thead th {
+        background-color: #457b9d; /* Xanh nhạt */
+        color: white; /* Màu chữ trắng */
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* Màu nền cho các ô dữ liệu */
+    table tbody td {
+        background-color: #f8f9fa; /* Màu nền nhạt */
+    }
+
+    /* Dòng được chọn (hover) */
+    table tbody tr:hover {
+        background-color: #d1ecf1; /* Xanh nhạt khi hover */
+    }
+
+    /* Đường viền */
+    table {
+        border-collapse: collapse;
+    }
+
+        table th, table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+        }
+</style>
+<div id="page-wrapper">
+     <div style="color: black; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0;">
+          <div class="row">
+               <div class="col-sm-10">
+                    <h2 style="font-weight: bold">Danh sách đảng viên</h2>
+               </div>
+               <div class="col-sm-2">
+                    @if (Session["Quyen"].ToString() == "1")
+                    {
+                         <a href="@Url.Action("InDanhSachDV","Report", new {Ma = 0})" class="btn btn-primary" style="background-color: green;"> <i class="fas fa-print"></i> <span style="color: white;">In danh sách</span></a>
+                    }
+                    else if (Session["Quyen"].ToString() == "2")
+                    {
+                         <a href="@Url.Action("InDanhSachDV","Report")" class="btn btn-primary" style="background-color: green;"> <i class="fas fa-print"></i> <span style="color: white;">In danh sách</span></a>
+                    }
+                    @*<a class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="background-color: red;"> <i class="fas fa-print"></i> <span style="color: white;">In danh sách</span></a>*@
+                    @*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@
+                    <!--</div>-->
+               </div>
+          </div>
+     </div>
+     <div class="table-responsive">
+          <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+               <thead>
+                    <tr>
+                         <th style="display:none">Mã</th>
+                         <th>Tên hội viên</th>
+                         <th>Đơn vị</th>
+                         @*<th>Thuộc chi hội</th>*@
+                         <th>Loại đảng viên</th>
+                         <th>Thao Tác</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    @foreach (var it in list)
+                    {
+                         <tr>
+                              <td style="display:none">@it.MaHV</td>
+                              <td>@it.TenHV</td>
+                              <td>@it.TenDonVi</td>
+                              @*<td>@it.TenChiHoi</td>*@
+                              <td>@it.LoaiDangVien</td>
+                              @if (Session["Quyen"].ToString() == "1")
+                              {
+                                   <td>-</td>
+                              }
+                              else if (Session["Quyen"].ToString() == "2")
+                              {
+                                   <td><a class="btn btn-primary" id="loadModal" data-toggle="modal" data-target="#showmodal1"><i class="fas fa-edit mr-3"></i>Cập Nhật</a></td>
+                              }
+
+                         </tr>
+                    }
+               </tbody>
+          </table>
+          <div id="showmodal1" class="modal fade" role="dialog">
+               <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+               </div>
+          </div>
+     </div>
+     <script>
+                    $("#dataTable").on("click", "#loadModal", function () {
+                          var id = $(this).closest("tr").find("td").eq(0).html();
+                          console.log(id);
+                          $.ajax({
+                                url: '@Url.Action("LoaiDangVien", "HoiVien")',
+                                data: { ma: id },
+                                type: 'GET', // Change to 'POST' if needed
+                                success: function (data) {
+                                      $('#showmodal1 .modal-dialog').html(data);
+                                }
+                          });
+                    });
+     </script>
+</div>

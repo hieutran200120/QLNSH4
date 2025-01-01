@@ -1,0 +1,179 @@
+﻿
+@{
+     ViewBag.Title = "ThongtinHoiVien";
+     if (Session["Quyen"].ToString() == "1")
+     {
+          Layout = "~/Views/Shared/_LayoutQuanTriCapHV.cshtml";
+     }
+     else if (Session["Quyen"].ToString() == "2")
+     {
+          Layout = "~/Views/Shared/_LayoutQuanTriCapHoi.cshtml";
+     }
+     var list = (List<Web_Girls.Models.ModelsView.HoiVienView>)ViewBag.list;
+}
+@if (!string.IsNullOrEmpty(ViewBag.OK))
+{
+     <script>
+     // Hiển thị hộp thoại alert nếu có thông báo
+      Swal.fire({
+               position: 'center',
+               icon: 'success',
+               title: '@Html.Raw(ViewBag.OK)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+     </script>
+}
+<style>
+    /* Màu nền cho tiêu đề cột */
+    table thead th {
+        background-color: #457b9d; /* Xanh nhạt */
+        color: white; /* Màu chữ trắng */
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* Màu nền cho các ô dữ liệu */
+    table tbody td {
+        background-color: #f8f9fa; /* Màu nền nhạt */
+    }
+
+    /* Dòng được chọn (hover) */
+    table tbody tr:hover {
+        background-color: #d1ecf1; /* Xanh nhạt khi hover */
+    }
+
+    /* Đường viền */
+    table {
+        border-collapse: collapse;
+    }
+
+        table th, table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+        }
+</style>
+<div style="color: black; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0;">
+     <div class="row">
+          <div class="col-sm-9 d-flex">
+               @*<a><i class="fas fa-arrow-left fa-lg"></i></a>*@
+               <h2 style="font-weight: bold">Danh sách học viên </h2>
+          </div>
+          <div class="col-sm-3 d-flex">
+               <a href="@Url.Action("AddHoiVien","HoiVien")" class="btn btn-primary" style="margin-right:10px;"> <i class="fas fa-plus"></i> <span style="color: white;">Thêm mới</span></a>
+               <a href="@Url.Action("InDanhSachHV","Report")" class="btn btn-primary" style="background-color: green;"> <i class="fas fa-print"></i> <span style="color: white;">In danh sách</span></a>
+
+               @*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@
+               <!--</div>-->
+          </div>
+          <!--<div class="col-sm-7">
+          <a href="#" class="btn btn-primary" style="background-color: #ffb836;"><i class="material-icons" style="color: white;">&#xE147;</i> <span style="color: white;" data-toggle="modal" data-target="#them">Thêm mới</span></a>-->
+          @*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@
+          <!--</div>-->
+     </div>
+</div>
+
+<div class="table-responsive">
+     <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+               <tr>
+                    <th>Họ Và Tên</th>
+                    <th>Ngày Sinh</th>
+                    <th>Cấp Bậc</th>
+                    <th>Trình Độ</th>
+                    <th>Chức Danh</th>
+                    <th>Đơn Vị</th>
+                    <th>Thao Tác</th>
+               </tr>
+          </thead>
+          <tbody>
+               @foreach (var it in list)
+               {
+                    <tr>
+
+                         <td>@it.TenHV</td>
+                         <td>@it.NgaySinh.Value.ToString("dd/MM/yyyy")</td>
+                         <td>@it.CapBac</td>
+                         <td>@it.TrinhDo</td>
+                         <td>@it.ChucDanh</td>
+                         <td>@it.DonVi</td>
+                         <td class="center" style="list-style-type: none;">
+                              <li class="dropdown">
+                                   <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary btn-sm" data-toggle="dropdown" type="button"><i class="fa fa-bars"></i></button>
+                                   <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                             <a class="dropdown-item" href="@Url.Action("HoiVienDetails","HoiVien", new { id = it.MaHV})">
+                                                  <i class="fas fa-eye fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                  Chi tiết
+                                             </a>
+                                        </li>
+                                        @*<li>
+                                             <a class="dropdown-item" href="#">
+                                                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                  Cập Nhật
+                                             </a>
+                                        </li>*@
+                                        <li>
+                                             <a class="dropdown-item" href="#" onclick="Xoa(@it.MaHV)">
+                                                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                  Xóa
+                                             </a>
+                                        </li>
+                                        @*<li class="divider"></li>
+
+                                             <li>
+                                                  <a id="xoa" onclick="xoa()"><i class="fa fa-edit"></i>&nbsp;   Xóa</a>
+                                             </li>*@
+                                   </ul>
+                              </li>
+
+                         </td>
+                    </tr>
+               }
+          </tbody>
+     </table>
+</div>
+<script>
+           function Xoa(ma) {
+                  Swal.fire({
+                         title: 'Bạn có chắc chắn muốn xóa?',
+                         showCancelButton: true,
+                         confirmButtonText: 'Xóa',
+                         denyButtonText: `Hủy`,
+                  }).then((result) => {
+                                        /* Read more about isConfirmed, isDenied below */
+                      if (result.isConfirmed) {
+                            $.ajax({
+                                url:'/HoiVien/XoaHocVien',
+                                   data: {
+                                        ma: ma
+                                   },
+                                   type: 'POST',
+                                   dataType: 'json',
+                                   success: function (res) {
+                                        if (res.status == true) {
+                                             Swal.fire({
+                                                  position: 'center',
+                                                  icon: 'success',
+                                                  title: 'Đã xóa',
+                                                  showConfirmButton: false,
+                                                  timer: 10000
+                                             })
+                                             window.location = '@Url.Action("ThongtinHoiVien","ChiHoi", new { id = Session["MaHoi"] })'
+                                        } else if (res.status == false) {
+                                             Swal.fire({
+                                                  position: 'center',
+                                                  icon: 'error',
+                                                  title: 'Chưa xóa được',
+                                                  showConfirmButton: false,
+                                                  timer: 6000
+                                             })
+                                        }
+                                   }
+
+                            });
+
+                      }
+                  })
+           }
+</script>

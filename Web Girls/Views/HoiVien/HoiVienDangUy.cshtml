@@ -1,0 +1,193 @@
+﻿
+@{
+    ViewBag.Title = "HoiVienDangUy";
+    Layout = "~/Views/Shared/_LayoutCaNhan.cshtml";
+    var list = (List<Web_Girls.Models.ModelsView.HoiVienDangUyView>)ViewBag.list;
+    var hv = (Web_Girls.Models.Context.HoiVien)ViewBag.hv;
+    var cb = (List<Web_Girls.Models.Context.DangUy>)ViewBag.cb;
+    string tb = (string)ViewBag.tb;
+}
+
+<div id="page-wrapper">
+     <div style="color: #fff; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0; background: #299be4;">
+          <div class="row">
+               <div class="col-sm-10">
+                    <h2 style="font-weight: bold">Lịch sử chức vụ trong đảng ủy hội viên @hv.TenHV</h2>
+               </div>
+               @if (!string.IsNullOrEmpty(tb))
+               {
+
+               }
+               else
+               {
+                    <div class="col-sm-2">
+                         <a class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="background-color: #ffb836;"><i class="fas fa-plus"></i> <span style="color: white">Thêm mới</span></a>
+                         @*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@
+                         <!--</div>-->
+                    </div>
+               }
+
+          </div>
+     </div>
+     @if (!string.IsNullOrEmpty(tb))
+     {
+          <h2>@tb</h2>
+     }
+     else
+     {
+          <div class="table-responsive">
+               <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                         <tr>
+                              <th style="display:none">Mã</th>
+                              <th>Chức vụ</th>
+                              <th>Thuộc đảng ủy</th>
+                              <th>Thời gian</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                         @foreach (var it in list)
+                         {
+                              <tr>
+                                   <td style="display:none">@it.Ma</td>
+                                   <td>@it.ViTri</td>
+                                   <td>@it.TenDangUy</td>
+                                   @if (it.KetThuc == null)
+                                   {
+                                        <td>Từ @it.BatDau.Value.ToString("dd/MM/yyyy") đến nay</td>
+                                   }
+                                   else
+                                   {
+                                        <td>Từ @it.BatDau.Value.ToString("dd/MM/yyyy") đến  @it.KetThuc.Value.ToString("dd/MM/yyyy")</td>
+                                   }
+                                   <!--<td class="center" style="list-style-type: none;">
+                                   <li class="dropdown">
+                                        <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary btn-sm" data-toggle="dropdown" type="button"><i class="fa fa-bars"></i></button>
+                                        <ul class="dropdown-menu dropdown-menu-right">-->
+                                   @*<li>
+                                             <a class="dropdown-item" href="">
+                                                  <i class="fas fa-eye fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                  Chi tiết
+                                             </a>
+                                        </li>*@
+                                   <!--<li>
+                                                       <a class="dropdown-item" href="#">
+                                                            <i class="fas fa-edit mr-3"></i>
+                                                            Cập Nhật
+                                                       </a>
+                                                  </li>
+                                                  <li>
+                                                       <a class="dropdown-item text-danger" href="#" onclick="Xoa(@it.Ma)">
+                                                            <i class="fas fa-trash-alt mr-3"></i>
+                                                            Xóa
+                                                       </a>
+                                                  </li>
+
+                                             </ul>
+                                        </li>
+
+                                   </td>-->
+                              </tr>
+                         }
+                    </tbody>
+               </table>
+               <div id="myModal" class="modal fade" role="dialog">
+
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+                         <div class="modal-content">
+
+                              <div class="modal-header">
+                                   <h4 class="modal-title">Thêm lịch sử chức vụ đảng ủy</h4>
+                                   <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+
+                              <div class="modal-body">
+                                   <input type="text" value="@hv.MaHV" name="MaHV" id="MaHV" style="display:none" />
+                                   <div class="form-group">
+                                        <label for="usr">Tên đảng ủy:</label>
+                                        <select class="form-control" id="MaDangUy">
+                                             @foreach (var it in cb)
+                                             {
+                                                  <option value="@it.MaDangUy">@it.TenDangUy</option>
+                                             }
+
+                                        </select>
+                                   </div>
+                                   <div class="form-group">
+                                        <label for="usr">Chức vụ:</label>
+                                        <select class="form-control" id="ChucVu">
+                                             <option value="Đảng ủy viên">Đảng ủy viên</option>                                          
+                                             <option value="Phó bí thư đảng ủy">Phó bí thư đảng ủy</option>
+                                             <option value="Bí thư đảng ủy">Bí thư đảng ủy</option>
+                                        </select>
+                                   </div>
+
+                                   <div class="form-group">
+                                        <label for="usr">Ngày quyết định:</label>
+                                        <input type="date" class="form-control" id="NgayQD" name="NgayQD" required>
+                                   </div>
+                              </div>
+                              <div class="modal-footer">
+                                   <button type="submit" data-dismiss="modal" onclick="Them()" class="btn btn-primary">Lưu</button>
+                                   <a class="btn btn-default" data-dismiss="modal">Hủy bỏ</a>
+                              </div>
+
+
+                         </div>
+
+                    </div>
+
+               </div>
+               <script>
+                    const Them = () => {
+                         const MaHV = document.getElementById("MaHV").value;
+                         const MaDangUy = document.getElementById("MaDangUy").value;
+                         const ChucVu = document.getElementById("ChucVu").value;
+                         const NgayQD = document.getElementById("NgayQD").value;
+                         if (MaDangUy == "" || NgayQD == "" || ChucVu == "") {
+                              alert("Vui lòng nhập đầy đủ thông tin.");
+                         }
+                         $.ajax({
+                              type: "POST",
+                              url: "/HoiVien/ThemHoiVienDangUy", // Replace with the appropriate URL for your controller action
+
+                              data: {
+                                   MaHV: MaHV,
+                                   MaDangUy: MaDangUy,
+                                   ChucVu: ChucVu,
+                                   NgayQD: NgayQD,
+                              },
+                              dataType: 'json',
+                              success: function (response) {
+                                   // Handle the response from the server
+                                   if (response.status == true) {
+
+                                        alert("Thay đổi của bạn đã được gửi đi và đang chờ xác nhận.");
+
+                                   } else if (response.status == false) {
+                                        if (response.data == "0") {
+                                             alert("Bạn có 1 yêu cầu  đang chờ xác nhận.Hãy thử lại sau.");
+                                        } else if (response.data == "1") {
+                                             alert("Chức vụ bạn vừa nhập đã tồn tại.");
+                                        } else if (response.data == "2") {
+                                             alert("Ngày quyết định mà bạn chọn là trước so với ngày quyết định chức vụ đảng ủy hiện tại của bạn.Vui lòng thử lại");
+
+                                        }
+
+                                   }
+                              }
+                         });
+
+
+                    }
+               </script>
+
+          </div>
+     }
+
+
+
+</div>
+
+

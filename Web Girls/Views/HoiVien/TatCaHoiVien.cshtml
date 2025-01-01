@@ -1,0 +1,167 @@
+﻿
+@{
+     ViewBag.Title = "TatCaHoiVien";
+     Layout = "~/Views/Shared/_LayoutQuanTriCapHV.cshtml";
+     var list = (List<Web_Girls.Models.ModelsView.HoiVienView>)ViewBag.list;
+}
+<script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+<div style="color: black; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0; ">
+     <div class="row">
+          <div class="col-sm-9 d-flex">
+               @*<a><i class="fas fa-arrow-left fa-lg"></i></a>*@
+               <h2 style="font-weight: bold">Danh sách hội viên</h2>
+          </div>
+          <div class="col-sm-3 d-flex">
+               @*<a href="@Url.Action("AddHoiVien","HoiVien")" class="btn btn-primary" style="background-color: #ffb836;"> <i class="fas fa-plus"></i> <span style="color: white;">Thêm mới</span></a>*@
+               <a href="@Url.Action("InDanhSachHV","Report", new {Ma = 0})" class="btn btn-primary" style="background-color: green;"> <i class="fas fa-print"></i> <span style="color: white;">In danh sách</span></a>
+
+               @*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@
+               <!--</div>-->
+          </div>
+     </div>
+</div>
+
+<div class="table-responsive">
+     <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+               <tr>
+                    <th style="display:none">Mã</th>
+                    <th>Họ Và Tên</th>
+                    <th>Ngày Sinh</th>
+                    <th>Cấp Bậc</th>
+                    <th>Trình Độ</th>
+                    <th>Chức Danh</th>
+                    <th>Đơn Vị</th>
+                    <th>Thao Tác</th>
+               </tr>
+          </thead>
+          <tbody>
+               @foreach (var it in list)
+               {
+                    <tr>
+                         <td style="display:none">@it.MaHV</td>
+                         <td>@it.TenHV</td>
+                         <td>@it.NgaySinh.Value.ToString("dd-MM-yyyy")</td>
+                         <td>@it.CapBac</td>
+                         <td>@it.TrinhDo</td>
+                         <td>@it.ChucDanh</td>
+                         <td>@it.DonVi</td>
+                         <td class="center" style="list-style-type: none;">
+                              <li class="dropdown">
+                                   <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary btn-sm" data-toggle="dropdown" type="button"><i class="fa fa-bars"></i></button>
+                                   <ul class="dropdown-menu dropdown-menu-right">
+                                       <li>
+                                           <a class="dropdown-item" href="@Url.Action("HoiVienDetails","HoiVien", new { id = it.MaHV})">
+                                               <i class="fas fa-eye fa-sm fa-fw mr-2 text-gray-400"></i>
+                                               Chi tiết
+                                           </a>
+                                       </li>
+                                       @*<li>
+             <a class="dropdown-item" id="loadModal" data-toggle="modal" data-target="#showmodal11" href="#">
+                  <i class="fas fa-edit mr-3"></i>
+                  Điều chuyển
+             </a>
+        </li>*@
+                                       <li>
+                                           <a class="dropdown-item" href="javascript:void(0);" onclick="Xoa('@it.MaHV')">
+                                               <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                               Xóa
+                                           </a>
+                                       </li>
+                                       @*<li class="divider"></li>
+
+        <li>
+             <a id="xoa" onclick="xoa()"><i class="fa fa-edit"></i>&nbsp;   Xóa</a>
+        </li>*@
+                                   </ul>
+                              </li>
+
+                         </td>
+                    </tr>
+               }
+          </tbody>
+     </table>
+     @*<div id="showmodal11" class="modal fade" role="dialog">
+          <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+               <div class="modal-content">
+                    <div class="modal-header">
+                         <h4 class="modal-title">Điều chuyển hội viên</h4>
+                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                         <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="DieuChuyen()">Lưu</button>
+                         <button type="button" class="btn btn-default"  data-dismiss="modal">Hủy bỏ</button>
+                    </div>
+
+               </div>
+          </div>*@
+          <script>
+            $("#dataTable").on("click", "#loadModal", function () {
+                     var id = $(this).closest("tr").find("td").eq(0).html();
+                     console.log(id);
+                     $.ajax({
+                           url: '@Url.Action("LoadChiHoi", "HoiVien")',
+                           data: { Ma: id },
+                           type: 'GET', // Change to 'POST' if needed
+                           success: function (data) {
+                                 $('#showmodal11 .modal-dialog .modal-content .modal-body').html(data);
+                           }
+                     });
+          });
+          </script>
+          <script>
+           function Xoa(ma) {
+     Swal.fire({
+         title: 'Bạn có chắc chắn muốn xóa?',
+         showCancelButton: true,
+         confirmButtonText: 'Xóa',
+         cancelButtonText: 'Hủy',
+     }).then((result) => {
+         if (result.isConfirmed) {
+             $.ajax({
+                 url: '/HoiVien/XoaHV', // URL phải khớp với Controller/Action
+                 data: { ma: ma },
+                 type: 'POST',
+                 dataType: 'json',
+                 success: function (res) {
+                     if (res.status === true) {
+                         Swal.fire({
+                             position: 'center',
+                             icon: 'success',
+                             title: 'Đã xóa thành công!',
+                             showConfirmButton: false,
+                             timer: 2000
+                         }).then(() => {
+                             // Tải lại trang sau khi xóa
+                             window.location.href = '@Url.Action("TatCaHoiVien", "HoiVien")';
+                         });
+                     } else {
+                         Swal.fire({
+                             position: 'center',
+                             icon: 'error',
+                             title: res.message || 'Xóa thất bại!',
+                             showConfirmButton: true
+                         });
+                     }
+                 },
+                 error: function (xhr, status, error) {
+                     Swal.fire({
+                         position: 'center',
+                         icon: 'error',
+                         title: 'Đã xảy ra lỗi trong quá trình xử lý!',
+                         text: error,
+                         showConfirmButton: true
+                     });
+                 }
+             });
+         }
+     });
+ }
+          </script>
+     </div>
+</div>
+
+

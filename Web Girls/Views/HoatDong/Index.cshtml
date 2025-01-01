@@ -1,0 +1,383 @@
+﻿
+@{
+     ViewBag.Title = "Index";
+     if (Session["Quyen"].ToString() == "1")
+     {
+          Layout = "~/Views/Shared/_LayoutQuanTriCapHV.cshtml";
+     }
+     else if (Session["Quyen"].ToString() == "2")
+     {
+          Layout = "~/Views/Shared/_LayoutQuanTriCapHoi.cshtml";
+     }
+     var hd = (List<Web_Girls.Models.ModelsView.HoatDongView>)ViewBag.hoatdong;
+     var loaihd = (List<Web_Girls.Models.Context.LoaiHoatDong>)ViewBag.loaihoatdong;
+
+}
+<script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+<div id="page-wrapper">
+     <div style="color: black; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0;">
+          <div class="row">
+               <div class="col-sm-10 d-flex">
+                    @*<a><i class="fas fa-arrow-left fa-lg"></i></a>*@
+                    <h2 style="font-weight: bold">Danh sách hoạt động</h2>
+               </div>
+               <div class="col-sm-2">
+                    <a href="#" class="btn btn-primary"> <i class="fas fa-plus"></i> <span style="color: white;" data-toggle="modal" data-target="#them">Thêm mới</span></a>
+
+                    @*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@
+                    <!--</div>-->
+               </div>
+
+          </div>
+     </div>
+     <div class="table-responsive">
+          <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+               <thead>
+                    <tr>
+                         <th style="display:none">Mã</th>
+                         <th>Tên hoạt động</th>
+                         <th>Thời gian</th>
+                         <th>Số tiền</th>
+                         <th>Tham gia</th>
+                         <th style="width:300px">Loại hoạt động</th>
+                         <th>Đơn vị tổ chức</th>
+                         <th></th>
+                    </tr>
+
+               </thead>
+               <tbody>
+                    @foreach (var it in hd)
+                    {
+                         <tr>
+                              <td style="display:none">@it.Ma</td>
+                              <td>@it.TenHoatDong</td>
+                              <td>@it.ThoiGian.Value.ToString("dd/MM/yyyy")</td>
+                              @if (it.SoTien == null)
+                              {
+                                   <td>-</td>
+                              }
+                              else
+                              {
+                                   <td>@it.SoTien.Value.ToString("N0") VND</td>
+                              }
+                              @if (it.MaLoaiHoatDong == 1)
+                              {
+                                   <td><a id="loadModal" data-toggle="modal" data-target="#showmodal1" class="btn btn-outline-primary">Danh sách tham gia</a></td>
+                              }
+                              else
+                              {
+                                   <td>-</td>
+                              }
+                              <td>@it.LoaiHoatDong</td>
+                              <td>@it.DVToChuc</td>
+                              <td class="center" style="list-style-type: none;">
+                                   <li class="dropdown">
+                                        <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary btn-sm" data-toggle="dropdown" type="button"><i class="fa fa-bars"></i></button>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                             @if (it.MaLoaiHoatDong == 1)
+                                             {
+                                                  if (Session["Quyen"].ToString() == "1")
+                                                  {
+
+                                                       if (it.MaHoi == 0)
+                                                       {
+                                                            <li>
+                                                                 <a class="dropdown-item" id="loadModal1" data-toggle="modal" data-target="#showmodal2">
+                                                                      <i class="fas fa-edit mr-3"></i>
+                                                                      Cập Nhật
+                                                                 </a>
+                                                            </li>
+                                                            <li>
+                                                                 <a class="dropdown-item text-danger" href="#" onclick="Xoa(@it.Ma)">
+                                                                      <i class="fas fa-trash-alt mr-3"></i>
+                                                                      Xóa
+                                                                 </a>
+                                                            </li>
+                                                       }
+                                                  }
+
+                                                  if (Session["Quyen"].ToString() == "2")
+                                                  {
+                                                       <li>
+                                                            <a class="dropdown-item" href="@Url.Action("SuaHoatDongUngHo","HoatDong",new { ma = it.Ma, mahoi = Session["MaHoi"]})">
+                                                                 <i class="fas fa-edit mr-3"></i>
+                                                                 Cập nhật
+                                                            </a>
+                                                       </li>
+                                                       if (it.MaHoi != 0)
+                                                       {
+                                                            <li>
+                                                                 <a class="dropdown-item text-danger" href="#" onclick="Xoa(@it.Ma)">
+                                                                      <i class="fas fa-trash-alt mr-3"></i>
+                                                                      Xóa
+                                                                 </a>
+                                                            </li>
+                                                       }
+                                                  }
+
+                                             }
+                                             else
+                                             {
+                                                  if (Session["Quyen"].ToString() == "1")
+                                                  {
+                                                       if (it.MaHoi == 0)
+                                                       {
+                                                            <li>
+                                                                 <a class="dropdown-item" id="loadModal1" data-toggle="modal" data-target="#showmodal2">
+                                                                      <i class="fas fa-edit mr-3"></i>
+                                                                      Cập Nhật
+                                                                 </a>
+                                                            </li>
+                                                            <li>
+                                                                 <a class="dropdown-item text-danger" href="#" onclick="Xoa(@it.Ma)">
+                                                                      <i class="fas fa-trash-alt mr-3"></i>
+                                                                      Xóa
+                                                                 </a>
+                                                            </li>
+                                                       }
+                                                       else
+                                                       {
+                                                            <li>
+                                                                 <a class="dropdown-item text-danger" href="#" onclick="Xoa(@it.Ma)">
+                                                                      <i class="fas fa-trash-alt mr-3"></i>
+                                                                      Xóa
+                                                                 </a>
+                                                            </li>
+                                                       }
+                                                  }
+
+                                                  if (Session["Quyen"].ToString() == "2")
+                                                  {
+                                                       if (it.MaHoi != 0)
+                                                       {
+                                                            <li>
+                                                                 <a class="dropdown-item" id="loadModal1" data-toggle="modal" data-target="#showmodal2">
+                                                                      <i class="fas fa-edit mr-3"></i>
+                                                                      Cập Nhật
+                                                                 </a>
+                                                            </li>
+                                                            <li>
+                                                                 <a class="dropdown-item text-danger" href="#" onclick="Xoa(@it.Ma)">
+                                                                      <i class="fas fa-trash-alt mr-3"></i>
+                                                                      Xóa
+                                                                 </a>
+                                                            </li>
+                                                       }
+
+                                                  }
+
+                                             }
+
+
+                                        </ul>
+                                   </li>
+
+                              </td>
+                         </tr>
+                    }
+               </tbody>
+          </table>
+              <div id="showmodal1" class="modal fade" role="dialog">
+                   <div class="modal-dialog modal-dialog-centered" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+                   </div>
+              </div>
+          <div id="showmodal2" class="modal fade" role="dialog">
+               <div class="modal-dialog modal-dialog-centered" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+               </div>
+          </div>
+          <div class="modal fade" id="them" role="dialog">
+               <div class="modal-dialog modal-dialog-centered">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                         <div class="modal-header">
+                              <h4 class="modal-title">Thêm hoạt động</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         </div>
+
+                         <div class="modal-body">
+                              <div class="form-group">
+                                   <label for="usr">Loại hoạt động:</label>
+                                   <select class="form-control" id="MaloaiHD" required>
+                                        <option></option>
+                                        @foreach (var it in loaihd)
+                                        {
+                                             <option value="@it.MaLoaiHoatDong">@it.TenLoaiHoatDong</option>
+                                        }
+
+                                   </select>
+                              </div>
+                              <div class="form-group">
+                                   <label for="usr">Tên hoạt động:</label>
+                                   <input type="text" class="form-control" id="TenHD" placeholder="Tên hoạt động" autocomplete="off">
+                              </div>
+                              @if (Session["Quyen"].ToString() == "1")
+                              {
+                                   <div class="form-group" style="display:none">
+                                        <label for="usr">Tên hoạt động:</label>
+                                        <input type="text" class="form-control" id="MaHPN" value="0" placeholder="Tên hoạt động" autocomplete="off">
+                                   </div>
+                              }
+                              else if (Session["Quyen"].ToString() == "2")
+                              {
+                                   <div class="form-group" style="display:none">
+                                        <label for="usr">Tên hoạt động:</label>
+                                        <input type="text" class="form-control" id="MaHPN" value="@Session["MaHoi"]" placeholder="Tên hoạt động" autocomplete="off">
+                                   </div>
+                              }
+                              <div class="form-group" style="display:none" id="SoTien">
+                                   <label for="usr">Số tiền:</label>
+                                   <input type="number" class="form-control" id="Tien" placeholder="Số tiền" autocomplete="off">
+                              </div>
+                              <script>
+                                   const selectElement1 = document.getElementById('MaloaiHD');
+                                   const elementToHide1 = document.getElementById('SoTien');
+
+                                   selectElement1.addEventListener('change', (event) => {
+                                        const selectedOption1 = event.target.value;
+                                        console.log(selectedOption1);
+
+                                        if (selectedOption1 == 3) {
+                                             elementToHide1.style.display = 'block'; // Hide the element
+                                        } else {
+                                             elementToHide1.style.display = 'none'; // Show the element
+                                        }
+                                   });
+                              </script>
+
+                         </div>
+
+                         <div class="modal-footer">
+                              <a type="button" class="btn btn-primary" onclick="ThemHoatDong()">Thêm hoạt động</a>
+                              <button type="button" class="btn btn-default" data-dismiss="modal" @*data-toggle="modal" data-target="#error"*@>Hủy bỏ</button>
+
+
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+
+          <script>
+                function ThemHoatDong() {
+                    const MaLoaiHD = document.getElementById("MaloaiHD").value;
+                    const TenHD = document.getElementById("TenHD").value;
+                     const SoTien = document.getElementById("Tien").value;
+                     const MaHPN = document.getElementById("MaHPN").value;
+                     if (MaLoaiHD == "" && TenHD == "") {
+                          alert("Vui lòng nhập đầy đủ thông tin.");
+                          window.location.href = "/HoatDong/Index?ma=" + MaHPN;
+                     } else {
+                          if (MaLoaiHD == 3 && (SoTien == "" || TenHD == "")) {
+                               alert("Vui lòng nhập đầy đủ thông tin.");
+                               window.location.href = "/HoatDong/Index?ma=" + MaHPN;
+                          }
+                          if (MaLoaiHD == 1 && TenHD == "") {
+                               alert("Vui lòng nhập đầy đủ thông tin.");
+                               window.location.href = "/HoatDong/Index?ma=" + MaHPN;
+                          }
+                          if (MaLoaiHD == 2 && TenHD == "") {
+                               alert("Vui lòng nhập đầy đủ thông tin.");
+                               window.location.href = "/HoatDong/Index?ma=" + MaHPN;
+                          }
+                     }                    
+                    $.ajax({
+                         url: "/HoatDong/ThemHoatDong",
+                         data: {
+                              MaHPN: MaHPN,
+                              MaLoaiHD: MaLoaiHD,
+                              TenHD: TenHD,
+                              SoTien: SoTien
+                         },
+                         type: 'POST',
+                         dataType: 'json',
+                         success: function (res) {
+                              if (res.status == true) {
+                                   Swal.fire({
+                                        position: 'center',
+                                        icon: 'success',
+                                        title: 'Thêm thành công',
+                                        showConfirmButton: false,
+                                        timer: 6000
+                                   })
+                                   window.location.href = "/HoatDong/Index?ma=" + MaHPN;
+                              }
+                         }
+                    });
+                }
+               function Xoa(ma) {
+                 const MaHPN = document.getElementById("MaHPN").value;
+                    Swal.fire({
+                         title: 'Bạn có chắc chắn muốn xóa?',
+                         showCancelButton: true,
+                         confirmButtonText: 'Xóa',
+                         denyButtonText: `Hủy`,
+                    }).then((result) => {
+                         /* Read more about isConfirmed, isDenied below */
+                         if (result.isConfirmed) {
+                              $.ajax({
+                                   url: '/HoatDong/XoaHoatDong',
+                                   data: {
+                                        ma: ma
+                                   },
+                                   type: 'POST',
+                                   dataType: 'json',
+                                   success: function (res) {
+                                        if (res.status == true) {
+                                             Swal.fire({
+                                                  position: 'center',
+                                                  icon: 'success',
+                                                  title: 'Đã xóa',
+                                                  showConfirmButton: false,
+                                                  timer: 10000
+                                             })
+                                             window.location = '@Url.Action("Index","HoatDong")'+ '?ma=' + MaHPN;
+                                        } else if (res.status == false) {
+                                             Swal.fire({
+                                                  position: 'center',
+                                                  icon: 'error',
+                                                  title: 'Chưa xóa được',
+                                                  showConfirmButton: false,
+                                                  timer: 6000
+                                             })
+                                        }
+                                   }
+
+                              });
+
+                         }
+                    });
+                     }
+          </script>
+          <script>
+                    $("#dataTable").on("click", "#loadModal1", function () {
+                          var id = $(this).closest("tr").find("td").eq(0).html();
+                          console.log(id);
+                          $.ajax({
+                                url: '@Url.Action("SuaHoatDong","HoatDong")',
+                                data: { ma: id },
+                                type: 'GET', // Change to 'POST' if needed
+                                success: function (data) {
+                                      $('#showmodal2 .modal-dialog').html(data);
+                                }
+                          });
+                   });
+          </script>
+          <script>
+                    $("#dataTable").on("click", "#loadModal", function () {
+                          var id = $(this).closest("tr").find("td").eq(0).html();
+                          console.log(id);
+                          $.ajax({
+                                url: '@Url.Action("ThamGia","HoatDong")',
+                                data: { ma: id },
+                                type: 'GET', // Change to 'POST' if needed
+                                success: function (data) {
+                                      $('#showmodal1 .modal-dialog').html(data);
+                                }
+                          });
+                   });
+          </script>
+     </div>
+
+</div>

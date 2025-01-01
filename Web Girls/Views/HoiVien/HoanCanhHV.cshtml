@@ -1,0 +1,415 @@
+﻿
+@{
+     ViewBag.Title = "HoanCanhHV";
+     if (Session["Quyen"].ToString() == "1")
+     {
+          Layout = "~/Views/Shared/_LayoutQuanTriCapHV.cshtml";
+     }
+     else if (Session["Quyen"].ToString() == "2")
+     {
+          Layout = "~/Views/Shared/_LayoutQuanTriCapHoi.cshtml";
+     }
+     var list = (List<Web_Girls.Models.ModelsView.HoiVienView>)ViewBag.list;
+     var listhocanngheo = (List<Web_Girls.Models.ModelsView.HoiVienView>)ViewBag.listhocanngheo;
+     var listhongheo = (List<Web_Girls.Models.ModelsView.HoiVienView>)ViewBag.listhongheo;
+     var listdakethon = (List<Web_Girls.Models.ModelsView.HoiVienView>)ViewBag.listdakethon;
+     var listchuakethon = (List<Web_Girls.Models.ModelsView.HoiVienView>)ViewBag.listchuakethon;
+     var listlyhon = (List<Web_Girls.Models.ModelsView.HoiVienView>)ViewBag.listlyhon;
+     var listchongcungdonvi = (List<Web_Girls.Models.ModelsView.HoiVienView>)ViewBag.listchongcungdonvi;
+     var listchongmat = (List<Web_Girls.Models.ModelsView.HoiVienView>)ViewBag.listchongmat;
+     var listconduoi16tuoi = (List<Web_Girls.Models.ModelsView.HoiVienView>)ViewBag.listconduoi16tuoi;
+     var listbibenh = (List<Web_Girls.Models.ModelsView.HoiVienView>)ViewBag.listbibenh;
+}
+@if (!string.IsNullOrEmpty(ViewBag.OK))
+{
+     <script>
+     // Hiển thị hộp thoại alert nếu có thông báo
+      Swal.fire({
+               position: 'center',
+               icon: 'success',
+               title: '@Html.Raw(ViewBag.OK)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+     </script>
+}
+<script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+<style>
+    /* Màu nền cho tiêu đề cột */
+    table thead th {
+        background-color: #457b9d; /* Xanh nhạt */
+        color: white; /* Màu chữ trắng */
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* Màu nền cho các ô dữ liệu */
+    table tbody td {
+        background-color: #f8f9fa; /* Màu nền nhạt */
+    }
+
+    /* Dòng được chọn (hover) */
+    table tbody tr:hover {
+        background-color: #d1ecf1; /* Xanh nhạt khi hover */
+    }
+
+    /* Đường viền */
+    table {
+        border-collapse: collapse;
+    }
+
+        table th, table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+        }
+</style>
+<div id="page-wrapper">
+     <div style="color: black; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0;">
+          <div class="row">
+               <div class="col-sm-10">
+                    <h2 style="font-weight: bold">Hoàn cảnh học viên</h2>
+               </div>
+               <div class="col-sm-2">
+                    @if (Session["Quyen"].ToString() == "1")
+                    {
+                         <a href="@Url.Action("InDanhSachHCGD","Report", new {Ma = 0})" class="btn btn-primary" style="background-color: green;"> <i class="fas fa-print"></i> <span style="color: white;">In danh sách</span></a>
+                    }
+                    else if (Session["Quyen"].ToString() == "2")
+                    {
+                         <a href="@Url.Action("InDanhSachHCGD","Report")" class="btn btn-primary" style="background-color: green;"> <i class="fas fa-print"></i> <span style="color: white;">In danh sách</span></a>
+                    }
+                    @*<a class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="background-color: red;"> <i class="fas fa-print"></i> <span style="color: white;">In danh sách</span></a>*@
+                    @*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@
+                    <!--</div>-->
+               </div>
+          </div>
+     </div>
+     <ul class="nav nav-tabs" role="tablist">
+          <li class=" nav-item active"><a class="nav-link active" data-toggle="tab" href="#home">Tất cả</a></li>
+          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu0">Hộ nghèo(@listhongheo.Count())</a></li>
+          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu1">Hộ cận nghèo (@listhocanngheo.Count())</a></li>
+          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu2">Đã kết hôn(@listdakethon.Count())</a></li>
+          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu3">Chưa kết hôn(@listchuakethon.Count())</a></li>
+          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu4">Ly hôn(@listlyhon.Count())</a></li>
+          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu5">Chồng mất(@listchongmat.Count())</a></li>
+          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu6">Chồng cùng đơn vị(@listchongcungdonvi.Count())</a></li>
+          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu7">Con dưới 16 tuổi(@listconduoi16tuoi.Count())</a></li>
+          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu8">Bị bệnh(@listbibenh.Count())</a></li>
+     </ul>
+     <div class="tab-content">
+          <div id="home" class="tab-pane active">
+               <div class="table-responsive mt-2">
+                    <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                         <thead>
+                              <tr>
+                                   <th style="display:none">Mã</th>
+                                   <th>Họ tên</th>
+                                   <th>Đơn vị</th>
+                                   @*<th>Thuộc chi hội</th>*@
+                                   <th>Hoàn cảnh</th>
+                                   <th>Thao tác</th>
+                              </tr>
+                         </thead>
+                         <tbody>
+                              @foreach (var it in list)
+                              {
+                                   <tr>
+                                        <td style="display:none">@it.MaHV</td>
+                                        <td>@it.TenHV</td>
+                                        <td>@it.DonVi</td>
+                                        @*<td>@it.ChiHoiPN</td>*@
+                                        <td><a id="loadModal" data-toggle="modal" data-target="#showmodal" class="btn btn-outline-primary">Chi tiết hoàn cảnh</a></td>
+                                        @if (Session["Quyen"].ToString() == "2")
+                                        {
+                                             <td><a id="loadModal1" data-toggle="modal" data-target="#showmodal1" class="btn btn-outline-danger">Cập nhật</a></td>
+                                        }
+                                        else
+                                        {
+                                             <td>-</td>
+                                        }
+
+                                   </tr>
+                              }
+                         </tbody>
+
+                    </table>
+                    <div id="showmodal" class="modal fade" role="dialog">
+                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+                         </div>
+
+                    </div>
+                    <div id="showmodal1" class="modal fade" role="dialog">
+                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+                         </div>
+                         @*<script>
+                                   const checkboxList = document.querySelectorAll('.checkbox-item')
+                                   checkboxList.forEach(checkbox => {
+                                        checkbox.addEventListener('click', (event) => {
+                                             event.preventDefault();
+                                        })
+                                   })
+                              </script>*@
+                    </div>
+                    <script>
+                         $("#dataTable").on("click", "#loadModal", function () {
+                               var id = $(this).closest("tr").find("td").eq(0).html();
+                               console.log(id);
+                               $.ajax({
+                                     url: '@Url.Action("ThongTinHoanCanh","HoiVien")',
+                                     data: { ma: id },
+                                     type: 'GET', // Change to 'POST' if needed
+                                     success: function (data) {
+                                           $('#showmodal .modal-dialog').html(data);
+                                     }
+                               });
+                        });
+                    </script>
+                    <script>
+                         $("#dataTable").on("click", "#loadModal1", function () {
+                               var id = $(this).closest("tr").find("td").eq(0).html();
+                               console.log(id);
+                               $.ajax({
+                                     url: '@Url.Action("CapNhatHoanCanh","HoiVien")',
+                                     data: { ma: id },
+                                     type: 'GET', // Change to 'POST' if needed
+                                     success: function (data) {
+                                           $('#showmodal1 .modal-dialog').html(data);
+                                     }
+                               });
+                        });
+                    </script>
+
+               </div>
+          </div>
+          <div id="menu0" class="tab-pane fade">
+               <div class="table-responsive">
+                    <table class="table table-bordered text-center" width="100%" cellspacing="0">
+                         <thead>
+                              <tr>
+                                   <th style="display:none">Mã</th>
+                                   <th>Họ tên</th>
+                                   <th>Đơn vị</th>
+                                   @*<th>Thuộc chi hội</th>*@
+                              </tr>
+                         </thead>
+                         <tbody>
+                              @foreach (var it in listhongheo)
+                              {
+                                   <tr>
+                                        <td style="display:none">@it.MaHV</td>
+                                        <td>@it.TenHV</td>
+                                        <td>@it.DonVi</td>
+                                        @*<td>@it.ChiHoiPN</td>*@
+                                   </tr>
+                              }
+                         </tbody>
+                    </table>
+               </div>
+          </div>
+          <div id="menu1" class="tab-pane fade">
+               <div class="table-responsive">
+                    <table class="table table-bordered text-center" width="100%" cellspacing="0">
+                         <thead>
+                              <tr>
+                                   <th style="display:none">Mã</th>
+                                   <th>Họ tên</th>
+                                   <th>Đơn vị</th>
+                                   @*<th>Thuộc chi hội</th>*@
+                              </tr>
+                         </thead>
+                         <tbody>
+                              @foreach (var it in listhocanngheo)
+                              {
+                                   <tr>
+                                        <td style="display:none">@it.MaHV</td>
+                                        <td>@it.TenHV</td>
+                                        <td>@it.DonVi</td>
+                                        @*<td>@it.ChiHoiPN</td>*@
+                                   </tr>
+                              }
+                         </tbody>
+                    </table>
+               </div>
+          </div>
+          <div id="menu2" class="tab-pane fade">
+               <div class="table-responsive">
+                    <table class="table table-bordered text-center" width="100%" cellspacing="0">
+                         <thead>
+                              <tr>
+                                   <th style="display:none">Mã</th>
+                                   <th>Họ tên</th>
+                                   <th>Đơn vị</th>
+                                   @*<th>Thuộc chi hội</th>*@
+                              </tr>
+                         </thead>
+                         <tbody>
+                              @foreach (var it in listdakethon)
+                              {
+                                   <tr>
+                                        <td style="display:none">@it.MaHV</td>
+                                        <td>@it.TenHV</td>
+                                        <td>@it.DonVi</td>
+                                        @*<td>@it.ChiHoiPN</td>*@
+                                   </tr>
+                              }
+                         </tbody>
+                    </table>
+               </div>
+          </div>
+          <div id="menu3" class="tab-pane fade">
+               <div class="table-responsive">
+                    <table class="table table-bordered text-center" width="100%" cellspacing="0">
+                         <thead>
+                              <tr>
+                                   <th style="display:none">Mã</th>
+                                   <th>Họ tên</th>
+                                   <th>Đơn vị</th>
+                                   @*<th>Thuộc chi hội</th>*@
+                              </tr>
+                         </thead>
+                         <tbody>
+                              @foreach (var it in listchuakethon)
+                              {
+                                   <tr>
+                                        <td style="display:none">@it.MaHV</td>
+                                        <td>@it.TenHV</td>
+                                        <td>@it.DonVi</td>
+                                        @*<td>@it.ChiHoiPN</td>*@
+                                   </tr>
+                              }
+                         </tbody>
+                    </table>
+               </div>
+          </div>
+          <div id="menu4" class="tab-pane fade">
+               <div class="table-responsive">
+                    <table class="table table-bordered text-center" width="100%" cellspacing="0">
+                         <thead>
+                              <tr>
+                                   <th style="display:none">Mã</th>
+                                   <th>Họ tên</th>
+                                   <th>Đơn vị</th>
+                                   @*<th>Thuộc chi hội</th>*@
+                              </tr>
+                         </thead>
+                         <tbody>
+                              @foreach (var it in listlyhon)
+                              {
+                                   <tr>
+                                        <td style="display:none">@it.MaHV</td>
+                                        <td>@it.TenHV</td>
+                                        <td>@it.DonVi</td>
+                                        @*<td>@it.ChiHoiPN</td>*@
+                                   </tr>
+                              }
+                         </tbody>
+                    </table>
+               </div>
+          </div>
+          <div id="menu5" class="tab-pane fade">
+               <div class="table-responsive">
+                    <table class="table table-bordered text-center" width="100%" cellspacing="0">
+                         <thead>
+                              <tr>
+                                   <th style="display:none">Mã</th>
+                                   <th>Họ tên</th>
+                                   <th>Đơn vị</th>
+                                   @*<th>Thuộc chi hội</th>*@
+                              </tr>
+                         </thead>
+                         <tbody>
+                              @foreach (var it in listchongmat)
+                              {
+                                   <tr>
+                                        <td style="display:none">@it.MaHV</td>
+                                        <td>@it.TenHV</td>
+                                        <td>@it.DonVi</td>
+                                        @*<td>@it.ChiHoiPN</td>*@
+                                   </tr>
+                              }
+                         </tbody>
+                    </table>
+               </div>
+          </div>
+          <div id="menu6" class="tab-pane fade">
+               <div class="table-responsive">
+                    <table class="table table-bordered text-center" width="100%" cellspacing="0">
+                         <thead>
+                              <tr>
+                                   <th style="display:none">Mã</th>
+                                   <th>Họ tên</th>
+                                   <th>Đơn vị</th>
+                                   @*<th>Thuộc chi hội</th>*@
+                              </tr>
+                         </thead>
+                         <tbody>
+                              @foreach (var it in listchongcungdonvi)
+                              {
+                                   <tr>
+                                        <td style="display:none">@it.MaHV</td>
+                                        <td>@it.TenHV</td>
+                                        <td>@it.DonVi</td>
+                                        @*<td>@it.ChiHoiPN</td>*@
+                                   </tr>
+                              }
+                         </tbody>
+                    </table>
+               </div>
+          </div>
+          <div id="menu7" class="tab-pane fade">
+               <div class="table-responsive">
+                    <table class="table table-bordered text-center" width="100%" cellspacing="0">
+                         <thead>
+                              <tr>
+                                   <th style="display:none">Mã</th>
+                                   <th>Họ tên</th>
+                                   <th>Đơn vị</th>
+                                   @*<th>Thuộc chi hội</th>*@
+                              </tr>
+                         </thead>
+                         <tbody>
+                              @foreach (var it in listconduoi16tuoi)
+                              {
+                                   <tr>
+                                        <td style="display:none">@it.MaHV</td>
+                                        <td>@it.TenHV</td>
+                                        <td>@it.DonVi</td>
+                                        @*<td>@it.ChiHoiPN</td>*@
+                                   </tr>
+                              }
+                         </tbody>
+                    </table>
+               </div>
+          </div>
+          <div id="menu8" class="tab-pane fade">
+               <div class="table-responsive">
+                    <table class="table table-bordered text-center" width="100%" cellspacing="0">
+                         <thead>
+                              <tr>
+                                   <th style="display:none">Mã</th>
+                                   <th>Họ tên</th>
+                                   <th>Đơn vị</th>
+                                   @*<th>Thuộc chi hội</th>*@
+                              </tr>
+                         </thead>
+                         <tbody>
+                              @foreach (var it in listbibenh)
+                              {
+                                   <tr>
+                                        <td style="display:none">@it.MaHV</td>
+                                        <td>@it.TenHV</td>
+                                        <td>@it.DonVi</td>
+                                        @*<td>@it.ChiHoiPN</td>*@
+                                   </tr>
+                              }
+                         </tbody>
+                    </table>
+               </div>
+          </div>
+
+     </div>
+
+
+</div>

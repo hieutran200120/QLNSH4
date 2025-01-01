@@ -1,0 +1,106 @@
+﻿
+
+
+@{
+     var hc = (Web_Girls.Models.Context.HoanCanhGD)ViewBag.hc;
+
+}
+
+<div class="modal-content">
+     <form id="form" method="post" action="/HoiVien/SuaHoanCanh">
+          <div class="modal-header">
+               <h4 class="modal-title">Hoàn cảnh hội viên</h4>
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+               <div class="row">
+                    <input style="display:none" name="MaHV" type="text" class="form-control" value="@hc.MaHV">
+                    <div class="col-lg-12 d-flex">
+                         <div class="col-lg-6">
+                              <div class="form-group d-flex">
+                                   <input style="width:40%" type="checkbox"  name="checkBoxValues" @(hc.HoCanNgheo == true ? "checked" : "") value="HoCanNgheo" class="form-control checkbox-item">
+                                   <label for="usr">Hộ cận nghèo</label>
+                              </div>
+                         </div>
+                         <div class="col-lg-6">
+                              <div class="form-group d-flex">
+                                   <input style="width:40%" type="checkbox"  name="checkBoxValues" @(hc.HoNgheo == true ? "checked" : "") value="HoNgheo" class="form-control checkbox-item">
+                                   <label for="usr">Hộ nghèo</label>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-lg-12 d-flex">
+                         <div class="col-lg-6">
+                              <div class="form-group d-flex">
+                                   <input style="width:40%" type="checkbox"  name="checkBoxValues" @(hc.DaCoChong == true ? "checked" : "") value="DaCoChong" class="form-control checkbox-item">
+                                   <label for="usr">Đã kết hôn</label>
+                              </div>
+                         </div>
+                         <div class="col-lg-6">
+                              <div class="form-group d-flex">
+                                   <input style="width:40%" type="checkbox"  name="checkBoxValues" @(hc.LyHon == true ? "checked" : "") value="LyHon" class="form-control checkbox-item">
+                                   <label for="usr">Ly hôn</label>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-lg-12 d-flex">
+                         <div class="col-lg-6">
+                              <div class="form-group d-flex">
+                                   <input style="width:40%" type="checkbox"  name="checkBoxValues" @(hc.MatChongVo == true ? "checked" : "") value="MatChongVo" class="form-control checkbox-item">
+                                   <label for="usr">Chồng mất</label>
+                              </div>
+                         </div>
+                         <div class="col-lg-6">
+                              <div class="form-group d-flex">
+                                   <input style="width:40%" type="checkbox"  name="checkBoxValues" @(hc.VoChong == true ? "checked" : "") value="VoChong" class="form-control checkbox-item">
+                                   <label for="usr">Chồng cùng đơn vị</label>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-lg-12 d-flex">
+                         <div class="col-lg-6">
+                              <div class="form-group d-flex">
+                                   <input style="width:40%" type="checkbox" name="checkBoxValues" @(hc.ConDuoi16Tuoi == true ? "checked" : "") value="ConDuoi16Tuoi" class="form-control checkbox-item">
+                                   <label for="usr">Con dưới 16 tuổi</label>
+                              </div>
+                         </div>
+                         <div class="col-lg-6">
+                              <div class="form-group d-flex">
+                                   <input style="width:40%" type="checkbox" name="checkBoxValues" @(hc.MacBenhHiemNgheo == true ? "checked" : "") value="MacBenhHiemNgheo" class="form-control checkbox-item">
+                                   <label for="usr">Mắc bệnh hiểm nghèo</label>
+                              </div>
+
+                         </div>
+                         <input style="display:none" type="text" name="HoanCanh" >
+                    </div>
+
+               </div>
+
+          </div>
+          <div class="modal-footer">
+               <button class="btn btn-primary" type="submit">Cập nhật</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+          </div>
+     </form>
+     <script>
+          document.getElementById("form").addEventListener("submit", function (event) {
+               event.preventDefault(); // Ngăn chặn gửi biểu mẫu mặc định
+               Swal.fire({
+                    title: 'Xác nhận thay đổi?',
+                    showCancelButton: true,
+                    confirmButtonText: 'OK',
+                    denyButtonText: `Hủy`,
+               }).then((result) => {
+                    if (result.isConfirmed) {
+                         var selectedValues = [];
+                         $('input[name="checkBoxValues"]:checked').each(function () {
+                              selectedValues.push($(this).val());
+                         });
+                         console.log(selectedValues);
+                         $('input[name="HoanCanh"]').val(selectedValues.join(','));
+                         this.submit();
+                    }
+               })
+          });
+     </script>
+</div>

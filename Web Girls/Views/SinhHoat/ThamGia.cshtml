@@ -1,0 +1,27 @@
+﻿@{
+    var thamgia = (List<Web_Girls.Models.Context.SinhHoat>)ViewBag.thamgia;
+}
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">Nội dung sinh hoạt</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body">
+        @if (thamgia != null && thamgia.Any())
+        {
+            <ul>
+                @foreach (var item in thamgia)
+                {
+                    @item.NoiDung
+                }
+            </ul>
+        }
+
+        else
+        {
+            <p>Không có dữ liệu để hiển thị.</p>
+        }
+    </div>
+   
+</div>

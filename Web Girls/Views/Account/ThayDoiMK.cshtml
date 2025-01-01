@@ -1,0 +1,173 @@
+﻿
+@{
+     ViewBag.Title = "ThayDoiMK";
+     Layout = "~/Views/Shared/_LayoutCaNhan.cshtml";
+}
+<script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+@if (!string.IsNullOrEmpty(ViewBag.a))
+{
+     <script>
+          Swal.fire({
+               position: 'center',
+               icon: 'error',
+               title: '@Html.Raw(ViewBag.a)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+        // Hiển thị hộp thoại alert nếu có thông báo
+        @*alert('@Html.Raw(ViewBag.Khoa)');*@
+     </script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.Sai))
+{
+     <script>
+          Swal.fire({
+               position: 'center',
+               icon: 'error',
+               title: '@Html.Raw(ViewBag.Sai)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+        // Hiển thị hộp thoại alert nếu có thông báo
+        @*alert('@Html.Raw(ViewBag.Khoa)');*@
+     </script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.OK))
+{
+     <script>
+          Swal.fire({
+               position: 'center',
+               icon: 'success',
+               title: '@Html.Raw(ViewBag.OK)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+        // Hiển thị hộp thoại alert nếu có thông báo
+        @*alert('@Html.Raw(ViewBag.Khoa)');*@
+     </script>
+}
+<div id="page-wrapper">
+     <div style="color: #fff; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0; background: #1d3557;">
+          <div class="row">
+               <div class="col-sm-8">
+                    <h2 style="font-weight: bold">Thay đổi mật khẩu</h2>
+               </div>
+               <div class="col-sm-4">
+
+                    @*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@
+                    <!--</div>-->
+               </div>
+          </div>
+     </div>
+     <form role="form" method="post" action="/Account/ChangePass" class="was-validated" enctype="multipart/form-data">
+          <div class="row mt-4">
+               <div class="col-lg-12 d-flex">
+                    <input style="display:none" type="text" class="form-control" value="@Session["Ma"]" name="Ma">
+                    <div class="form-group col-lg-2 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Mật khẩu hiện tại</label>
+                    </div>
+                    <div class="form-group col-lg-5">
+                         <input id="exampleInputPassword1" type="password" class="form-control" placeholder="Mật khẩu hiện tại" name="MatKhauCu" required>
+                    </div>
+                    <div class="form-group">
+                         <div class="custom-control custom-checkbox small" id="btnPassword1">
+                              <input type="checkbox" class="custom-control-input" id="showPassword1">
+                              <label class="custom-control-label" for="showPassword1">
+                                   Hiển thị
+                              </label>
+                         </div>
+                    </div>
+               </div>
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-2 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Mật khẩu mới</label>
+                    </div>
+                    <div class="form-group col-lg-5">
+                         <input id="exampleInputPassword2" type="password" class="form-control" placeholder="Mật khẩu mới" name="MatKhauMoi" required>
+                    </div>
+                    <div class="form-group">
+                         <div class="custom-control custom-checkbox small" id="btnPassword2">
+                              <input type="checkbox" class="custom-control-input" id="showPassword2">
+                              <label class="custom-control-label" for="showPassword2">
+                                   Hiển thị
+                              </label>
+                         </div>
+                    </div>
+               </div>
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-2 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Nhắc lại mật khẩu</label>
+                    </div>
+                    <div class="form-group col-lg-5">
+                         <input id="exampleInputPassword3" type="password" class="form-control" placeholder="Nhắc lại mật khẩu" name="MatKhauMoiLai" required>
+                    </div>
+                    <div class="form-group">
+                         <div class="custom-control custom-checkbox small" id="btnPassword3">
+                              <input type="checkbox" class="custom-control-input" id="showPassword3">
+                              <label class="custom-control-label" for="showPassword3">
+                                   Hiển thị
+                              </label>
+                         </div>
+                    </div>
+
+               </div>
+               <div style="margin: 0 auto;">
+                    <a style=" width: 157px;" class="btn btn-danger text-uppercase text-end" href="@Url.Action("TrangQuanTriCaNhan","Account")"> Hủy</a>
+                    <button style=" width: 157px;" class="btn btn-primary text-uppercase text-end" type="submit">Lưu</button>
+               </div>
+               <script>
+                    $(document).ready(function () {
+                         $("#showPassword1").on("change", function () {
+                              // Get the password input field
+                              var passwordField1 = $("#exampleInputPassword1");
+
+                              // Check if the checkbox is checked
+                              if ($(this).is(":checked")) {
+                                   // If checked, change the input type to "text" to show the password
+                                   passwordField1.attr("type", "text");
+                              } else {
+                                   // If unchecked, change the input type back to "password" to hide the password
+                                   passwordField1.attr("type", "password");
+                              }
+                         });
+                    });
+               </script>
+               <script>
+                    $(document).ready(function () {
+                         $("#showPassword2").on("change", function () {
+                              // Get the password input field
+                              var passwordField2 = $("#exampleInputPassword2");
+
+                              // Check if the checkbox is checked
+                              if ($(this).is(":checked")) {
+                                   // If checked, change the input type to "text" to show the password
+                                   passwordField2.attr("type", "text");
+                              } else {
+                                   // If unchecked, change the input type back to "password" to hide the password
+                                   passwordField2.attr("type", "password");
+                              }
+                         });
+                    });
+               </script>
+               <script>
+                    $(document).ready(function () {
+                         $("#showPassword3").on("change", function () {
+                              // Get the password input field
+                              var passwordField3 = $("#exampleInputPassword3");
+
+                              // Check if the checkbox is checked
+                              if ($(this).is(":checked")) {
+                                   // If checked, change the input type to "text" to show the password
+                                   passwordField3.attr("type", "text");
+                              } else {
+                                   // If unchecked, change the input type back to "password" to hide the password
+                                   passwordField3.attr("type", "password");
+                              }
+                         });
+                    });
+               </script>
+          </div>
+
+     </form>
+
+</div>

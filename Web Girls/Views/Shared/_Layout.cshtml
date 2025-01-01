@@ -1,0 +1,198 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="~/Assets/Sbadmin/img/logomta.png" type="image/x-icon">
+    <title>Phần Mềm Quản Lý Hội Phụ Nữ</title>
+    <style>
+    </style>
+
+    <!-- Bootstrap Core CSS -->
+    @Styles.Render("~/Template/css/bootstrap.min.css")
+
+    <!-- MetisMenu CSS -->
+    @Styles.Render("~/Template/css/plugins/metisMenu/metisMenu.min.css")
+
+
+    <!-- DataTables CSS -->
+    @Styles.Render("~/Template/css/plugins/dataTables.bootstrap.css")
+
+
+    <!-- Custom CSS -->
+    @Styles.Render("~/Template/css/sb-admin-2.css")
+
+
+    <!-- Custom Fonts -->
+    @Styles.Render("~/Template/css/font-awesome.css")
+    @Styles.Render("~/Template/font-awesome-4.1.0/css/font-awesome.min.css")
+
+
+    @Styles.Render("https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css")
+
+    <!-- owlcarousel -->
+    @Styles.Render("~/Template/owlcarousel/assets/owl.carousel.min.css")
+    @Styles.Render("~/Template/owlcarousel/assets/owl.theme.default.min.css")
+
+
+</head>
+<body>
+     <style>
+          .footer .fa {
+               margin-right: 10px;
+          }
+
+          header .fa {
+               margin-right: 10px;
+          }
+
+     </style>
+     <div id="wrapper">
+
+          <header>
+               <!--============= TOP-BAR ===========-->
+               <!--<div id="top-bar" class="tb-text-white">
+                   <div class="container">
+                       <div class="row">
+                           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+               @*<div id="info" style="margin-top: 10px; color: white;">
+                        <ul class="list-unstyled list-inline">
+                            <li><span><i class="fa fa-map-marker"></i></span>236 Hoàng Quốc Việt, Cầu Giấy, Hà Nội</li>
+                            <li><span><i class="fa fa-phone"></i></span>+28 686 9999</li>
+                        </ul>
+                    </div>*@
+
+
+               <!--</div>-->
+               <!-- end columns -->
+               <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                   <div id="links" style="float: right;margin-top: 10px;">
+                       <ul class="list-unstyled list-inline">
+                           <li><a href="~/Account/Login"><span><i class="fa fa-lock"></i></span>Đăng nhập</a></li>
+                           <li><a href="~/Account/Register"><span><i class="fa fa-plus"></i></span>Đăng ký</a></li>
+                       </ul>
+                   </div>-->
+               <!-- end links -->
+               <!--</div>-->
+               <!-- end columns -->
+               <!--</div>-->
+               <!-- end row -->
+               <!--</div>-->
+               <!-- end container -->
+               <!--</div>-->
+               <!-- end top-bar -->
+               <!--============= LOGO ===========-->
+               <div class="logo no-print">
+                    <a href="#"><img src="~/Template/images/Logo_MTA.png" /></a>
+               </div>
+
+               <!--============= MENU ===========-->
+               <div class="menu no-print">
+                    <ul id="nav">
+                         <li><a href="~/Member/Home">Trang chủ</a></li>
+                         <li>
+                              <a href="#">Quản lý hội viên</a>
+                              <div>
+                                   <ul>
+                                        <li><a href="~/Member/Index">Thông tin hội viên</a></li>
+                                        <li><a href="~/Member/Member_Add">Thêm mới hội viên</a></li>
+                                   </ul>
+                              </div>
+                         </li>
+                         <li>
+                              <a href="#">Quản lý tài khoản</a>
+                              <div>
+                                   <ul>
+                                        <li><a href="~/Account/Index">Thông tin tài khoản</a></li>
+                                        <li><a href="~/Account/Account_Add">Thêm mới tài khoản</a></li>
+                                   </ul>
+                              </div>
+                         </li>
+                         <li>
+                              <a href="#">Báo cáo thống kê</a>
+                              <div>
+                                   <ul>
+                                        <li><a href="~/Report/Report">Thống kê theo tuần</a></li>
+                                        <li><a href="~/Report/Report">Thống kê hội viên</a></li>
+                                   </ul>
+                              </div>
+                         </li>
+                         <li><a href="~/Account/Login">Đăng nhập</a></li>
+                         <li><a href="~/Account/Register">Đăng ký</a></li>
+                         <li><a href="#">Về chúng tôi</a></li>
+                         <li class="pad"></li>
+                    </ul>
+               </div>
+               <!-- end menu -->
+          </header>
+          <div class="container">
+               @RenderBody()
+          </div>
+          <footer class="no-print">
+               <div class="footer">
+                    <div class="about-us">
+                         <div class="about item">
+                              <p id="head">VỀ CHÚNG TÔI</p>
+                              <p><i class="fa fa-map-marker"></i>236 Hoàng Quốc Việt, Cầu Giấy, Hà Nội</p><br>
+                              <p><i class="fa fa-envelope"></i>girl@mta.com</p><br>
+                              <p><i class="fa fa-phone"></i>282.282.9999</p><br>
+                         </div>
+                         <div class="category item">
+                              <p id="head">DANH MỤC</p>
+                              <a href="~/Member/Index"><i class="fa fa-angle-right"></i>Hội viên</a>
+                              <a href="~/Account/Index"><i class="fa fa-angle-right"></i>Tài khoản</a>
+                              <a href="~/Report/Report"><i class="fa fa-angle-right"></i>Thống kê</a>
+                         </div>
+                         <div class="news item">
+                              <p id="head">TIN TỨC NỔI BẬT</p>
+                              <a href="#"><i class="fa fa-angle-right"></i>Hội phụ nữ: Những ý tưởng sáng tạo và ngộ nghĩnh</a>
+                              <a href="#"><i class="fa fa-angle-right"></i>Hội công đoàn: Những ý tưởng sáng tạo và ngộ nghĩnh</a>
+                              <a href="#"><i class="fa fa-angle-right"></i>Học viện kỹ thuật quân sự: Những ý tưởng sáng tạo và ngộ nghĩnh</a>
+                         </div>
+                         <div class="fanpage item">
+                              <p id="head">FANPAGE</p>
+                              <div class="fb-page" data-href="https://www.facebook.com/hongquanlienxo2002" data-tabs="" data-width="270" data-height="" data-small-header="fasse" data-adapt-container-width="true" data-hide-cover="fasse" data-show-facepile="true">
+                                   <blockquote cite="https://www.facebook.com/hongquanlienxo2002" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/hongquanlienxo2002">Cristiano Ronaldo</a></blockquote>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </footer>
+     </div>
+     @Scripts.Render("~/Template/js/jquery-1.11.0.js")
+
+     <!-- Bootstrap Core JavaScript -->
+     @Scripts.Render("~/Template/js/bootstrap.min.js")
+
+     <!-- Metis Menu Plugin JavaScript -->
+     @Scripts.Render("~/Template/js/plugins/metisMenu/metisMenu.min.js")
+
+
+     <!-- DataTables JavaScript -->
+     @Scripts.Render("~/Template/js/plugins/dataTables/jquery.dataTables.js")
+     @Scripts.Render("~/Template/js/plugins/dataTables/dataTables.bootstrap.js")
+     @Scripts.Render("https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js")
+
+
+     <!-- Custom Theme JavaScript -->
+     @Scripts.Render("~/Template/js/sb-admin-2.js")
+     @RenderSection("scripts", required: false)
+     <!-- owlcarousel -->
+     @Scripts.Render("~/Template/owlcarousel/owl.carousel.min.js")
+     <script>
+          $(document).ready(function () {
+               $('#dataTables-example').dataTable();
+          });
+     </script>
+     @RenderSection("scripts", required: false)
+     <script>
+          $(document).ready(function () {
+               $('.js-example-basic-multiple').select2();
+          });
+     </script>
+</body>
+</html>

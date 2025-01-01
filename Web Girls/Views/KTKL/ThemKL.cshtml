@@ -1,0 +1,87 @@
+﻿
+@{
+     ViewBag.Title = "ThemKT";
+     Layout = "~/Views/Shared/_LayoutQuanTriCapHV.cshtml";
+     var listhv = (List<Web_Girls.Models.Context.HocVien>)ViewBag.hoivien;
+}
+
+<div id="page-wrapper">
+     <div style="color: black; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0; ">
+          <div class="row">
+               <div class="col-sm-12">
+                    <h2 style="font-weight: bold">Thêm mới kỷ luật</h2>
+               </div>
+          </div>
+     </div>
+     <form role="form" method="post" action="/KTKL/ThemKL" class="was-validated" enctype="multipart/form-data">
+          <div class="row mt-4">
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-2 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Tên học viên</label>
+                    </div>
+                    <div class="form-group col-lg-5">
+                         <select class="form-control" name="MaHV" id="MaHV" required>
+                              <option></option>
+                              @foreach (var it in listhv)
+                              {
+                                   <option value="@it.MaHV">@it.TenHV</option>
+                              }
+
+                         </select>
+                    </div>
+               </div>
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-2 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Hình thức kỷ luật</label>
+                    </div>
+                    <div class="form-group col-lg-5">
+                         <select class="form-control" name="HinhThucKyLuat" required>
+                              <option value="Khiển trách">Khiển trách</option>
+                              <option value="Cảnh cáo">Cảnh cáo</option>
+                              <option value="Hạ bậc lương">Hạ bậc lương</option>
+                              <option value="Giáng cấp bậc quân hàm">Giáng cấp bậc quân hàm</option>
+                              <option value="Giáng chức">Giáng chức</option>
+                              <option value="Cách chức">Cách chức</option>
+                              <option value="Tước quân hàm sĩ quan">Tước quân hàm sĩ quan</option>
+                              <option value="Tước danh hiệu quân nhân">Tước danh hiệu quân nhân</option>
+                         </select>
+                    </div>
+               </div>
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-2 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Lý do</label>
+                    </div>
+                    <div class="form-group col-lg-5">
+                         <textarea class="form-control" placeholder="Lý do kỷ luật" name="LyDo" required></textarea>
+                    </div>
+               </div>
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-2 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Ghi chú</label>
+                    </div>
+                    <div class="form-group col-lg-5">
+                         <textarea class="form-control" placeholder="Ghi chú" name="GhiChu"></textarea>
+                    </div>
+               </div>
+               <div class="col-lg-12 d-flex">
+                    <div class="form-group col-lg-2 text-uppercase text-left" style="padding: 5px 5px;">
+                         <label>Năm</label>
+                    </div>
+                    <div class="form-group col-lg-5">
+                         <select class="form-control" name="Nam" required>
+                              <option></option>
+                              @for (int i = 2018; i <= 2030; i++)
+                              {
+                                   <option value="@i">@i</option>
+                              }
+                         </select>
+                    </div>
+               </div>
+               <div style="margin: 0 auto;">
+                    <a style=" width: 157px;" class="btn btn-danger text-uppercase text-end" href="@Url.Action("KyLuat","KTKL",new {ma = Session["MaHoi"] })"> Hủy</a>
+                    <button style=" width: 157px;" class="btn btn-primary text-uppercase text-end" type="submit">Lưu</button>
+               </div>
+
+          </div>
+     </form>
+</div>

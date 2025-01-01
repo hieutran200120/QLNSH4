@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    if (Session["Quyen"].ToString() == "1")
+    {
+         Layout = "~/Views/Shared/_LayoutQuanTriCapHV.cshtml";
+    }
+    else if (Session["Quyen"].ToString() == "2")
+    {
+         Layout = "~/Views/Shared/_LayoutQuanTriCapHoi.cshtml";
+    }
+    var list = (List<Web_Girls.Models.ModelsView.LaoDongSangTaoView>)ViewBag.list;
+}
+<script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+<div id="page-wrapper">
+     <div style="color: black; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0;">
+          <div class="row">
+               <div class="col-sm-10">
+                    <h2 style="font-weight: bold">Danh sách LĐST</h2>
+               </div>
+               <div class="col-sm-2">
+                    @*<a href="@Url.Action("ThemLSDT","LDST")" class="btn btn-primary" style="background-color: #ffb836;"><i class="fas fa-plus"></i> <span style="color: white">Thêm mới</span></a>*@
+                    @*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="background-color: green;"> <i class="fas fa-print"></i> <span style="color: white;">In danh sách</span></a>
+
+                    <!--</div>-->
+               </div>
+          </div>
+     </div>
+     <div class="table-responsive">
+          <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+               <thead>
+                    <tr>
+                         <th style="display:none">Mã</th>
+                         <th>Tên đề tài</th>
+                         <th>Loại đề tài</th>
+                         <th>Kết quả</th>
+                         <th>Năm</th>
+                         <th>Chủ trì</th>
+                         <th>Người tham gia</th>
+                         <th>Thao Tác</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    @foreach (var it in list)
+                    {
+                         <tr>
+
+                              <td style="display:none">@it.MaLDST</td>
+                              <td>@it.TenDeTai</td>
+                              <td>@it.LoaiDeTai</td>
+                              <td>@it.KetQua</td>
+                              <td>@it.Nam</td>
+                              <td>@it.ChuTri</td>
+                              <td><a id="loadModal" data-toggle="modal" data-target="#showmodal1" class="btn btn-outline-primary">Danh sách tham gia</a></td>
+                              <td class="center" style="list-style-type: none;">
+                                   <li class="dropdown">
+                                        <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary btn-sm" data-toggle="dropdown" type="button"><i class="fa fa-bars"></i></button>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                             @*<li>
+                                                       <a class="dropdown-item" href="">
+                                                            <i class="fas fa-eye fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                            Chi tiết
+                                                       </a>
+                                                  </li>*@
+                                             @*<li>
+                                                  <a class="dropdown-item" href="#">
+                                                       <i class="fas fa-edit mr-3"></i>
+                                                       Cập Nhật
+                                                  </a>
+                                             </li>*@
+                                             <li>
+                                                  <a class="dropdown-item text-danger" href="#" onclick="Xoa(@it.MaLDST)">
+                                                       <i class="fas fa-trash-alt mr-3"></i>
+                                                       Xóa
+                                                  </a>
+                                             </li>
+
+                                        </ul>
+                                   </li>
+
+                              </td>
+                         </tr>
+                    }
+               </tbody>
+          </table>
+          <div id="myModal" class="modal fade" role="dialog">
+               <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+                    <div class="modal-content">
+                         @*<div class="modal-header">
+                                   <h4 class="modal-title"></h4>
+                                   <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>*@
+                         <form id="frmSuaHang" method="post" action="/Report/InDanhSachLDST">
+                              <div class="modal-body">
+                                   @if (Session["Quyen"].ToString() == "1")
+                                   {
+                                        <input type="text" value="0" name="ma" id="MaHV" style="display:none" />
+                                   }
+                                   else if (Session["Quyen"].ToString() == "2")
+                                   {
+                                        <input type="text" value="@Session["MaHoi"]" name="ma" id="MaHV" style="display:none" />
+                                   }
+                                   <div class="form-group">
+                                        <label for="usr">Chọn năm:</label>
+                                        <select class="form-control" name="nam">
+                                             @for (int i = DateTime.Now.Year - 5; i < DateTime.Now.Year; i++)
+                                             {
+                                                  <option value="@i">@i</option>
+                                             }
+                                        </select>
+                                   </div>
+                              </div>
+
+                              <div class="modal-footer">
+                                   <button type="submit" class="btn btn-primary">In danh sách</button>
+                                   <a class="btn btn-default" data-dismiss="modal">Hủy bỏ</a>
+                              </div>
+                         </form>
+
+
+                    </div>
+
+               </div>
+
+          </div>
+          <div id="showmodal1" class="modal fade" role="dialog">
+               <div class="modal-dialog modal-dialog-centered" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+               </div>
+          </div>
+          <script>
+                     function Xoa(ma) {
+
+                            Swal.fire({
+                                   title: 'Bạn có chắc chắn muốn xóa?',
+                                   showCancelButton: true,
+                                   confirmButtonText: 'Xóa',
+                                   denyButtonText: `Hủy`,
+                            }).then((result) => {
+                                                  /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                      $.ajax({
+                                             url:'/LDST/Xoa',
+                                             data: {
+                                                  ma: ma
+                                             },
+                                             type: 'POST',
+                                             dataType: 'json',
+                                             success: function (res) {
+                                                  if (res.status == true) {
+                                                       Swal.fire({
+                                                            position: 'center',
+                                                            icon: 'success',
+                                                            title: 'Đã xóa',
+                                                            showConfirmButton: false,
+                                                            timer: 10000
+                                                       })
+                                                       window.location = '@Url.Action("Index","LDST", new { ma = Session["MaHoi"] })'
+                                                  } else if (res.status == false) {
+                                                       Swal.fire({
+                                                            position: 'center',
+                                                            icon: 'error',
+                                                            title: 'Chưa xóa được',
+                                                            showConfirmButton: false,
+                                                            timer: 6000
+                                                       })
+                                                  }
+                                             }
+
+                                      });
+
+                                }
+                            })
+                     }
+          </script>
+          <script>
+               $("#dataTable").on("click", "#loadModal", function () {
+                     var id = $(this).closest("tr").find("td").eq(0).html();
+                     console.log(id);
+                     $.ajax({
+                           url: '@Url.Action("ThamGia", "LDST", new { ma = Session["MaHoi"] })',
+                           data: { ma: id },
+                           type: 'GET', // Change to 'POST' if needed
+                           success: function (data) {
+                                 $('#showmodal1 .modal-dialog').html(data);
+                           }
+                     });
+              });
+          </script>
+     </div>
+
+
+</div>

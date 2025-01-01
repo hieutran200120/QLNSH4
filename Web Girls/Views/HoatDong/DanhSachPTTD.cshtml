@@ -1,0 +1,439 @@
+﻿
+@{
+     ViewBag.Title = "DanhSachPTTD";
+     if (Session["Quyen"].ToString() == "1")
+     {
+          Layout = "~/Views/Shared/_LayoutQuanTriCapHV.cshtml";
+     }
+     else if (Session["Quyen"].ToString() == "2")
+     {
+          Layout = "~/Views/Shared/_LayoutQuanTriCapHoi.cshtml";
+     }
+     var pttd = (List<Web_Girls.Models.Context.PhongTraoThiDua>)ViewBag.pttd;
+}
+@if (!string.IsNullOrEmpty(ViewBag.Thieu))
+{
+     <script>
+          Swal.fire({
+               position: 'center',
+               icon: 'info',
+               title: '@Html.Raw(ViewBag.Thieu)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+        // Hiển thị hộp thoại alert nếu có thông báo
+        @*alert('@Html.Raw(ViewBag.Khoa)');*@
+     </script>
+}
+@if (!string.IsNullOrEmpty(ViewBag.TC))
+{
+     <script>
+          Swal.fire({
+               position: 'center',
+               icon: 'info',
+               title: '@Html.Raw(ViewBag.TC)',
+               showConfirmButton: false,
+               timer: 1500
+          })
+        // Hiển thị hộp thoại alert nếu có thông báo
+        @*alert('@Html.Raw(ViewBag.Khoa)');*@
+     </script>
+}
+<script src="~/Assets/Sbadmin/vendor/jquery/jquery.min.js"></script>
+<style>
+    /* Màu nền cho tiêu đề cột */
+    table thead th {
+        background-color: #457b9d; /* Xanh nhạt */
+        color: white; /* Màu chữ trắng */
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* Màu nền cho các ô dữ liệu */
+    table tbody td {
+        background-color: #f8f9fa; /* Màu nền nhạt */
+    }
+
+    /* Dòng được chọn (hover) */
+    table tbody tr:hover {
+        background-color: #d1ecf1; /* Xanh nhạt khi hover */
+    }
+
+    /* Đường viền */
+    table {
+        border-collapse: collapse;
+    }
+
+        table th, table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+        }
+</style>
+<div id="page-wrapper">
+     <div style="color: black; padding: 16px 30px; margin: -20px -25px 10px; border-radius: 3px 3px 0 0; ">
+          <div class="row">
+               <div class="col-sm-10 d-flex">
+                    @*<a><i class="fas fa-arrow-left fa-lg"></i></a>*@
+                    <h2 style="font-weight: bold">Danh sách PTTĐ</h2>
+               </div>
+               <div class="col-sm-2">
+                    @if (Session["Quyen"].ToString() == "1")
+                    {
+                         <a href="#" class="btn btn-primary" > <i class="fas fa-plus"></i> <span style="color: white;" data-toggle="modal" data-target="#them">Thêm mới</span></a>
+                    }
+                    else if (Session["Quyen"].ToString() == "2")
+                    {
+
+                    }
+                    <input type="text" id="MaHoi" value="@Session["MaHoi"]" style="display:none" />
+                    @*<a href="#" class="btn btn-secondary" style="display: none;"><i class="material-icons">&#xE24D;</i> <span>Xuất Excel</span></a>*@
+                    <!--</div>-->
+               </div>
+
+          </div>
+     </div>
+     <div class="table-responsive">
+          <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+               <thead>
+                    <tr>
+                         <th style="display:none">Mã</th>
+                         @if (Session["Quyen"].ToString() == "1")
+                         {
+                              <th>Khóa</th>
+                         }
+                         <th>Tên PTTD</th>
+                         <th>Thời gian diễn ra</th>
+                         <th>Trạng thái</th>
+                         <th> Danh sách biểu dương</th>
+                         <th></th>
+                    </tr>
+
+               </thead>
+               <tbody>
+                    @foreach (var it in pttd)
+                    {
+                         <tr>
+                              <td style="display:none">@it.Ma</td>
+                              @if (Session["Quyen"].ToString() == "1")
+                              {
+                                   if (it.Khoa == true)
+                                   {
+                                        <td><input type="checkbox" data-id="@Html.Raw(it.Ma)" class="checkbox-item" @*class="form-check-input" id="check1" name="option1" value="something"*@ checked></td>
+                                   }
+                                   else
+                                   {
+                                        <td><input type="checkbox" data-id="@Html.Raw(it.Ma)" class="checkbox-item" @*class="form-check-input" id="check1" name="option1" value="something"*@></td>
+                                   }
+                              }
+                              <td>@it.TenPhongTraoThiDua</td>
+                              <td>Từ @it.NgayBatDau.Value.ToString("dd/MM/yyyy") đến @it.NgayKetThuc.Value.ToString("dd/MM/yyyy")</td>
+                              @if (it.NgayKetThuc.Value > DateTime.Now)
+                              {
+                                   <td style="color: #23c33e">Đang diễn ra</td>
+                              }
+                              else
+                              {
+                                   <td style="color:red">Đã kết thúc</td>
+                              }
+                              @if (it.NgayKetThuc.Value < DateTime.Now)
+                              {
+                                   <td><a id="loadModal" data-toggle="modal" data-target="#showmodal1" class="btn btn-outline-primary">Danh sách biểu dương</a></td>
+                              }
+                              else
+                              {
+                                   <td>-</td>
+                              }
+                              <td class="center" style="list-style-type: none;">
+                                   <li class="dropdown">
+                                        <button aria-expanded="false" aria-haspopup="true" class="btn btn-primary btn-sm" data-toggle="dropdown" type="button"><i class="fa fa-bars"></i></button>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+
+                                             @if (Session["Quyen"].ToString() == "1")
+                                             {
+                                                  <li>
+                                                       <a class="dropdown-item"id="loadModal1" data-toggle="modal" data-target="#showmodal2">
+                                                            <i class="fas fa-edit mr-3"></i>
+                                                            Cập nhật
+                                                       </a>
+                                                  </li>
+                                                  if (it.NgayKetThuc.Value < DateTime.Now)
+                                                  {
+                                                       <li>
+                                                            <a class="dropdown-item" href="@Url.Action("KhenThuongChuaXacNhan","HoatDong",new { ma = it.Ma})">
+                                                                 <i class="fas fa-edit mr-3"></i>
+                                                                 Phê duyệt đề nghị
+                                                            </a>
+                                                       </li>
+                                                  }
+
+                                                  <li>
+                                                       <a class="dropdown-item text-danger" href="#" onclick="Xoa(@it.Ma)">
+                                                            <i class="fas fa-trash-alt mr-3"></i>
+                                                            Xóa
+                                                       </a>
+                                                  </li>
+                                             }
+                                             @if (it.NgayKetThuc.Value < DateTime.Now)
+                                             {
+                                                  if (Session["Quyen"].ToString() == "2")
+                                                  {
+                                                       <li>
+                                                            <a class="dropdown-item" href="@Url.Action("DanhSachDeNghiBieuDuongChiHoi","HoatDong",new { ma = it.Ma })">
+                                                                 <i class="fas fa-edit mr-3"></i>
+                                                                 Đề nghị biểu dương
+                                                            </a>
+                                                       </li>
+                                                  }
+                                             }
+
+
+
+
+                                        </ul>
+                                   </li>
+
+                              </td>
+                         </tr>
+                    }
+               </tbody>
+          </table>
+          <div id="showmodal1" class="modal fade" role="dialog">
+               <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+               </div>
+          </div>
+          <div id="showmodal2" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+               <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="display: flex; align-items: center; height: 100%; margin-bottom: 0; margin-top: 0">
+
+               </div>
+          </div>
+          <div class="modal fade " id="them" role="dialog">
+               <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                         <form id="frmSuaHang" method="post" action="/HoatDong/ThemPTTD">
+                              <div class="modal-header">
+                                   <h4 class="modal-title">Thêm PTTĐ</h4>
+                                   <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+
+                              <div class="modal-body">
+                                   <!--<div class="form-group">
+                                   <label for="usr">Loại hoạt động:</label>-->
+                                   @*<select class="form-control" id="MaloaiHD" required>
+                                             <option></option>
+                                             @foreach (var it in loaihd)
+                                             {
+                                                  <option value="@it.MaLoaiHoatDong">@it.TenLoaiHoatDong</option>
+                                             }
+
+                                        </select>*@
+                                   <!--</div>-->
+                                   <div class="form-group">
+                                        <label for="usr">Tên PTTĐ:</label>
+                                        <input type="text" class="form-control" name="TenPhongTraoThiDua" placeholder="Tên PTTĐ" autocomplete="off">
+                                   </div>
+                                   <div class="form-group" id="">
+                                        <label for="usr">Ngày bắt đầu:</label>
+                                        <input type="date" class="form-control" name="NgayBatDau" autocomplete="off">
+                                   </div>
+                                   <div class="form-group" id="">
+                                        <label for="usr">Ngày kết thúc:</label>
+                                        <input type="date" class="form-control" name="NgayKetThuc" autocomplete="off">
+                                   </div>
+                                   <div class="form-group" id="">
+                                        <label for="usr">Phần trăm khen thưởng:</label>
+                                        <input type="number" class="form-control" name="SoLuongDeCu" placeholder="Số lượng đề cử" autocomplete="off">
+                                   </div>
+                                   @*<script>
+                                             const selectElement1 = document.getElementById('MaloaiHD');
+                                             const elementToHide1 = document.getElementById('SoTien');
+
+                                             selectElement1.addEventListener('change', (event) => {
+                                                  const selectedOption1 = event.target.value;
+                                                  console.log(selectedOption1);
+
+                                                  if (selectedOption1 == 3) {
+                                                       elementToHide1.style.display = 'block'; // Hide the element
+                                                  } else {
+                                                       elementToHide1.style.display = 'none'; // Show the element
+                                                  }
+                                             });
+                                        </script>*@
+
+                              </div>
+
+                              <div class="modal-footer">
+                                   <button type="submit" class="btn btn-primary" @*href="#" data-dismiss="modal" onclick="ThemHoatDong()"*@>Thêm</button>
+                                   <button type="button" class="btn btn-default" data-dismiss="modal" @*data-toggle="modal" data-target="#error"*@>Hủy bỏ</button>
+
+
+                              </div>
+                         </form>
+                    </div>
+
+               </div>
+          </div>
+
+          <script>
+                //function ThemHoatDong() {
+                //    const TenPTTD = document.getElementById("TenPTTD").value;
+                //     const NgayBD = document.getElementById("NgayBatDau").value;
+                //     const NgayKT = document.getElementById("NgayKetThuc").value;
+                //     const TiLe = document.getElementById("SoLuong").value;
+                //     if (TenPTTD == "" || NgayBD == "" || NgayKT == "" || TiLe == "") {
+                //          Swal.fire({
+                //               position: 'center',
+                //               icon: 'error',
+                //               title: 'Vui lòng nhập đầy đủ thông tin',
+                //               showConfirmButton: false,
+                //               timer: 1000
+                //          })
+                //         /*alert("Vui lòng nhập đầy đủ thông tin.");*/
+                //    }
+                //    $.ajax({
+                //         url: "/HoatDong/ThemPTTD",
+                //         data: {
+
+                //              TenPTTD: TenPTTD,
+                //              NgayBD: NgayBD,
+                //              NgayKT: NgayKT,
+                //              TiLe: TiLe
+                //         },
+                //         type: 'POST',
+                //         dataType: 'json',
+                //         success: function (res) {
+                //              if (res.status == true) {
+                //                   Swal.fire({
+                //                        position: 'center',
+                //                        icon: 'success',
+                //                        title: 'Thêm thành công',
+                //                        showConfirmButton: false,
+                //                        timer: 1000
+                //                   })
+                //                   window.location.href = "/HoatDong/DanhSachPTTD";
+                //                   Swal.fire({
+                //                        position: 'center',
+                //                        icon: 'error',
+                //                        title: 'Đã có lỗi xảy ra',
+                //                        showConfirmButton: false,
+                //                        timer: 1000
+                //                   })
+
+                //              }
+                //         }
+                //    });
+                //                   }
+                function Xoa(ma) {
+                         Swal.fire({
+                              title: 'Bạn có chắc chắn muốn xóa?',
+                              showCancelButton: true,
+                              confirmButtonText: 'Xóa',
+                              denyButtonText: `Hủy`,
+                         }).then((result) => {
+                                             /* Read more about isConfirmed, isDenied below */
+                              if (result.isConfirmed) {
+                                   $.ajax({
+                                        url:'/HoatDong/XoaPTTD',
+                                        data: {
+                                             ma: ma
+                                        },
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        success: function (res) {
+                                             if (res.status == true) {
+                                                  Swal.fire({
+                                                       position: 'center',
+                                                       icon: 'success',
+                                                       title: 'Đã xóa',
+                                                       showConfirmButton: false,
+                                                       timer: 10000
+                                                  })
+                                                  window.location = '@Url.Action("DanhSachPTTD","HoatDong")'
+                                             } else if (res.status == false) {
+                                                  Swal.fire({
+                                                       position: 'center',
+                                                       icon: 'error',
+                                                       title: 'Chưa xóa được',
+                                                       showConfirmButton: false,
+                                                       timer: 6000
+                                                  })
+                                             }
+                                        }
+
+                                   });
+
+                              }
+                         })
+                     }
+          </script>
+          <script>
+                    $("#dataTable").on("click", "#loadModal", function () {
+                          var id = $(this).closest("tr").find("td").eq(0).html();
+                          console.log(id);
+                          $.ajax({
+                                url: '@Url.Action("DanhSachBieuDuong","HoatDong")',
+                                data: { ma: id },
+                                type: 'GET', // Change to 'POST' if needed
+                                success: function (data) {
+                                      $('#showmodal1 .modal-dialog').html(data);
+                                }
+                          });
+                   });
+          </script>
+          <script>
+                         $("#dataTable").on("click", "#loadModal1", function () {
+                              var id = $(this).closest("tr").find("td").eq(0).html();
+                              const MaHPN = document.getElementById("MaHoi").value;
+                               console.log(id);
+                               $.ajax({
+                                    url: '@Url.Action("CapNhatPTTD", "HoatDong")',
+                                    data: { ma: id},
+                                     type: 'GET', // Change to 'POST' if needed
+                                     success: function (data) {
+                                           $('#showmodal2 .modal-dialog').html(data);
+                                     }
+                               });
+                        });
+               </script>
+          <script>
+                             const checkboxList = document.querySelectorAll('.checkbox-item')
+                                checkboxList.forEach(checkbox => {
+                                   checkbox.addEventListener('click', (event) => {
+                                        event.preventDefault();
+                                        const mapt = checkbox.getAttribute('data-id');
+                                        if (event.target.checked) {
+                                             Swal.fire({
+                                                  title: 'Nếu khóa các chi hội sẽ không đề nghị được hội viên.Xác nhận khóa?',
+                                                  icon: 'question',
+                                                  showCancelButton: true,
+                                                  confirmButtonText: 'Khóa',
+                                                  denyButtonText: `Hủy`,
+                                             }).then((result) => {
+                                                  if (result.isConfirmed) {
+                                                       const lockUrl = '@Url.Action("KhoaPTTD", "HoatDong")' + '?ma=' + mapt;
+                                                       window.location.href = lockUrl;
+                                                  }
+                                             })
+                                        } else {
+                                             Swal.fire({
+                                                  title: 'Bạn có chắc chắn muốn mở khóa hoạt động này?',
+                                                  icon: 'question',
+                                                  showCancelButton: true,
+                                                  confirmButtonText: 'Mở khóa',
+                                                  denyButtonText: `Hủy`,
+                                             }).then((result) => {
+
+                                                  if (result.isConfirmed) {
+                                                       const lockUrl = '@Url.Action("MoKhoaPTTD", "HoatDong")' + '?ma=' + mapt;
+                                                       window.location.href = lockUrl;
+                                                  }
+                                             })
+                                        }
+                                   });
+                              });
+          </script>
+     </div>
+
+</div>
+
